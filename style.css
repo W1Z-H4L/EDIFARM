@@ -1,0 +1,89 @@
+* {
+    text-decoration: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.wrapper {
+    height: 100vh;
+    width: 100%;
+    background-image: url(img/bg.png);
+    background-position: center;
+    background-size: cover;
+}
+.logo a{
+    float: left;
+
+}
+img {
+    float: left;
+    width: 60%;
+}
+.menu{
+    float: right;
+}
+nav{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    line-height: 40px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background: #FFFFFF;
+    border-bottom:1px solid #364f6b;
+}
+nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+nav ul li {
+    float: left;
+}
+nav ul li a{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px 0px 20px;
+    text-decoration: none;
+}
+nav ul li a:hover{
+    text-decoration: underline;
+}
+.tbl-biru{
+    background-image: linear-gradient(to right, #028E8F, #00D4D6);
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 15px 20px 15px 20px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+.tbl-biru:hover{
+    background-image: linear-gradient(to right, #D6D8D8, #E5E7E7);
+    text-decoration: none;
+}
+.tbl-abu{
+    background-image: linear-gradient(to right, #D6D8D8, #E5E7E7);
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 15px 20px 15px 20px;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+.tbl-abu:hover{
+    background-image: linear-gradient(to right, #028E8F, #00D4D6);
+    text-decoration: none;
+}
+.bg{
+    width:fit-content;
+}

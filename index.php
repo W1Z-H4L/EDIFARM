@@ -9,18 +9,16 @@
 <body>
     <nav>
         <div class="wrapper">
+            <div class="logo"><img src="img\logo.png" /></div>
             <div class="menu">
                 <ul>
                     <li><a href="" class="tbl-abu">About</a></li>
                     <li><a href="" class="tbl-biru">Login</a></li>
                 </ul>
             </div>
+            <p>~ GROW NATURALLY LIVE NATURAL ~</p>
+            <h2><strong>FARMING</strong></h2>
         </div>
     </nav>
-    <div class="wrapper">
-        <section id="home">
-            <img src="img\bg.jpg"/>
-            
-        </section>
 </body>
 </html>

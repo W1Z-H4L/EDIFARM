@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <title> Dashboard </title>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jaldi:wght@400;700&display=swap" rel="stylesheet">
@@ -15,7 +15,7 @@
 <body>
   <div class="sidebar close">
     <div class="logo-details">
-      <img src="img\logo1.png" alt="" class="logo1">
+      <img src="images\logo1.png" alt="" class="logo1">
       <span class="logo_name"><strong>EDI</strong>FARM</span>
     </div>
     <ul class="nav-links">
@@ -76,13 +76,15 @@
       <li>
     <div class="profile-details">
       <div class="profile-content">
-        <img src="img/profile.jpg" alt="profileImg">
+        <img src="images/profile.jpg" alt="profileImg">
       </div>
       <div class="name-job">
         <div class="profile_name">Wishal</div>
         <div class="job">Owner</div>
       </div>
-      <i class='bx bx-log-out' ></i>
+      <a href="login.php">
+      <i  class='bx bx-log-out' ></i>
+      </a>
     </div>
   </li>
 </ul>
@@ -94,7 +96,7 @@
     </div>
   </section>
 
-  <script src="script.js"></script>
+  <script src="js/javascript.js"></script>
 
 </body>
 </html>

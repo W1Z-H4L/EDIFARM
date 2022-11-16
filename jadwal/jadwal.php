@@ -89,46 +89,11 @@
   </li>
 </ul>
   </div>
-  <section class="home-section">
-    <div class="home-content">
-      <i class='bx bx-menu' ></i>
-      <span class="text">Dashboard</span>
-    </div> <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-    <div class="elfsight-app-d78e731b-3d03-4d09-b0b4-21e642a23108"></div>
-  <head>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Year', 'Lahan'],
-          ['Lahan 1',  1000],
-          ['Lahan 2',  1170],
-          ['Lahan 3',  660],
-          ['Lahan 4',  1030]
-        ]);
-
-        var options = {
-          title: 'Lahan',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-  <body>
-    <div id="curve_chart" style="width: 500px; height: 250px"></div>
-
-    <section id="jadwal" class="home-section">
+  <section id="jadwal" class="home-section">
     <div class="home-content">
       <i class='bx bx-menu' ></i>
       <span class="text">jadwal</span> 
+      
       
   </section>
   <script src="js/javascript.js"></script>

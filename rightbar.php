@@ -9,9 +9,9 @@
 <body>
 <div class="sidebar-title">
 				<h3 class="weight-600 font-16 text-blue">
-					Layout Settings
+					Pengaturan
 					<span class="btn-block font-weight-400 font-12"
-						>User Interface Settings</span
+						>Pengaturan Mode Layar</span
 					>
 				</h3>
 				<div class="close-sidebar" data-toggle="right-sidebar-close">
@@ -25,12 +25,12 @@
 						<a
 							href="javascript:void(0);"
 							class="btn btn-outline-primary header-white active"
-							>White</a
+							>Mode Terang</a
 						>
 						<a
 							href="javascript:void(0);"
 							class="btn btn-outline-primary header-dark"
-							>Dark</a
+							>Mode Gelap</a
 						>
 					</div>
 
@@ -39,18 +39,18 @@
 						<a
 							href="javascript:void(0);"
 							class="btn btn-outline-primary sidebar-light"
-							>White</a
+							>Mode Terang</a
 						>
 						<a
 							href="javascript:void(0);"
 							class="btn btn-outline-primary sidebar-dark active"
-							>Dark</a
+							>Mode Gelap</a
 						>
 					</div>
 
 					<div class="reset-options pt-30 text-center">
 						<button class="btn btn-danger" id="reset-settings">
-							Reset Settings
+							Reset Pengaturan
 						</button>
 					</div>
 				</div>

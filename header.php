@@ -21,7 +21,7 @@
 							<input
 								type="text"
 								class="form-control search-input"
-								placeholder="Search Here"
+								placeholder="Cari Disini"
 							/>
 							<div class="dropdown">
 								<a
@@ -35,7 +35,7 @@
 								<div class="dropdown-menu dropdown-menu-right">
 									<div class="form-group row">
 										<label class="col-sm-12 col-md-2 col-form-label"
-											>From</label
+											>Dari</label
 										>
 										<div class="col-sm-12 col-md-10">
 											<input
@@ -45,7 +45,7 @@
 										</div>
 									</div>
 									<div class="form-group row">
-										<label class="col-sm-12 col-md-2 col-form-label">To</label>
+										<label class="col-sm-12 col-md-2 col-form-label">Untuk</label>
 										<div class="col-sm-12 col-md-10">
 											<input
 												class="form-control form-control-sm form-control-line"
@@ -55,7 +55,7 @@
 									</div>
 									<div class="form-group row">
 										<label class="col-sm-12 col-md-2 col-form-label"
-											>Subject</label
+											>Subjek</label
 										>
 										<div class="col-sm-12 col-md-10">
 											<input
@@ -65,7 +65,7 @@
 										</div>
 									</div>
 									<div class="text-right">
-										<button class="btn btn-primary">Search</button>
+										<button class="btn btn-primary">Cari</button>
 									</div>
 								</div>
 							</div>
@@ -102,61 +102,49 @@
 									<li>
 										<a href="#">
 											<img src="vendors/images/img.jpg" alt="" />
-											<h3>John Doe</h3>
+											<h3>Lusy Damayanti</h3>
 											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
+												Lahan 1 sudah dilakukan penyiraman....
 											</p>
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<img src="vendors/images/photo1.jpg" alt="" />
-											<h3>Lea R. Frith</h3>
+											<h3>Andru Christo</h3>
 											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
+												Lahan 2 terdapat masalah, akibat cuaca yang tidak kondusif....
 											</p>
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<img src="vendors/images/photo2.jpg" alt="" />
-											<h3>Erik L. Richards</h3>
+											<h3>Aditya Gilang</h3>
 											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
+												Lahan 3 akan segera dipanen...
 											</p>
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<img src="vendors/images/photo3.jpg" alt="" />
-											<h3>John Doe</h3>
+											<h3>Karen Novita</h3>
 											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
+												Lahan 4 sudah dilakukan penanaman...
 											</p>
 										</a>
 									</li>
 									<li>
 										<a href="#">
 											<img src="vendors/images/photo4.jpg" alt="" />
-											<h3>Renee I. Hansen</h3>
+											<h3>Rina Wulandari</h3>
 											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
+												Penyiraman sudah dilakukan hari ini...
 											</p>
 										</a>
 									</li>
 									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
-											<h3>Vicki M. Coleman</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
 										</a>
 									</li>
 								</ul>
@@ -175,25 +163,28 @@
 							<span class="user-icon">
 								<img src="vendors/images/photo1.jpg" alt="" />
 							</span>
-							<span class="user-name">Ross C. Lopez</span>
+							<span class="user-name">Wishal Azharyan</span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 						>
 							<a class="dropdown-item" href="profile.html"
-								><i class="dw dw-user1"></i> Profile</a
+								><i class="dw dw-user1"></i> Profil</a
 							>
 							<a class="dropdown-item" href="profile.html"
-								><i class="dw dw-settings2"></i> Setting</a
+								><i class="dw dw-settings2"></i> Pengaturan</a
 							>
 							<a class="dropdown-item" href="faq.html"
-								><i class="dw dw-help"></i> Help</a
+								><i class="dw dw-help"></i> Bantuan</a
 							>
-							<a class="dropdown-item" href="login.html"
-								><i class="dw dw-logout"></i> Log Out</a
+							<a class="dropdown-item" href="login.php"
+								><i class="dw dw-logout"></i> Keluar</a
 							>
 						</div>
 					</div>
+				</div>
+				
+					</a>
 				</div>
 			</div>
 		</div>

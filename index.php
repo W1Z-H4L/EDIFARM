@@ -9,19 +9,19 @@
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
-			href="vendors/images/apple-touch-icon.png"
+			href="vendors/images/logo_edifarm.png"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="32x32"
-			href="vendors/images/favicon-32x32.png"
+			href="vendors/images/logo_edifarm.png"
 		/>
 		<link
 			rel="icon"
 			type="image/png"
 			sizes="16x16"
-			href="vendors/images/favicon-16x16.png"
+			href="vendors/images/logo_edifarm.png"
 		/>
 
 		<!-- Mobile Specific Metas -->
@@ -53,35 +53,6 @@
 			href="src/plugins/datatables/css/responsive.bootstrap4.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
-
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
-		></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag("js", new Date());
-
-			gtag("config", "G-GBZ3SGGX85");
-		</script>
-		<!-- Google Tag Manager -->
-		<script>
-			(function (w, d, s, l, i) {
-				w[l] = w[l] || [];
-				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s),
-					dl = l != "dataLayer" ? "&l=" + l : "";
-				j.async = true;
-				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-				f.parentNode.insertBefore(j, f);
-			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
-		</script>
-		<!-- End Google Tag Manager -->
 	</head>
 	<body>
 		<?php include 'header.php'; ?>
@@ -96,7 +67,7 @@
 		<div class="main-container">
 			<div class="xs-pd-20-10 pd-ltr-20">
 				<div class="title pb-20">
-					<h2 class="h3 mb-0">Hospital Overview</h2>
+					<h2 class="h3 mb-0">Dashboard</h2>
 				</div>
 
 				<div class="row pb-10">
@@ -104,14 +75,14 @@
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">75</div>
+									<div class="weight-700 font-24 text-dark">75%</div>
 									<div class="font-14 text-secondary weight-500">
-										Appointment
+										Lahan 1
 									</div>
 								</div>
 								<div class="widget-icon">
 									<div class="icon" data-color="#00eccf">
-										<i class="icon-copy dw dw-calendar1"></i>
+										<i class="icon-copy dw dw-bar-chart"></i>
 									</div>
 								</div>
 							</div>
@@ -121,14 +92,14 @@
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">124,551</div>
+									<div class="weight-700 font-24 text-dark">25%</div>
 									<div class="font-14 text-secondary weight-500">
-										Total Patient
+										Lahan 2
 									</div>
 								</div>
 								<div class="widget-icon">
 									<div class="icon" data-color="#ff5b5b">
-										<span class="icon-copy ti-heart"></span>
+										<span class="icon-copy ti-pie-chart"></span>
 									</div>
 								</div>
 							</div>
@@ -138,15 +109,15 @@
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">400+</div>
+									<div class="weight-700 font-24 text-dark">40%</div>
 									<div class="font-14 text-secondary weight-500">
-										Total Doctor
+										Lahan 3
 									</div>
 								</div>
 								<div class="widget-icon">
 									<div class="icon">
 										<i
-											class="icon-copy fa fa-stethoscope"
+											class="icon-copy fa fa-line-chart"
 											aria-hidden="true"
 										></i>
 									</div>
@@ -158,12 +129,12 @@
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">$50,000</div>
-									<div class="font-14 text-secondary weight-500">Earning</div>
+									<div class="weight-700 font-24 text-dark">60%</div>
+									<div class="font-14 text-secondary weight-500">Lahan 4</div>
 								</div>
 								<div class="widget-icon">
 									<div class="icon" data-color="#09cc06">
-										<i class="icon-copy fa fa-money" aria-hidden="true"></i>
+										<i class="icon-copy fa fa-area-chart" aria-hidden="true"></i>
 									</div>
 								</div>
 							</div>
@@ -177,17 +148,17 @@
 							<div
 								class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3"
 							>
-								<div class="h5 mb-md-0">Hospital Activities</div>
+								<div class="h5 mb-md-0">Progres Lahan</div>
 								<div class="form-group mb-md-0">
 									<select class="form-control form-control-sm selectpicker">
-										<option value="">Last Week</option>
-										<option value="">Last Month</option>
-										<option value="">Last 6 Month</option>
-										<option value="">Last 1 year</option>
+										<option value="">Per-Minggu</option>
+										<option value="">Per-Bulan</option>
+										<option value="">6 Bulan Terakhir</option>
+										<option value="">1 Tahun Terakhir</option>
 									</select>
 								</div>
 							</div>
-							<div id="activities-chart"></div>
+							<div id="chart2"></div>
 						</div>
 					</div>
 					<div class="col-md-4 mb-20">
@@ -201,39 +172,21 @@
 									<!-- <i class="icon-copy fa fa-stethoscope" aria-hidden="true"></i> -->
 								</div>
 								<div class="font-14 text-right">
-									<div><i class="icon-copy ion-arrow-up-c"></i> 2.69%</div>
-									<div class="font-12">Since last month</div>
+									<div><i class="icon-copy ion-arrow-up-c"></i> 40%</div>
+									<div class="font-12">1 Bulan Terakhir</div>
 								</div>
 							</div>
 							<div class="d-flex justify-content-between align-items-end">
 								<div class="text-white">
-									<div class="font-14">Appointment</div>
-									<div class="font-24 weight-500">1865</div>
+									<div class="font-14"></div>
+									<div class="font-25 weight-600">Lahan 1</div>
 								</div>
 								<div class="max-width-150">
 									<div id="appointment-chart"></div>
 								</div>
 							</div>
-						</div>
-						<div class="card-box min-height-200px pd-20" data-bgcolor="#265ed7">
-							<div class="d-flex justify-content-between pb-20 text-white">
-								<div class="icon h1 text-white">
-									<i class="fa fa-stethoscope" aria-hidden="true"></i>
-								</div>
-								<div class="font-14 text-right">
-									<div><i class="icon-copy ion-arrow-down-c"></i> 3.69%</div>
-									<div class="font-12">Since last month</div>
-								</div>
-							</div>
-							<div class="d-flex justify-content-between align-items-end">
-								<div class="text-white">
-									<div class="font-14">Surgery</div>
-									<div class="font-24 weight-500">250</div>
-								</div>
-								<div class="max-width-150">
-									<div id="surgery-chart"></div>
-								</div>
-							</div>
+								</div> <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+									<div class="elfsight-app-d78e731b-3d03-4d09-b0b4-21e642a23108"></div>
 						</div>
 					</div>
 				</div>
@@ -242,7 +195,7 @@
 					<div class="col-lg-4 col-md-6 mb-20">
 						<div class="card-box height-100-p pd-20 min-height-200px">
 							<div class="d-flex justify-content-between pb-10">
-								<div class="h5 mb-0">Top Doctors</div>
+								<div class="h5 mb-0">Jadwal Karyawan</div>
 								<div class="dropdown">
 									<a
 										class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
@@ -256,14 +209,14 @@
 									<div
 										class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 									>
-										<a class="dropdown-item" href="#"
-											><i class="dw dw-eye"></i> View</a
+										<a class="dropdown-item" href="calendar.php"
+											><i class="dw dw-eye"></i> Lihat</a
 										>
 										<a class="dropdown-item" href="#"
 											><i class="dw dw-edit2"></i> Edit</a
 										>
 										<a class="dropdown-item" href="#"
-											><i class="dw dw-delete-3"></i> Delete</a
+											><i class="dw dw-delete-3"></i> Hapus</a
 										>
 									</div>
 								</div>
@@ -286,17 +239,17 @@
 													class="badge badge-pill badge-sm"
 													data-bgcolor="#e7ebf5"
 													data-color="#265ed7"
-													>4.9</span
+													></span
 												>
-												<div class="font-14 weight-600">Dr. Neil Wagner</div>
+												<div class="font-14 weight-600"></div>
 												<div class="font-12 weight-500" data-color="#b2b1b6">
-													Pediatrician
+													
 												</div>
 											</div>
 										</div>
 										<div class="cta flex-shrink-0">
-											<a href="#" class="btn btn-sm btn-outline-primary"
-												>Schedule</a
+											<a href="calendar.php" class="btn btn-sm btn-outline-primary"
+												>Jadwal</a
 											>
 										</div>
 									</li>
@@ -316,17 +269,17 @@
 													class="badge badge-pill badge-sm"
 													data-bgcolor="#e7ebf5"
 													data-color="#265ed7"
-													>4.9</span
+													></span
 												>
-												<div class="font-14 weight-600">Dr. Ren Delan</div>
+												<div class="font-14 weight-600"></div>
 												<div class="font-12 weight-500" data-color="#b2b1b6">
-													Pediatrician
+													
 												</div>
 											</div>
 										</div>
 										<div class="cta flex-shrink-0">
 											<a href="#" class="btn btn-sm btn-outline-primary"
-												>Schedule</a
+												>Jadwal</a
 											>
 										</div>
 									</li>
@@ -346,17 +299,17 @@
 													class="badge badge-pill badge-sm"
 													data-bgcolor="#e7ebf5"
 													data-color="#265ed7"
-													>4.9</span
+													></span
 												>
-												<div class="font-14 weight-600">Dr. Garrett Kincy</div>
+												<div class="font-14 weight-600"></div>
 												<div class="font-12 weight-500" data-color="#b2b1b6">
-													Pediatrician
+													
 												</div>
 											</div>
 										</div>
 										<div class="cta flex-shrink-0">
 											<a href="#" class="btn btn-sm btn-outline-primary"
-												>Schedule</a
+												>Jadwal</a
 											>
 										</div>
 									</li>
@@ -376,17 +329,17 @@
 													class="badge badge-pill badge-sm"
 													data-bgcolor="#e7ebf5"
 													data-color="#265ed7"
-													>4.9</span
+													></span
 												>
-												<div class="font-14 weight-600">Dr. Callie Reed</div>
+												<div class="font-14 weight-600"></div>
 												<div class="font-12 weight-500" data-color="#b2b1b6">
-													Pediatrician
+													
 												</div>
 											</div>
 										</div>
 										<div class="cta flex-shrink-0">
-											<a href="#" class="btn btn-sm btn-outline-primary"
-												>Schedule</a
+											<a href="calendar.php" class="btn btn-sm btn-outline-primary"
+												>Jadwal</a
 											>
 										</div>
 									</li>
@@ -397,7 +350,7 @@
 					<div class="col-lg-4 col-md-6 mb-20">
 						<div class="card-box height-100-p pd-20 min-height-200px">
 							<div class="d-flex justify-content-between">
-								<div class="h5 mb-0">Diseases Report</div>
+								<div class="h5 mb-0">Aktivitas</div>
 								<div class="dropdown">
 									<a
 										class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
@@ -411,14 +364,14 @@
 									<div
 										class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 									>
-										<a class="dropdown-item" href="#"
-											><i class="dw dw-eye"></i> View</a
+										<a class="dropdown-item" href="calendar.php"
+											><i class="dw dw-eye"></i> Lihat</a
 										>
 										<a class="dropdown-item" href="#"
 											><i class="dw dw-edit2"></i> Edit</a
 										>
 										<a class="dropdown-item" href="#"
-											><i class="dw dw-delete-3"></i> Delete</a
+											><i class="dw dw-delete-3"></i> Hapus</a
 										>
 									</div>
 								</div>
@@ -430,34 +383,35 @@
 					<div class="col-lg-4 col-md-12 mb-20">
 						<div class="card-box height-100-p pd-20 min-height-200px">
 							<div class="max-width-300 mx-auto">
-								<img src="vendors/images/upgrade.svg" alt="" />
+								<img src="vendors/images/about.svg" alt="" />
 							</div>
 							<div class="text-center">
-								<div class="h5 mb-1">Upgrade to Pro</div>
+								<div class="h5 mb-1">EdiFARM</div>
 								<div
 									class="font-14 weight-500 max-width-200 mx-auto pb-20"
 									data-color="#a6a6a7"
 								>
-									You can enjoy all our features by upgrading to pro.
+									Sawah juga memerlukan sistem management yang dilakukan dengan controlling oleh setiap karyawan
 								</div>
-								<a href="#" class="btn btn-primary btn-lg">Upgrade</a>
+								<a href="#" class="btn btn-primary btn-lg">Tentang</a>
 							</div>
 						</div>
 					</div>
 				</div>
 
 				<div class="card-box pb-10">
-					<div class="h5 pd-20 mb-0">Recent Patient</div>
+					<div class="h5 pd-20 mb-0">Data Karyawan</div>
 					<table class="data-table table nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus">Name</th>
-								<th>Gender</th>
-								<th>Weight</th>
-								<th>Assigned Doctor</th>
-								<th>Admit Date</th>
-								<th>Disease</th>
-								<th class="datatable-nosort">Actions</th>
+								<th class="table-plus">Foto</th>
+								<th>Nama</th>
+								<th>Ussername</th>
+								<th>Alamat</th>
+								<th>Tanggal Lahir</th>
+								<th>Jenis Kelamin</th>
+								<th>Aksi</th>
+								<th class="datatable-nosort">Status</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -474,20 +428,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Jennifer O. Oster</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Female</td>
-								<td>45 kg</td>
-								<td>Dr. Callie Reed</td>
-								<td>19 Oct 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Typhoid</span
+										></span
 									>
 								</td>
 								<td>
@@ -514,20 +468,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Doris L. Larson</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Male</td>
-								<td>76 kg</td>
-								<td>Dr. Ren Delan</td>
-								<td>22 Jul 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Dengue</span
+										></span
 									>
 								</td>
 								<td>
@@ -554,20 +508,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Joseph Powell</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Male</td>
-								<td>90 kg</td>
-								<td>Dr. Allen Hannagan</td>
-								<td>15 Nov 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Infection</span
+										></span
 									>
 								</td>
 								<td>
@@ -594,20 +548,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Jake Springer</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Female</td>
-								<td>45 kg</td>
-								<td>Dr. Garrett Kincy</td>
-								<td>08 Oct 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Covid 19</span
+										></span
 									>
 								</td>
 								<td>
@@ -634,20 +588,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Paul Buckland</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Male</td>
-								<td>76 kg</td>
-								<td>Dr. Maxwell Soltes</td>
-								<td>12 Dec 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Asthma</span
+										></span
 									>
 								</td>
 								<td>
@@ -674,20 +628,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Neil Arnold</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Male</td>
-								<td>60 kg</td>
-								<td>Dr. Sebastian Tandon</td>
-								<td>30 Oct 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Diabetes</span
+										></span
 									>
 								</td>
 								<td>
@@ -714,20 +668,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Christian Dyer</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Male</td>
-								<td>80 kg</td>
-								<td>Dr. Sebastian Tandon</td>
-								<td>15 Jun 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Diabetes</span
+										></span
 									>
 								</td>
 								<td>
@@ -754,20 +708,20 @@
 											/>
 										</div>
 										<div class="txt">
-											<div class="weight-600">Doris L. Larson</div>
+											<div class="weight-600"></div>
 										</div>
 									</div>
 								</td>
-								<td>Male</td>
-								<td>76 kg</td>
-								<td>Dr. Ren Delan</td>
-								<td>22 Jul 2020</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>
 									<span
 										class="badge badge-pill"
 										data-bgcolor="#e7ebf5"
 										data-color="#265ed7"
-										>Dengue</span
+										></span
 									>
 								</td>
 								<td>
@@ -786,132 +740,56 @@
 				</div>
 
 				<div class="title pb-20 pt-20">
-					<h2 class="h3 mb-0">Quick Start</h2>
+					<h2 class="h3 mb-0">Lahan</h2>
 				</div>
 
 				<div class="row">
 					<div class="col-md-4 mb-20">
-						<a href="#" class="card-box d-block mx-auto pd-20 text-secondary">
+						<a href="lahan.php" class="card-box d-block mx-auto pd-20 text-secondary">
 							<div class="img pb-30">
-								<img src="vendors/images/medicine-bro.svg" alt="" />
+								<img src="vendors/images/sawah1.jpg" alt="" />
 							</div>
 							<div class="content">
-								<h3 class="h4">Services</h3>
+								<h3 class="h4">Lahan 1</h3>
 								<p class="max-width-200">
-									We provide superior health care in a compassionate maner
+									
 								</p>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-4 mb-20">
-						<a href="#" class="card-box d-block mx-auto pd-20 text-secondary">
+						<a href="lahan.php" class="card-box d-block mx-auto pd-20 text-secondary">
 							<div class="img pb-30">
-								<img src="vendors/images/remedy-amico.svg" alt="" />
+								<img src="vendors/images/padi2.jpg" alt="" />
 							</div>
 							<div class="content">
-								<h3 class="h4">Medications</h3>
+								<h3 class="h4">Lahan 2</h3>
 								<p class="max-width-200">
-									Look for prescription and over-the-counter drug information.
+									
 								</p>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-4 mb-20">
-						<a href="#" class="card-box d-block mx-auto pd-20 text-secondary">
+						<a href="lahan.php" class="card-box d-block mx-auto pd-20 text-secondary">
 							<div class="img pb-30">
-								<img src="vendors/images/paper-map-cuate.svg" alt="" />
+								<img src="vendors/images/padi3.jpg" alt="" />
 							</div>
 							<div class="content">
-								<h3 class="h4">Locations</h3>
+								<h3 class="h4">Lahan 3</h3>
 								<p class="max-width-200">
-									Convenient locations when and where you need them.
+									
 								</p>
 							</div>
 						</a>
 					</div>
-				</div>
-
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					DeskApp - Bootstrap 4 Admin Template By
-					<a href="https://github.com/dropways" target="_blank"
-						>Ankit Hingarajiya</a
+				</div
 					>
 				</div>
 			</div>
 		</div>
-		<!-- welcome modal start -->
-		<div class="welcome-modal">
-			<button class="welcome-modal-close">
-				<i class="bi bi-x-lg"></i>
-			</button>
-			<iframe
-				class="w-100 border-0"
-				src="https://embed.lottiefiles.com/animation/31548"
-			></iframe>
-			<div class="text-center">
-				<h3 class="h5 weight-500 text-center mb-2">
-					Open source
-					<span role="img" aria-label="gratitude">❤️</span>
-				</h3>
-				<div class="pb-2">
-					<a
-						class="github-button"
-						href="https://github.com/dropways/deskapp"
-						data-color-scheme="no-preference: dark; light: light; dark: light;"
-						data-icon="octicon-star"
-						data-size="large"
-						data-show-count="true"
-						aria-label="Star dropways/deskapp dashboard on GitHub"
-						>Star</a
-					>
-					<a
-						class="github-button"
-						href="https://github.com/dropways/deskapp/fork"
-						data-color-scheme="no-preference: dark; light: light; dark: light;"
-						data-icon="octicon-repo-forked"
-						data-size="large"
-						data-show-count="true"
-						aria-label="Fork dropways/deskapp dashboard on GitHub"
-						>Fork</a
-					>
-				</div>
-			</div>
-			<div class="text-center mb-1">
-				<div>
-					<a
-						href="https://github.com/dropways/deskapp"
-						target="_blank"
-						class="btn btn-light btn-block btn-sm"
-					>
-						<span class="text-danger weight-600">STAR US</span>
-						<span class="weight-600">ON GITHUB</span>
-						<i class="fa fa-github"></i>
-					</a>
-				</div>
-				<script
-					async
-					defer="defer"
-					src="https://buttons.github.io/buttons.js"
-				></script>
-			</div>
-			<a
-				href="https://github.com/dropways/deskapp"
-				target="_blank"
-				class="btn btn-success btn-sm mb-0 mb-md-3 w-100"
-			>
-				DOWNLOAD
-				<i class="fa fa-download"></i>
-			</a>
-			<p class="font-14 text-center mb-1 d-none d-md-block">
-				Available in the following technologies:
-			</p>
-			<div class="d-none d-md-flex justify-content-center h1 mb-0 text-danger">
-				<i class="fa fa-html5"></i>
-			</div>
-		</div>
-		<button class="welcome-modal-btn">
-			<i class="fa fa-download"></i> Download
-		</button>
+		
+		
 		<!-- welcome modal end -->
 		<!-- js -->
 		<script src="vendors/scripts/core.js"></script>
@@ -924,15 +802,6 @@
 		<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 		<script src="vendors/scripts/dashboard3.js"></script>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
-				height="0"
-				width="0"
-				style="display: none; visibility: hidden"
-			></iframe
-		></noscript>
-		<!-- End Google Tag Manager (noscript) -->
+		<script src="vendors/scripts/apexcharts-setting.js"></script>
 	</body>
 </html>

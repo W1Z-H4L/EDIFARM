@@ -779,7 +779,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h4 class="modal-title" id="myLargeModalLabel">
-					Large modal
+					Konsultasi
 				</h4>
 				<button
 					type="button"
@@ -793,6 +793,11 @@
 					<div class="modal-body">						
 						<form>
 							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Tanggal</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" placeholder="Search Here" type="search">
+								</div>
+							</div><div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Nama</label>
 								<div class="col-sm-12 col-md-10">
 									<input class="form-control" placeholder="Search Here" type="search">
@@ -802,51 +807,42 @@
 								<div class="col-sm-12 col-md-10">
 									<input class="form-control" placeholder="Search Here" type="search">
 								</div>
-							</div>
-
-							<div class="col-lg-4 col-md-6 col-sm-12 mb-30">
-								<div class="pd-20 card-box">
-									<h5 class="h5 mb-20">Labels Progress</h5>
-									<div class="progress mb-20">
-										<div
-											class="progress-bar bg-success"
-											role="progressbar"
-											style="width: 50%"
-											aria-valuenow="0"
-											aria-valuemin="0"
-											aria-valuemax="100"
-										>
-											50%
-										</div>
-									</div>
-									<div class="progress mb-20">
-										<div
-											class="progress-bar"
-											role="progressbar"
-											style="width: 25%"
-											aria-valuenow="25"
-											aria-valuemin="0"
-											aria-valuemax="100"
-										>
-											25%
-										</div>
-									</div>
-									<div class="progress">
-										<div
-											class="progress-bar bg-info"
-											role="progressbar"
-											style="width: 75%"
-											aria-valuenow="25"
-											aria-valuemin="0"
-											aria-valuemax="100"
-										>
-											75%
-										</div>
-									</div>
+							</div><div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Jenis Padi</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" placeholder="Search Here" type="search">
 								</div>
+							</div><div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Identifikasi Awal</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" placeholder="Search Here" type="search">
+								</div>
+							</div><div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Pertanyaan</label>
+								</div>
+
+								<div class="card-box mb-30">
+						<div class="pd-20">
+							<h4 class="text-blue h4">Hasil Pertanyaan</h4>
+						</div>
+						<div class="pb-20">
+							<table class="data-table-export table stripe hover nowrap">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">No</th>
+										<th>Pertanyaan</th>
+									</tr>
+								</thead>
+								<tbody>
+								<tr>
+										<td class="table-plus">1</td>
+										<td>wkwkwkwkwkwkwkwk</td>
+								</tr>
+								</tbody>
+							</table>
 							</div>
-						</form>
-					</div>
+						</div>
+						<form>
 					<div class="modal-footer">
 						<button
 							type="button"
@@ -862,7 +858,7 @@
 					</div>
 				</div>
 			</div>
-		</div>>
+		</div>
 
 
 		<!-- js -->

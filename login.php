@@ -39,7 +39,6 @@ if(isset($_POST['submit'])){
 ?>
 
 <!DOCTYPE html>
-<!-- Coding by CodingLab | www.codinglabweb.com-->
     <html lang="en">
     <head>
         <meta charset="UTF-8">

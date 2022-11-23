@@ -1,93 +1,187 @@
-<?php 
-require('koneksi.php');
-session_start();
-
-if(isset($_POST['submit'])){
-    $email = $_POST['username'];
-    $pass = $_POST['password'];
-
-    if(!empty(trim($email)) && !empty(trim($pass))){
-        $query = "SELECT * FROM user_detail WHERE user_email='$email'";
-        $result = mysqli_query($koneksi,$query);
-        $num = mysqli_num_rows($result);
-
-        while ($row = mysqli_fetch_array($result)){
-            $id = $row['id'];
-            $userVal = $row['user_email'];
-            $passVal =$row['user_password'];
-            $username = $row['user_fullname'];
-            $level = $row['level'];
-        }
-
-        if($num != 0){
-            if($userVal==$email && $passVal==$pass){
-                header('Location: dashboard.php?user_fullname='.urlencode($username));
-            }else{
-                $error = 'user atau password salah!!';
-                header('Location: login.php');
-            }
-        }else{
-            $error = 'user tidak ditemukan!!';
-            header('Location: login.php');
-        }
-    }else{
-        $error = 'Data tidak boleh kosong!!';
-        echo $error;
-    }
-}
-
-?>
-
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> Responsive Login and Signup Form </title>
+<html>
+	<head>
+		<!-- Basic Page Info -->
+		<meta charset="utf-8" />
+		<title>Edifarm
+		</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="css/style.css">
-                
-        <!-- Boxicons CSS -->
-        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-                        
-    </head>
-    <body>
-        <section class="container forms">
-            <div class="kiri">
-            <img src="images/login.png" alt="" class="gradient">
-        </div>
-            <div class="form login">
-                <img src="images/logo.png" alt="" class="logologin">
-                <div class="form-content">
-                    <header>Login your account</header>
-                    <form action="login.php" method="POST">
-                        <div class="field input-field">
-                            <input type="username" placeholder="Username" class="input" name="username">
-                        </div>
+		<!-- Site favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="vendors/images/logo_edifarm.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="vendors/images/logo_edifarm.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="vendors/images/logo_edifarm.png"
+		/>
 
-                        <div class="field input-field">
-                            <input type="password" placeholder="Password" class="password" name="password">
-                            <i class='bx bx-hide eye-icon'></i>
-                        </div>
+		<!-- Mobile Specific Metas -->
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1"
+		/>
 
-                        <div class="form-link">
-                            <a href="dashboard.php" class="forgot-pass">Forgot password?</a>
-                        </div>
+		<!-- Google Font -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="vendors/styles/icon-font.min.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 
-                        <div class="field button-field">
-                            <button type="submit" class="Login" name="submit">Log in</button>
-                        </div>
-                    </form> 
-                </div>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-            </div>
-
-            <!-- Signup Form -->
-
-
-        <!-- JavaScript -->
-        <script src="js/script.js"></script>
-    </body>
+			gtag("config", "G-GBZ3SGGX85");
+		</script>
+		<!-- Google Tag Manager -->
+		<script>
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
+		</script>
+		<!-- End Google Tag Manager -->
+	</head>
+	<body class="login-page">
+		<div class="login-header box-shadow">
+			<div
+				class="container-fluid d-flex justify-content-between align-items-center"
+			>
+				<div class="brand-logo">
+					<a href="login.html">
+						<img src="vendors/images/logo_edifarmbaru.png" alt="" />
+					</a>
+				</div>
+				<div class="login-menu">
+					<ul>
+						<li><a href=""></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div
+			class="login-wrap d-flex align-items-center flex-wrap justify-content-center"
+		>
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="col-md-6 col-lg-7">
+						<img src="vendors/images/login.svg" alt="" />
+					</div>
+					<div class="col-md-6 col-lg-5">
+						<div class="login-box bg-white box-shadow border-radius-10">
+							<div class="login-title">
+								<h2 class="text-center text-primary">Masuk Di EdiFARM</h2>
+							</div>
+							<form>
+								
+								<div class="input-group custom">
+									<input
+										type="text"
+										class="form-control form-control-lg"
+										placeholder="Username"
+									/>
+									<div class="input-group-append custom">
+										<span class="input-group-text"
+											><i class="icon-copy dw dw-user1"></i
+										></span>
+									</div>
+								</div>
+								<div class="input-group custom">
+									<input
+										type="password"
+										class="form-control form-control-lg"
+										placeholder="**********"
+									/>
+									<div class="input-group-append custom">
+										<span class="input-group-text"
+											><i class="dw dw-padlock1"></i
+										></span>
+									</div>
+								</div>
+								<div class="row pb-30">
+									<div class="col-6">
+										<div class="custom-control custom-checkbox">
+											<input
+												type="checkbox"
+												class="custom-control-input"
+												id="customCheck1"
+											/>
+											<label class="custom-control-label" for="customCheck1"
+												>Ingat!</label
+											>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="forgot-password">
+											<a href="reset-password.php">Lupa Password</a>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-12">
+										<div class="input-group mb-0">
+											<!--
+											use code for form submit
+											<input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
+										-->
+											<a
+												class="btn btn-primary btn-lg btn-block"
+												href="index.php"
+												>Masuk</a
+											>
+										
+											
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- welcome modal end -->
+		<!-- js -->
+		<script src="vendors/scripts/core.js"></script>
+		<script src="vendors/scripts/script.min.js"></script>
+		<script src="vendors/scripts/process.js"></script>
+		<script src="vendors/scripts/layout-settings.js"></script>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript
+			
+		></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	</body>
 </html>

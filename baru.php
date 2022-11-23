@@ -1,1 +1,0 @@
-//get_magic_quotes_runtime

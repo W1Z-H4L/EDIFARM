@@ -106,7 +106,7 @@
 											class="btn btn-primary"
 											data-dismiss="modal"
 										>
-											Close
+											Batal
 										</button>
 									</div>
 								</div>
@@ -124,6 +124,10 @@
 											<h4 class="text-blue h4 mb-10">Tambah Detail Jadwal</h4>
 											<div class="form-group">
 												<label>Nama Jadwal</label>
+												<input type="text" class="form-control" name="ename" />
+											</div>
+											<div class="form-group">
+												<label>Jenis Padi</label>
 												<input type="text" class="form-control" name="ename" />
 											</div>
 											<div class="form-group">

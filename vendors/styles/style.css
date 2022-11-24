@@ -1098,7 +1098,7 @@ textarea.form-control {
 }
 
 .custom-radio .custom-control-input:checked~.custom-control-label::before {
-    background-color: #006B6C
+    background-color: #22C99C
 }
 
 .custom-checkbox .custom-control-input:disabled:checked~.custom-control-label::before {
@@ -3685,7 +3685,7 @@ body.IE .register-page-wrap .container {
 .profile-info ul li span {
     display: block;
     font-size: 14px;
-    color: #1b00ff;
+    color: #006B6C;
     font-weight: 500;
     padding-bottom: 5px
 }

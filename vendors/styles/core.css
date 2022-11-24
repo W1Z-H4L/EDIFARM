@@ -4452,8 +4452,8 @@ fieldset:disabled a.btn {
 
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
-    border-color: #1b00ff;
-    background-color: #1b00ff
+    border-color: #006B6C;
+    background-color: #006B6C
 }
 
 .custom-control-input:focus~.custom-control-label::before {

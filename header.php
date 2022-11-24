@@ -168,11 +168,8 @@
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 						>
-							<a class="dropdown-item" href="profile.html"
+							<a class="dropdown-item" href="profile.php"
 								><i class="dw dw-user1"></i> Profil</a
-							>
-							<a class="dropdown-item" href="profile.html"
-								><i class="dw dw-settings2"></i> Pengaturan</a
 							>
 							<a class="dropdown-item" href="faq.html"
 								><i class="dw dw-help"></i> Bantuan</a

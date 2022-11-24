@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Karyawan</title>
-		<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/favicon-16x16.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo_edifarm.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo_edifarm.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo_edifarm.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
@@ -36,7 +36,7 @@
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
-											<a href="index.html">Home</a>
+											<a href="index.php">Dashboard</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
 											Karyawan
@@ -454,12 +454,6 @@
 						</div>
 					</div>
 					<!-- Simple Datatable End -->
-				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					DeskApp - Bootstrap 4 Admin Template By
-					<a href="https://github.com/dropways" target="_blank"
-						>Ankit Hingarajiya</a
-					>
 				</div>
 			</div>
 		</div>

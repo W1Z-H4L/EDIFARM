@@ -2624,6 +2624,7 @@ select.form-control:focus::-ms-value {
 .col-form-label {
     padding-top: calc(.375rem + 1px);
     padding-bottom: calc(.375rem + 1px);
+    padding-right: 0;
     margin-bottom: 0;
     font-size: inherit;
     line-height: 1.5

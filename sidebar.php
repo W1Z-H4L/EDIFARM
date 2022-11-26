@@ -49,13 +49,13 @@
 							</a>
 						</li>
 						<li>
-							<a href="konsul.php" class="dropdown-toggle no-arrow">
+							<a href="konsultasi.php" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-bug"></span
 								><span class="mtext">Konsultasi</span>
 							</a>
 						</li>
 						<li>
-							<a href="invoice.html" class="dropdown-toggle no-arrow">
+							<a href="laporan.php" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-file-earmark-text"></span
 								><span class="mtext">Laporan</span>
 							</a>

@@ -436,24 +436,9 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
+								<td></td>
+								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td class="table-plus">
@@ -476,24 +461,9 @@
 								<td></td>
 								<td></td>
 								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
+								<td></td>
+								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td class="table-plus">
@@ -527,6 +497,8 @@
 								<td>
 									<div class="table-actions">
 										<a href="#" data-color="#265ed7"
+										data-toggle="modal"
+										data-target="#bd-example-modal-lg"
 											><i class="icon-copy dw dw-edit2"></i
 										></a>
 										<a href="#" data-color="#e95959"
@@ -567,6 +539,8 @@
 								<td>
 									<div class="table-actions">
 										<a href="#" data-color="#265ed7"
+										data-toggle="modal"
+										data-target="#bd-example-modal-lg"
 											><i class="icon-copy dw dw-edit2"></i
 										></a>
 										<a href="#" data-color="#e95959"
@@ -607,6 +581,8 @@
 								<td>
 									<div class="table-actions">
 										<a href="#" data-color="#265ed7"
+										data-toggle="modal"
+										data-target="#bd-example-modal-lg"
 											><i class="icon-copy dw dw-edit2"></i
 										></a>
 										<a href="#" data-color="#e95959"
@@ -647,6 +623,8 @@
 								<td>
 									<div class="table-actions">
 										<a href="#" data-color="#265ed7"
+										data-toggle="modal"
+										data-target="#bd-example-modal-lg"
 											><i class="icon-copy dw dw-edit2"></i
 										></a>
 										<a href="#" data-color="#e95959"
@@ -687,6 +665,8 @@
 								<td>
 									<div class="table-actions">
 										<a href="#" data-color="#265ed7"
+										data-toggle="modal"
+										data-target="#bd-example-modal-lg"
 											><i class="icon-copy dw dw-edit2"></i
 										></a>
 										<a href="#" data-color="#e95959"
@@ -727,6 +707,8 @@
 								<td>
 									<div class="table-actions">
 										<a href="#" data-color="#265ed7"
+										data-toggle="modal"
+										data-target="#bd-example-modal-lg"
 											><i class="icon-copy dw dw-edit2"></i
 										></a>
 										<a href="#" data-color="#e95959"
@@ -788,6 +770,115 @@
 				</div>
 			</div>
 		</div>
+		<div
+			class="modal fade bs-example-modal-lg"
+			id="bd-example-modal-lg"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="myLargeModalLabel"
+			aria-hidden="true"
+		>
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myLargeModalLabel">
+						Edit Data Karyawan
+					</h4>
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal"
+						aria-hidden="true"
+						alt="add-modal-kar"							
+					>x
+					</button>
+					</div>
+						<div class="modal-body">						
+							<form>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Nama Karyawan</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control" type="text" placeholder="Nama Lengkap">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Username</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control" type="text" placeholder="Username">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Alamat</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control" type="text" placeholder="Ponorogo">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Tanggal Lahir</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control date-picker" placeholder="Pilih Tanggal" type="text">
+									</div>
+								</div>
+								<div class="form-group row align-items-center">
+									<label class="col-sm-4 col-form-label">Jenis Kelamin</label>
+									<div class="col-sm-8">
+									<div
+									class="custom-control custom-radio custom-control-inline pb-0">
+										<input
+											type="radio"
+											id="male"
+											name="gender"
+											class="custom-control-input"
+											/>
+											<label class="custom-control-label" for="male"
+												>Wanita</label
+											>
+									</div>
+									
+								</div>
+									<div 
+									class="custom-control custom-radio custom-control-inline pb-0">
+										<input
+											type="radio"
+											id="female"
+											name="gender"
+											class="custom-control-input"
+											/>
+											<label class="custom-control-label" for="female"
+												>Laki-laki</label>
+									</div>
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
+									<div class="col-sm-12 col-md-10">
+										<select class="custom-select col-12">
+											<option selected="">Pilih...</option>
+											<option value="1">Lahan 1</option>
+											<option value="2">Lahan 2</option>
+											<option value="3">Lahan 3</option>
+											<option value="3">Lahan 4</option>
+										</select>
+									</div>
+								</div>
+								</form>
+								
+									<div class="modal-footer">
+										<button
+											type="button"
+											class="btn btn-secondary"
+											data-dismiss="modal"
+											alt="add-modal-kar"
+											>
+											Batal
+											</button>
+											<button type="button" class="btn btn-primary">
+											Simpan
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
 		
 		
 		<!-- welcome modal end -->

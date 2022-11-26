@@ -79,13 +79,13 @@
 				class="container-fluid d-flex justify-content-between align-items-center"
 			>
 				<div class="brand-logo">
-					<a href="login.html">
+					<a href="login.php">
 						<img src="vendors/images/logo_edifarmbaru.png" alt="" />
 					</a>
 				</div>
 				<div class="login-menu">
 					<ul>
-						<li><a href="login.html">Login</a></li>
+						<li><a href="login.php">Login</a></li>
 					</ul>
 				</div>
 			</div>
@@ -138,7 +138,7 @@
 										-->
 											<a
 												class="btn btn-primary btn-lg btn-block"
-												href="index.html"
+												href="login.php"
 												>Simpan</a
 											>
 										</div>

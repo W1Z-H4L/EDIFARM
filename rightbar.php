@@ -20,7 +20,7 @@
 			</div>
 			<div class="right-sidebar-body customscroll">
 				<div class="right-sidebar-body-content">
-					<h4 class="weight-600 font-18 pb-10">Header Background</h4>
+					<h4 class="weight-600 font-18 pb-10">Atas Background</h4>
 					<div class="sidebar-btn-group pb-30 mb-10">
 						<a
 							href="javascript:void(0);"
@@ -34,7 +34,7 @@
 						>
 					</div>
 
-					<h4 class="weight-600 font-18 pb-10">Sidebar Background</h4>
+					<h4 class="weight-600 font-18 pb-10">Sisi Background</h4>
 					<div class="sidebar-btn-group pb-30 mb-10">
 						<a
 							href="javascript:void(0);"

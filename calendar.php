@@ -63,7 +63,7 @@
 		<div class="main-container">
 			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
-					<div class="title pb-20">
+				<div class="title pb-20">
 						<h2 class="h3 mb-0">Jadwal</h2>
 					</div>
 					<div class="pd-20 card-box mb-30">
@@ -90,7 +90,7 @@
 											class="btn btn-primary"
 											data-dismiss="modal"
 										>
-											Close
+											Batal
 										</button>
 									</div>
 								</div>
@@ -108,6 +108,10 @@
 											<h4 class="text-blue h4 mb-10">Tambah Detail Jadwal</h4>
 											<div class="form-group">
 												<label>Nama Jadwal</label>
+												<input type="text" class="form-control" name="ename" />
+											</div>
+											<div class="form-group">
+												<label>Jenis Padi</label>
 												<input type="text" class="form-control" name="ename" />
 											</div>
 											<div class="form-group">

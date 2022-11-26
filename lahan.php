@@ -1,3 +1,24 @@
+<?php 
+require('koneksi.php');
+session_start();
+ 
+ // Check If form submitted, insert form data into users table.
+ if(isset($_POST['submit'])) {
+	 $nama = $_POST['nama'];
+	 $luas = $_POST['luas'];
+	 $des = $_POST['des'];
+	 $tempat = $_POST['tempat'];
+	 
+	 // include database connection file
+	//  include_once("koneksi.php");		
+	 // Insert user data into table
+	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas`, `deskripsi`, `tempat`) VALUES ('$luas', '$nama','$luas','$des','$tempat')";
+	 $result = mysqli_query($koneksi,$query);
+        
+	 // Show message when user added
+
+ }
+ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,26 +46,15 @@
 		<div class="main-container">
 			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
-					<div class="page-header">
-						<div class="row">
-							<div class="col-md-12 col-sm-12">
-								<div class="title">
-									<h4>Lahan</h4>
-								</div>
-								<nav aria-label="breadcrumb" role="navigation">
-									<ol class="breadcrumb">
-										<li class="breadcrumb-item">
-											<a href="index.php">Dashboard</a>
-										</li>
-										<li class="breadcrumb-item active" aria-current="page">
-											Lahan
-										</li>
-									</ol>
-								</nav>
-							</div>
-						</div>
+				<div class="title pb-20">
+						<h2 class="h3 mb-0">Lahan</h2>
 					</div>
 					<div class="row clearfix">
+						<?php 
+						$query = "SELECT * FROM lahan";
+						$result = mysqli_query($koneksi,$query);
+						while($row= $row = mysqli_fetch_array($result)){
+						?>
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 							<div class="card card-box">
 								<img
@@ -53,46 +63,62 @@
 									alt="Card image cap"
 								/>
 								<div class="card-body">
-									<h5 class="card-title weight-500">Lahan</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Lahan</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Lahan</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
+									<h5 class="card-title weight-500"><?php echo $row["nama_lahan"];?></h5>
+									<p class="card-text"><?php echo $row["deskripsi"];?></p>
+									<div>
+										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Medium-modal" ><?php echo $row["nama_lahan"];?></a>
+										<div
+											class="modal fade"
+											id="Medium-modal"
+											tabindex="-1"
+											role="dialog"
+											aria-labelledby="myLargeModalLabel"
+											aria-hidden="true"
+										>
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" id="myLargeModalLabel">
+														<?php echo $row["nama_lahan"];?>
+														</h4>
+														<button
+															type="button"
+															class="close"
+															data-dismiss="modal"
+															aria-hidden="true"
+														>
+															×
+														</button>
+													</div>
+													<div class="modal-body">
+														<p>
+															Lorem ipsum dolor sit amet, consectetur adipisicing
+															elit, sed do eiusmod tempor incididunt ut labore et
+															dolore magna aliqua. Ut enim ad minim veniam, quis
+															nostrud exercitation ullamco laboris nisi ut aliquip
+															ex ea commodo consequat. Duis aute irure dolor in
+															reprehenderit in voluptate velit esse cillum dolore eu
+															fugiat nulla pariatur. Excepteur sint occaecat
+															cupidatat non proident, sunt in culpa qui officia
+															deserunt mollit anim id est laborum.
+														</p>
+													</div>
+													<div class="modal-footer">
+														<button
+															type="button"
+															class="btn btn-secondary"
+															data-dismiss="modal"
+														>
+															Close
+														</button>
+														<button type="button" class="btn btn-primary">
+															Save changes
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -134,6 +160,12 @@
 						</div>
 					</div>
 				</div>
+				<div class="footer-wrap pd-20 mb-20 card-box">
+					DeskApp - Bootstrap 4 Admin Template By
+					<a href="https://github.com/dropways" target="_blank"
+						>Ankit Hingarajiya</a
+					>
+				</div>
 			</div>
 		</div>		
 		<div class="add-modal-kar">
@@ -158,7 +190,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myLargeModalLabel">
-						Lahan
+						Large modal
 					</h4>
 					<button
 						type="button"
@@ -168,117 +200,49 @@
 						alt="add-modal-kar"							
 					>x
 					</button>
-					</div>
+				</div>
 						<div class="modal-body">						
-							<form>
+							<form action="lahan.php" method="POST">
 								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Nama Lahan</label>
+									<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama Lahan</label>
 									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="text" placeholder="Lahan 1">
+										<input class="form-control" type="nama" placeholder="Lahan 1" name="nama">
 									</div>
 								</div>
 								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Nama</label>
+									<label class="col-sm-12 col-md-2 col-form-label" for="luas">Luas Lahan</label>
 									<div class="col-sm-12 col-md-10">
-										<input class="form-control" placeholder="Search Here" type="search">
+										<input class="form-control" placeholder="Search Here" type="luas" name="luas">
 									</div>
 								</div>
-									<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Email</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control" value="bootstrap@example.com" type="email">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">URL</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control" value="https://getbootstrap.com" type="url">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Telephone</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control" value="1-(111)-111-1111" type="tel">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Password</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control" value="password" type="password">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Number</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control" value="100" type="number">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label for="example-datetime-local-input" class="col-sm-12 col-md-2 col-form-label">Date and time</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control datetimepicker" placeholder="Choose Date anf time" type="text">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Date</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control date-picker" placeholder="Select Date" type="text">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Month</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control month-picker" placeholder="Select Month" type="text">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Time</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control time-picker td-input" placeholder="Select time" type="text" readonly="">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Select</label>
-														<div class="col-sm-12 col-md-10">
-															<select class="custom-select col-12">
-																<option selected="">Choose...</option>
-																<option value="1">One</option>
-																<option value="2">Two</option>
-																<option value="3">Three</option>
-															</select>
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Color</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control" value="#563d7c" type="color">
-														</div>
-													</div>
-													<div class="form-group row">
-														<label class="col-sm-12 col-md-2 col-form-label">Input Range</label>
-														<div class="col-sm-12 col-md-10">
-															<input class="form-control" value="50" type="range">
-														</div>
-													</div>
-												</form>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label" for="des">Deskripsi</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control" placeholder="Dataran tinggi" type="des" name="des">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-sm-12 col-md-2 col-form-label" for="tempat">Tempat</label>
+									<div class="col-sm-12 col-md-10">
+										<input class="form-control" placeholder="Jember" type="tempat" name="tempat">
+									</div>
+								</div>
+								</div>
+									<div class="modal-footer">
+										<button
+											type="button"
+											class="btn btn-secondary"
+											data-dismiss="modal"
+											alt="add-modal-kar"
+										>Close
+										</button>
+										<input type="submit" name="submit" class="btn btn-primary" value="Simpan">
+									</div>
+								</div>
+							</form>
 							
-											</div>
-											<div class="modal-footer">
-												<button
-													type="button"
-													class="btn btn-secondary"
-													data-dismiss="modal"
-													alt="add-modal-kar"
-												>
-													Close
-												</button>
-												<button type="button" class="btn btn-primary">
-													Save changes
-												</button>
-											</div>
-										</div>
-									</div>
-								</div>
+						</div>
+					</div>
 		<!-- js -->
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>

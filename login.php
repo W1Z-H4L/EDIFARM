@@ -1,3 +1,42 @@
+<?php 
+require('koneksi.php');
+session_start();
+
+if(isset($_POST['submit'])){
+    $email = $_POST['username'];
+    $pass = $_POST['password'];
+
+    if(!empty(trim($email)) && !empty(trim($pass))){
+        $query = "SELECT * FROM user WHERE username='$email'";
+        $result = mysqli_query($koneksi,$query);
+        $num = mysqli_num_rows($result);
+
+        while ($row = mysqli_fetch_array($result)){
+            $id = $row['id_user'];
+            $userVal = $row['username'];
+            $passVal =$row['password'];
+            $namamu = $row['nama'];
+            $level = $row['level'];
+        }
+
+        if($num != 0){
+            if($userVal==$email && $passVal==$pass){
+                header('Location: index.php?nama='.urlencode($namamu));
+            }else{
+                $error = 'Email atau password salah';
+            }
+        }else{
+            $error = 'user tidak ditemukan!!';
+            header('Location: login.php');
+        }
+    }else{
+        $error = 'Data tidak boleh kosong!!';
+        echo $error;
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -44,43 +83,16 @@
 			href="vendors/styles/icon-font.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
-
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
-		></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag("js", new Date());
-
-			gtag("config", "G-GBZ3SGGX85");
-		</script>
-		<!-- Google Tag Manager -->
-		<script>
-			(function (w, d, s, l, i) {
-				w[l] = w[l] || [];
-				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s),
-					dl = l != "dataLayer" ? "&l=" + l : "";
-				j.async = true;
-				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-				f.parentNode.insertBefore(j, f);
-			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
-		</script>
-		<!-- End Google Tag Manager -->
 	</head>
-	<body class="login-page">
+	<body 
+    
+    class="login-page">
 		<div class="login-header box-shadow">
 			<div
 				class="container-fluid d-flex justify-content-between align-items-center"
 			>
 				<div class="brand-logo">
-					<a href="login.html">
+					<a href="login.php">
 						<img src="vendors/images/logo_edifarmbaru.png" alt="" />
 					</a>
 				</div>
@@ -104,13 +116,13 @@
 							<div class="login-title">
 								<h2 class="text-center text-primary">Masuk Di EdiFARM</h2>
 							</div>
-							<form>
-								
+							<form action="login.php" method="POST">
 								<div class="input-group custom">
 									<input
-										type="text"
+										type="username"
 										class="form-control form-control-lg"
 										placeholder="Username"
+                                        name="username"
 									/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"
@@ -123,6 +135,7 @@
 										type="password"
 										class="form-control form-control-lg"
 										placeholder="**********"
+                                        name="password"
 									/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"
@@ -130,6 +143,7 @@
 										></span>
 									</div>
 								</div>
+                                
 								<div class="row pb-30">
 									<div class="col-6">
 										<div class="custom-control custom-checkbox">
@@ -152,15 +166,13 @@
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="input-group mb-0">
-											<!--
-											use code for form submit
-											<input class="btn btn-primary btn-lg btn-block" type="submit" value="Sign In">
-										-->
-											<a
+											<input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Masuk">
+										
+											<!-- <a
 												class="btn btn-primary btn-lg btn-block"
 												href="index.php"
 												>Masuk</a
-											>
+											> -->
 										
 											
 										</div>
@@ -172,16 +184,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- welcome modal end -->
-		<!-- js -->
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript
-			
-		></noscript>
-		<!-- End Google Tag Manager (noscript) -->
 	</body>
 </html>

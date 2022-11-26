@@ -1,3 +1,8 @@
+<?php 
+require("koneksi.php");
+$namaku = $_GET['nama'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +116,7 @@
 							<span class="user-icon">
 								<img src="vendors/images/photo1.jpg" alt="" />
 							</span>
-							<span class="user-name">Wishal Azharyan</span>
+							<span class="user-name"><?= $namaku;?></span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"

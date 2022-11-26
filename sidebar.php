@@ -37,7 +37,13 @@
 							</a>
 						</li>
 						<li>
-							<a href="calendar.php" class="dropdown-toggle no-arrow">
+							<a href="padi.php" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-wheat"></span
+								><span class="mtext">Padi</span>
+							</a>
+						</li>
+						<li>
+							<a href="calendar.html" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-calendar-week"></span
 								><span class="mtext">Jadwal</span>
 							</a>
@@ -55,7 +61,7 @@
 							</a>
 						</li>
 						<li>
-							<a href="laporan.php" class="dropdown-toggle no-arrow">
+							<a href="invoice.html" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-file-earmark-text"></span
 								><span class="mtext">Laporan</span>
 							</a>

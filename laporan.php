@@ -1,8 +1,37 @@
+<?php
+include ('koneksi.php');
+if(isset($_POST['submit'])) {
+	$username = $_POST['username'];
+	$nama = $_POST['nama'];
+	$kelamin = $_POST['kelamin'];
+	$alamat = $_POST['alamat'];
+	$hp = $_POST['hp'];
+	$lahir = $_POST['lahir'];
+	$email = $_POST['email'];
+	$pw = $_POST['pw'];
+	$capt = $_POST['capt'];
+
+	$query =  "INSERT INTO user VALUES ('02', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', 'Karyawan', '')";
+	$result = mysqli_query($koneksi,$query);
+}
+?>
+<?php
+include ('koneksi.php');
+if(isset($_POST['submit'])) {
+	$nama = $_POST['nama'];
+	$luas = $_POST['luas'];
+	$des = $_POST['des'];
+	$tempat = $_POST['tempat'];
+	$query =  "INSERT INTO user VALUES ('02', '$nama','$luas','$deskripsi','$tempat')";
+	$result = mysqli_query($koneksi,$query);
+}
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 		<meta charset="utf-8" />
-		<title>Lahan</title>
+		<title>Laporan</title>
 		<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo_edifarm.png" />
 		<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo_edifarm.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo_edifarm.png" />
@@ -54,148 +83,37 @@
 							<table class="data-table-export table stripe hover nowrap">
 								<thead>
 									<tr>
-										<th class="table-plus datatable-nosort">Foto</th>
+									<th class="table-plus datatable-nosort">Username</th>
 										<th>Nama</th>
-										<th>Username</th>
-										<th>Lahan</th>
+										<th>Jenis Kelamin</th>
 										<th>Alamat</th>
-										<th>No. Handphone</th>
-										<th>Tanggal</th>
+										<th>No. HP</th>
+										<th>Tgl Lahir</th>
+										<th>email</th>
 				
 									</tr>
 								</thead>
 								<tbody>
+								<?php
+									$query = mysqli_query($koneksi,"SELECT username, nama, jenis_kelamin, alamat, no_hp, tanggal_lahir, email FROM user where level = 'karyawan'");
+									if(mysqli_num_rows($query)>0){ ?>	
+									<?php
+									while($data = mysqli_fetch_array($query)){
+								?>
 									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Wishal Azharyan A.H</td>
-										<td>Wishal</td>
-										<td>1</td>
-										<td>Jember</td>
-										<td>12345678</td>
-										<td>29-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Andru Christo W.</td>
-										<td>Andru</td>
-										<td>2</td>
-										<td>Klaka</td>
-										<td>23456789</td>
-										<td>30-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>M. Aditiya Gilang R.</td>
-										<td>Adit</td>
-										<td>3</td>
-										<td>Jombang</td>
-										<td>34567891</td>
-										<td>31-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Karen Novita Rahmadhani</td>
-										<td>Kare </td>
-										<td>4</td>
-										<td>Solo</td>
-										<td>45678912</td>
-										<td>01-04-2022</td>
-										</td>
-									
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Wishal Azharyan A.H</td>
-										<td>Wishal</td>
-										<td>1</td>
-										<td>Jember</td>
-										<td>12345678</td>
-										<td>29-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Andru Christo W.</td>
-										<td>Andru</td>
-										<td>2</td>
-										<td>Klaka</td>
-										<td>23456789</td>
-										<td>30-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>M. Aditiya Gilang R.</td>
-										<td>Adit</td>
-										<td>3</td>
-										<td>Jombang</td>
-										<td>34567891</td>
-										<td>31-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Karen Novita Rahmadhani</td>
-										<td>Karen</td>
-										<td>4</td>
-										<td>Solo</td>
-										<td>45678912</td>
-										<td>01-04-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Lusy Damayanti</td>
-										<td>Lusy</td>
-										<td>5</td>
-										<td>Ponorogo</td>
-										<td>56789123</td>
-										<td>02-04-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Diah Ajeng A.S</td>
-										<td>Ajeng</td>
-										<td>6</td>
-										<td>Jember etan</td>
-										<td>67891234</td>
-										<td>03-04-2022</td>	
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Wishal Azharyan A.H</td>
-										<td>Wishal</td>
-										<td>1</td>
-										<td>Jember</td>
-										<td>12345678</td>
-										<td>29-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Andru Christo W.</td>
-										<td>Andru</td>
-										<td>2</td>
-										<td>Klaka</td>
-										<td>23456789</td>
-										<td>30-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>M. Aditiya Gilang R.</td>
-										<td>Adit</td>
-										<td>3</td>
-										<td>Jombang</td>
-										<td>34567891</td>
-										<td>31-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Karen Novita Rahmadhani</td>
-										<td>Karen</td>
-										<td>4</td>
-										<td>Solo</td>
-										<td>45678912</td>
-										<td>01-04-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Lusy Damayanti</td>
-										<td>Lusy</td>
-										<td>5</td>
-										<td>Ponorogo</td>
-										<td>56789123</td>
-										<td>02-04-2022</td>	
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Diah Ajeng A.S</td>
-										<td>Ajeng</td>
-										<td>6</td>
-										<td>Jember etan</td>
-										<td>67891234</td>
-										<td>03-04-2022</td>	
+									<td class="table-plus"><?php echo $data["username"];?></td>
+										<td><?php echo $data["nama"];?></td>
+										<td><?php echo $data["jenis_kelamin"];?></td>
+										<td><?php echo $data["alamat"];?></td>
+										<td><?php echo $data["no_hp"];?></td>
+										<td><?php echo $data["tanggal_lahir"];?></td>
+										<td><?php echo $data["email"];?></td>
+										
 									</tr>
+									<?php
+									}
+								}
+								?>
 								</tbody>
 							</table>
 						</div>
@@ -203,100 +121,7 @@
 					<!-- Laporan Karyawan Berhenti -->
 
 						<!-- Laporan Konsultasi Mulai -->
-					<div class="card-box mb-30">
-						<div class="pd-20">
-							<h4 class="text-blue h4">Laporan Konsultasi</h4>
-						</div>
-						<div class="pb-20">
-							<table class="data-table-export table stripe hover nowrap">
-								<thead>
-									<tr>
-										<th class="table-plus datatable-nosort">Foto</th>
-										<th>Username</th>
-										<th>Lahan</th>
-										<th>Masalah</th>
-										<th>Tanggal</th>
 				
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Wishal</td>
-										<td>1</td>
-										<td>Hama</td>
-										<td>29-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Andru</td>
-										<td>2</td>
-										<td>Fungi</td>
-										<td>30-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Adit</td>
-										<td>3</td>
-										<td>Fungi</td>
-										<td>31-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Karen</td>
-										<td>4</td>
-										<td>Cuaca</td>
-										<td>01-04-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Lusy</td>
-										<td>5</td>
-										<td>Cuaca</td>
-										<td>02-04-2022</td>	
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Ajeng</td>
-										<td>6</td>
-										<td>Hama</td>
-										<td>02-04-2022</td>	
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Wishal</td>
-										<td>1</td>
-										<td>Hama</td>
-										<td>29-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Andru</td>
-										<td>2</td>
-										<td>Fungi</td>
-										<td>30-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Adit</td>
-										<td>3</td>
-										<td>Fungi</td>
-										<td>31-03-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Karen</td>
-										<td>4</td>
-										<td>Cuaca</td>
-										<td>01-04-2022</td>
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Lusy</td>
-										<td>5</td>
-										<td>Cuaca</td>
-										<td>02-04-2022</td>	
-									<tr>
-										<td class="table-plus">Foto</td>
-										<td>Ajeng</td>
-										<td>6</td>
-										<td>Hama</td>
-										<td>02-04-2022</td>	
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
 					<!-- Laporan konsultasi berhenti -->
 					
 					<!-- Laporan Lahan Mulai -->
@@ -315,32 +140,22 @@
 									</tr>
 								</thead>
 								<tbody>
+								<?php
+									$query = mysqli_query($koneksi,"SELECT nama_lahan, luas_lahan, tempat, deskripsi FROM lahan");
+									if(mysqli_num_rows($query)>0){ ?>	
+									<?php
+									while($data = mysqli_fetch_array($query)){
+								?>
 									<tr>
-										<td class="table-plus">Lahan 1</td>
-										<td>2 hektare</td>
-										<td>Dataran tinggi cocok untuk penamanan tanaman seperti padi.</td>
-										<td>Bandung</td>
-									<tr>
-										<td class="table-plus">Lahan 2</td>
-										<td>5 hektare</td>
-										<td>Pagiku cerahku matahari bersinar.</td>
-										<td>Di Jonggol</td>
-									<tr>
-										<td class="table-plus">Lahan 3</td>
-										<td>3 hektare</td>
-										<td>Cangkul-cangkul cangkul yang dalam menanam padi dikebun kita.</td>
-										<td>SMA Mastrip</td>
-									<tr>
-										<td class="table-plus">Lahan 4</td>
-										<td>6 hektare</td>
-										<td>Kamu Nenyek? rambutku model apa?</td>
-										<td>Gerbongan</td>
-									<tr>
-										<td class="table-plus">Lahan 5</td>
-										<td>4 hektare</td>
-										<td>Babayo babayoo</td>
-										<td>Zimbabwe</td>
+									<td class="table-plus"><?php echo $data["nama_lahan"];?></td>
+										<td><?php echo $data["luas_lahan"];?></td>
+										<td><?php echo $data["tempat"];?></td>
+										<td><?php echo $data["deskripsi"];?></td>
 									</tr>
+									<?php
+									}
+								}
+								?>
 								</tbody>
 							</table>
 						</div>

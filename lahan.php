@@ -8,15 +8,8 @@ session_start();
 	 $luas = $_POST['luas'];
 	 $des = $_POST['des'];
 	 $tempat = $_POST['tempat'];
-	 
-	 // include database connection file
-	//  include_once("koneksi.php");		
-	 // Insert user data into table
 	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas`, `deskripsi`, `tempat`) VALUES ('$luas', '$nama','$luas','$des','$tempat')";
 	 $result = mysqli_query($koneksi,$query);
-        
-	 // Show message when user added
-
  }
  ?>
 <!DOCTYPE html>
@@ -56,20 +49,20 @@ session_start();
 						while($row= $row = mysqli_fetch_array($result)){
 						?>
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
+							<div class="card card-box text-center">
 								<img
 									class="card-img-top"
 									src="vendors/images/img2.jpg"
 									alt="Card image cap"
 								/>
 								<div class="card-body">
-									<h5 class="card-title weight-500"><?php echo $row["nama_lahan"];?></h5>
-									<p class="card-text"><?php echo $row["deskripsi"];?></p>
+									<h5 class="card-title weight-500 text-left"><?php echo $row["nama_lahan"];?></h5>
+									<p class="card-text text-left"><?php echo $row["deskripsi"];?></p>
 									<div>
-										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#Medium-modal" ><?php echo $row["nama_lahan"];?></a>
+										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?php echo $row["id_lahan"];?>" >Detail</a>
 										<div
 											class="modal fade"
-											id="Medium-modal"
+											id="detail<?php echo $row["id_lahan"];?>"
 											tabindex="-1"
 											role="dialog"
 											aria-labelledby="myLargeModalLabel"
@@ -122,42 +115,9 @@ session_start();
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Lahan</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row clearfix">
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Lahan</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
+						<?php 
+						}
+						?>
 					</div>
 				</div>
 				<div class="footer-wrap pd-20 mb-20 card-box">
@@ -173,14 +133,14 @@ session_start();
 			href="#"
 			class="welcome-modal-btn"
 			data-toggle="modal"
-			data-target="#bd-example-modal-lg"
+			data-target="#tambahlahan"
 			>
 			 +
 		</button></div>
 		
 		<div
 			class="modal fade bs-example-modal-lg"
-			id="bd-example-modal-lg"
+			id="tambahlahan"
 			tabindex="-1"
 			role="dialog"
 			aria-labelledby="myLargeModalLabel"
@@ -190,7 +150,7 @@ session_start();
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myLargeModalLabel">
-						Large modal
+						Tambah Lahan
 					</h4>
 					<button
 						type="button"
@@ -236,7 +196,7 @@ session_start();
 											alt="add-modal-kar"
 										>Close
 										</button>
-										<input type="submit" name="submit" class="btn btn-primary" value="Simpan">
+										<input type="submit" name="submit" class="btn btn-primary" value="Simpan" id="sa-success">
 									</div>
 								</div>
 							</form>

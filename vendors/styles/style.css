@@ -58,6 +58,7 @@ img {
     vertical-align: top;
     max-width: 100%;
     height: auto
+    
 }
 
 input,
@@ -476,6 +477,7 @@ p {
 
 .max-width-300 {
     max-width: 300px
+    
 }
 
 .max-width-400 {

@@ -140,6 +140,8 @@ session_start();
 							</div>
 						</div>
 					</div>
+					<?php
+						}?>
 					<div class="row clearfix">
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 							<div class="card card-box">
@@ -159,12 +161,6 @@ session_start();
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					DeskApp - Bootstrap 4 Admin Template By
-					<a href="https://github.com/dropways" target="_blank"
-						>Ankit Hingarajiya</a
-					>
 				</div>
 			</div>
 		</div>		

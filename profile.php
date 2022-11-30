@@ -348,7 +348,11 @@
 																<div class="form-group">
 																	<label>Alamat</label>
 																	<textarea class="form-control"></textarea>
-																
+																	</div>
+
+																<div class="form-group">
+																	<label>Caption</label>
+																	<textarea class="form-control"></textarea>
 																	
 																</div>
 																<div class="form-group">

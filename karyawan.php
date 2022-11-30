@@ -15,7 +15,7 @@ if(isset($_POST['submit'])) {
 	$capt = $_POST['capt'];
 
 	if($username&&$nama&&$kelamin&&$alamat&&$hp&&$lahir&&$email&&$pw&&$capt){
-		$query =  "INSERT INTO user VALUES ('04', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', 'Karyawan', '')";
+		$query =  "INSERT INTO user VALUES ('04', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', 'Karyawan', '','1')";
 		$result = mysqli_query($koneksi,$query);
 		if($result){
 			$sukses ="Berhasil memasukkan data";

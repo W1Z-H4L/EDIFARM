@@ -129,7 +129,7 @@ $namaku = $_GET['nama'];
 								><i class="dw dw-settings2"></i> Pengaturan</a
 							>
 							<a class="dropdown-item" href="Bantuan.php"
-								><i class="dw dw-help"></i> Bantuan</a
+								><i class="dw dw-help"></i> Tentang</a
 							>
 							<a class="dropdown-item" href="login.php"
 								><i class="dw dw-logout"></i> Keluar</a

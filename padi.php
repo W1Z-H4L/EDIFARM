@@ -1,48 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>Padi</title>
-
-		<!-- Site favicon -->
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="vendors/images/apple-touch-icon.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="vendors/images/favicon-32x32.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="vendors/images/favicon-16x16.png"
-		/>
-
-		<!-- Mobile Specific Metas -->
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, maximum-scale=1"
-		/>
-
-		<!-- Google Font -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-		<!-- CSS -->
+		<title>Lahan</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo_edifarm.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo_edifarm.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo_edifarm.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="vendors/styles/icon-font.min.css"
-		/>
+		<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+	</head>
 	</head>
 	<body>
 		<?php include 'header.php'; ?>
@@ -65,14 +34,12 @@
 							<div class="card card-box">
 								<img
 									class="card-img-top"
-									src="vendors/images/img2.jpg"
+									src="vendors/images/ciherang.jpg"
 									alt="Card image cap"
 								/>
 								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
+									<h5 class="card-title weight-500">Padi Ciherang</h5>
+									<p class="card-text">Padi Ciherang merupakan varietas padi unggul turunan dari IR64. Bentuk gabah padi Ciherang adalah ramping panjang berwarna kuning bersih serta tekstur nasi yang pulen
 									</p>
 									<a href="#" class="btn btn-primary">Detail</a>
 								</div>
@@ -82,14 +49,13 @@
 							<div class="card card-box">
 								<img
 									class="card-img-top"
-									src="vendors/images/img2.jpg"
+									src="vendors/images/inpari.jpg"
 									alt="Card image cap"
 								/>
 								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
+									<h5 class="card-title weight-500">Padi Inpari</h5>
 									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
+									INPARI merupakan padi inbrida yang ditanam dilahan sawah. Inbrida dikembangkan dari satu tanaman melalui penyerbukan sendiri sehingga memliki tingkat kemurnian atau homozigositas yang tinggi
 									</p>
 									<a href="#" class="btn btn-primary">Detail</a>
 								</div>
@@ -99,62 +65,17 @@
 							<div class="card card-box">
 								<img
 									class="card-img-top"
-									src="vendors/images/img2.jpg"
+									src="vendors/images/inpago.jpg"
 									alt="Card image cap"
 								/>
 								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
+									<h5 class="card-title weight-500">Padi Inpago</h5>
 									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
+									INPAGO adalah singkatan dari Inbrida Padi Gogo. Varietas Padi untuk lahan kering dengan curah hujan rendah, daerah berlereng yang kurang mampu menampung air relatif lama
 									<a href="#" class="btn btn-primary">Detail</a>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row clearfix">
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					DeskApp - Bootstrap 4 Admin Template By
-					<a href="https://github.com/dropways" target="_blank"
-						>Ankit Hingarajiya</a
-					>
 				</div>
 			</div>
 		</div>		

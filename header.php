@@ -128,7 +128,7 @@ $namaku = $_GET['nama'];
 							data-toggle="right-sidebar"
 								><i class="dw dw-settings2"></i> Pengaturan</a
 							>
-							<a class="dropdown-item" href="Bantuan.php"
+							<a class="dropdown-item" href="tentang.php"
 								><i class="dw dw-help"></i> Tentang</a
 							>
 							<a class="dropdown-item" href="login.php"

@@ -69,15 +69,15 @@
 				<div class="title pb-20">
 					<h2 class="h3 mb-0">Dashboard</h2>
 				</div>
-
+			<a 
+				href="lahan.php">
 				<div class="row pb-10">
 					<div class="col-xl-3 col-lg-3 col-md-6 mb-20">
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">75%</div>
+									<div class="weight-700 font-24 text-dark">Lahan 1</div>
 									<div class="font-14 text-secondary weight-500">
-										Lahan 1
 									</div>
 								</div>
 								<div class="widget-icon">
@@ -92,9 +92,9 @@
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">25%</div>
+									<div class="weight-700 font-24 text-dark">Lahan 2</div>
 									<div class="font-14 text-secondary weight-500">
-										Lahan 2
+										
 									</div>
 								</div>
 								<div class="widget-icon">
@@ -109,9 +109,9 @@
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">40%</div>
+									<div class="weight-700 font-24 text-dark">Lahan 3</div>
 									<div class="font-14 text-secondary weight-500">
-										Lahan 3
+										
 									</div>
 								</div>
 								<div class="widget-icon">
@@ -129,8 +129,8 @@
 						<div class="card-box height-100-p widget-style3">
 							<div class="d-flex flex-wrap">
 								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">60%</div>
-									<div class="font-14 text-secondary weight-500">Lahan 4</div>
+									<div class="weight-700 font-24 text-dark">Lahan 4</div>
+									<div class="font-14 text-secondary weight-500"></div>
 								</div>
 								<div class="widget-icon">
 									<div class="icon" data-color="#09cc06">
@@ -179,14 +179,14 @@
 							<div class="d-flex justify-content-between align-items-end">
 								<div class="text-white">
 									<div class="font-14"></div>
-									<div class="font-25 weight-600">Lahan 1</div>
+									<div class="font-25 weight-600">Lahan </div>
 								</div>
 								<div class="max-width-150">
 									<div id="appointment-chart"></div>
 								</div>
 							</div>
 								</div> <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-									<div class="elfsight-app-d78e731b-3d03-4d09-b0b4-21e642a23108"></div>
+								<div class="elfsight-app-300157e0-917f-417b-833e-ae619b5abe80"></div>
 						</div>
 					</div>
 				</div>
@@ -348,52 +348,43 @@
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 mb-20">
-						<div class="card-box height-100-p pd-20 min-height-200px">
-							<div class="d-flex justify-content-between">
-								<div class="h5 mb-0">Aktivitas</div>
-								<div class="dropdown">
-									<a
-										class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-										data-color="#1b3133"
-										href="#"
-										role="button"
-										data-toggle="dropdown"
-									>
-										<i class="dw dw-more"></i>
-									</a>
-									<div
-										class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-									>
-										<a class="dropdown-item" href="calendar.php"
-											><i class="dw dw-eye"></i> Lihat</a
-										>
-										<a class="dropdown-item" href="#"
-											><i class="dw dw-edit2"></i> Edit</a
-										>
-										<a class="dropdown-item" href="#"
-											><i class="dw dw-delete-3"></i> Hapus</a
-										>
-									</div>
-								</div>
-							</div>
-
-							<div id="diseases-chart"></div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12 mb-20">
+					<a href="padi.php"
+					>
 						<div class="card-box height-100-p pd-20 min-height-200px">
 							<div class="max-width-300 mx-auto">
-								<img src="vendors/images/about.svg" alt="" />
 							</div>
-							<div class="text-center">
-								<div class="h5 mb-1">EdiFARM</div>
+								<img src="vendors/images/farm2.svg" alt="" 
+								/> 
+							<div 
+								class="text-center">
+								<div class="h5 mb-1">Jenis Padi</div>
 								<div
 									class="font-14 weight-500 max-width-200 mx-auto pb-20"
 									data-color="#a6a6a7"
 								>
-									Sawah juga memerlukan sistem management yang dilakukan dengan controlling oleh setiap karyawan
+								Pada lahan terdapat jenis padi yang dapat berpengaruh terhadap pertumbuhan padi
 								</div>
-								<a href="#" class="btn btn-primary btn-lg">Tentang</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12 mb-20">
+					<a href="padi.php"
+					>
+						<div class="card-box height-100-p pd-20 min-height-200px">
+							<div class="max-width-300 mx-auto">
+							</div>
+								<img src="vendors/images/farming.svg" alt="" 
+								/> 
+							<div 
+								class="text-center">
+								<div class="h5 mb-1">Edifarm</div>
+								<div
+									class="font-14 weight-500 max-width-200 mx-auto pb-20"
+									data-color="#a6a6a7"
+								>
+									Sawah memerlukan sistem management controlling oleh setiap karyawan
+								</div>
+								<a href="tentang.php" class="btn btn-primary btn-lg">Tentang</a>
 							</div>
 						</div>
 					</div>
@@ -401,324 +392,42 @@
 
 				<div class="card-box pb-10">
 					<div class="h5 pd-20 mb-0">Data Karyawan</div>
-					<table class="data-table table nowrap">
-						<thead>
-							<tr>
-								<th class="table-plus">Foto</th>
-								<th>Nama</th>
-								<th>Ussername</th>
-								<th>Alamat</th>
-								<th>Tanggal Lahir</th>
-								<th>Jenis Kelamin</th>
-								<th>Aksi</th>
-								<th class="datatable-nosort">Status</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo4.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo5.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo6.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-										data-toggle="modal"
-										data-target="#bd-example-modal-lg"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo9.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-										data-toggle="modal"
-										data-target="#bd-example-modal-lg"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo1.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-										data-toggle="modal"
-										data-target="#bd-example-modal-lg"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo2.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-										data-toggle="modal"
-										data-target="#bd-example-modal-lg"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo8.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-										data-toggle="modal"
-										data-target="#bd-example-modal-lg"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="table-plus">
-									<div class="name-avatar d-flex align-items-center">
-										<div class="avatar mr-2 flex-shrink-0">
-											<img
-												src="vendors/images/photo1.jpg"
-												class="border-radius-100 shadow"
-												width="40"
-												height="40"
-												alt=""
-											/>
-										</div>
-										<div class="txt">
-											<div class="weight-600"></div>
-										</div>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>
-									<span
-										class="badge badge-pill"
-										data-bgcolor="#e7ebf5"
-										data-color="#265ed7"
-										></span
-									>
-								</td>
-								<td>
-									<div class="table-actions">
-										<a href="#" data-color="#265ed7"
-										data-toggle="modal"
-										data-target="#bd-example-modal-lg"
-											><i class="icon-copy dw dw-edit2"></i
-										></a>
-										<a href="#" data-color="#e95959"
-											><i class="icon-copy dw dw-delete-3"></i
-										></a>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+					<table class="data-table table stripe hover">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">Username</th>
+										<th>Nama</th>
+										<th>Jenis Kelamin</th>
+										<th>Alamat</th>
+										<th>No. HP</th>
+										<th>Tgl Lahir</th>
+										<th>email</th>
+									</tr>
+								</thead>
+								<tbody>
+								<?php 
+								$query = mysqli_query($koneksi,"SELECT * FROM user where level = 'karyawan'");
+								if(mysqli_num_rows($query)>0){ ?>
+								<?php
+									while($data = mysqli_fetch_array($query)){
+										$id=$data["id_user"];
+										$jeniskel=$data["jenis_kelamin"];
+								?>		
+								<tr >
+										<td><?php echo $data["username"];?></td>
+										<td><?php echo $data["nama"];?></td>
+										<td><?php echo $jeniskel;?></td>
+										<td><?php echo $data["alamat"];?></td>
+										<td><?php echo $data["no_hp"];?></td>
+										<td><?php echo $data["tanggal_lahir"];?></td>
+										<td><?php echo $data["email"];?></td>
+									</tr>	
+								<?php  
+									} 
+							 	} 
+								?>	
+								</tbody>
+							</table>
 				</div>
 
 				<div class="title pb-20 pt-20">

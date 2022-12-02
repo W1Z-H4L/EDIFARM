@@ -150,15 +150,7 @@ if($op == 'delete'){
 													</div>
 													<div class="modal-body">
 														<p>
-															Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua. Ut enim ad minim veniam, quis
-															nostrud exercitation ullamco laboris nisi ut aliquip
-															ex ea commodo consequat. Duis aute irure dolor in
-															reprehenderit in voluptate velit esse cillum dolore eu
-															fugiat nulla pariatur. Excepteur sint occaecat
-															cupidatat non proident, sunt in culpa qui officia
-															deserunt mollit anim id est laborum.
+															Lahan 1 menggunakan jenis padi ciherang, ditanam mulai dari tanggal 3 November 2022
 														</p>
 													</div>
 													<div class="modal-footer">
@@ -167,10 +159,10 @@ if($op == 'delete'){
 															class="btn btn-secondary"
 															data-dismiss="modal"
 														>
-															Close
+															Batal
 														</button>
 														<button type="button" class="btn btn-primary">
-															Save changes
+															Simpan
 														</button>
 													</div>
 												</div>
@@ -180,7 +172,7 @@ if($op == 'delete'){
 								</div>
 							</div>
 						</div>
-						<?php 
+						<?php
 						}
 						?>
 					</div>
@@ -226,7 +218,7 @@ if($op == 'delete'){
 								<div class="form-group row">
 									<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama Lahan</label>
 									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="nama" placeholder="Lahan 1" name="nama">
+										<input class="form-control" type="nama" placeholder="Lahan" name="nama">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -254,7 +246,7 @@ if($op == 'delete'){
 											class="btn btn-secondary"
 											data-dismiss="modal"
 											alt="add-modal-kar"
-										>Close
+										>Batal
 										</button>
 										<input type="submit" name="submit" class="btn btn-primary" value="Simpan" id="sa-success">
 									</div>

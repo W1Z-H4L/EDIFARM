@@ -115,7 +115,7 @@
 												<input type="text" class="form-control" name="ename" />
 											</div>
 											<div class="form-group">
-												<label>Tanggal Penjadwalan</label>
+												<label>Mulai Tanggal</label>
 												<input
 													type="text"
 													class="datetimepicker form-control"
@@ -123,32 +123,12 @@
 												/>
 											</div>
 											<div class="form-group">
-												<label>Deskripsi Penjadwalan</label>
-												<textarea class="form-control" name="edesc"></textarea>
-											</div>
-											<div class="form-group">
-												<label>Warna Penjadwalan</label>
-												<select class="form-control" name="ecolor">
-													<option value="fc-bg-default">default</option>
-													<option value="fc-bg-blue">biru</option>
-													<option value="fc-bg-lightgreen">
-														hijau
-													</option>
-													<option value="fc-bg-pinkred">pink</option>
-													<option value="fc-bg-deepskyblue">
-														biru muda
-													</option>
-												</select>
-											</div>
-											<div class="form-group">
-												<label>Event Icon</label>
-												<select class="form-control" name="eicon">
-													<option value="circle">lingkaran</option>
-													<option value="cog">cog</option>
-													<option value="group">group</option>
-													<option value="suitcase">suitcase</option>
-													<option value="calendar">jadwal</option>
-												</select>
+												<label>Sampai Tanggal</label>
+												<input
+													type="text"
+													class="datetimepicker form-control"
+													name="edate"
+												/>
 											</div>
 										</div>
 										<div class="modal-footer">

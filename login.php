@@ -3,36 +3,81 @@ require('koneksi.php');
 session_start();
 
 if(isset($_POST['submit'])){
-    $email = $_POST['username'];
-    $pass = $_POST['password'];
+    $username = trim($_POST['username']);
+    $pass = trim($_POST['password']);
 
-    if(!empty(trim($email)) && !empty(trim($pass))){
-        $query = "SELECT * FROM user WHERE username='$email'";
-        $result = mysqli_query($koneksi,$query);
-        $num = mysqli_num_rows($result);
+	// var_dump($username, $pass);
 
-        while ($row = mysqli_fetch_array($result)){
-            $id = $row['id_user'];
-            $userVal = $row['username'];
-            $passVal =$row['password'];
-            $namamu = $row['nama'];
-            $level = $row['level'];
-        }
+    // if(!empty(trim($email)) && !empty(trim($pass))){
+    //     $query = "SELECT * FROM user  where level = 'Admin'";
+    //     $result = mysqli_query($koneksi,$query);
+    //     $num = mysqli_num_rows($result);
 
-        if($num != 0){
-            if($userVal==$email && $passVal==$pass){
-                header('Location: index.php?nama='.urlencode($namamu));
-            }else{
-                $error = 'Email atau password salah';
-            }
-        }else{
-            $error = 'user tidak ditemukan!!';
-            header('Location: login.php');
-        }
-    }else{
-        $error = 'Data tidak boleh kosong!!';
-        echo $error;
-    }
+    //     while ($row = mysqli_fetch_array($result)){
+    //         $id = $row['id_user'];
+    //         $userVal = $row['username'];
+    //         $passVal =$row['password'];
+    //         $namamu = $row['nama'];
+    //         $level = $row['level'];
+    //     }
+
+    //     if($num != 0){
+    //         if($userVal==$email && $passVal==$pass){
+    //             header('Location: index.php?nama='.urlencode($namamu));
+    //         }else{
+    //             $error = 'Email atau password salah';
+    //         }
+    //     }else{
+    //         $error = 'user tidak ditemukan!!';
+    //         header('Location: login.php');
+    //     }
+    // }else{
+    //     $error = 'Data tidak boleh kosong!!';
+    //     echo $error;
+    // }
+
+	if(!$username) {
+		$error = "Email tidak boleh kosong!";
+		echo $error;
+		return;
+	}
+
+	if(!$pass) {
+		$error = "Password tidak boleh kosong!";
+		echo $error;
+		return;
+	}
+
+	$sql = "SELECT * FROM user WHERE `level`='admin'";
+	$result = mysqli_query($koneksi, $sql);
+	$num = mysqli_num_rows($result);
+
+	if(!$num) {
+		$error = "User tidak ditemukan";
+		echo $error;
+		return;
+	}
+
+	while ($row = mysqli_fetch_array($result)){
+		$id = $row['id_user'];
+		$userVal = $row['username'];
+		$passVal =$row['password'];
+		$namamu = $row['nama'];
+	};
+
+	if($username != $userVal) {
+		$error = "Email anda salah!";
+		echo $error;
+		return;
+	}
+
+	if($pass != $passVal) {
+		$error = "Password anda salah!";
+		echo $error;
+		return;
+	}
+
+	header('Location: index.php?nama=' . urlencode($namamu));
 }
 
 ?>

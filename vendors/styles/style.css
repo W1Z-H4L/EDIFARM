@@ -58,6 +58,7 @@ img {
     vertical-align: top;
     max-width: 100%;
     height: auto
+    
 }
 
 input,
@@ -476,6 +477,7 @@ p {
 
 .max-width-300 {
     max-width: 300px
+    
 }
 
 .max-width-400 {
@@ -547,7 +549,7 @@ p {
 }
 
 .text-blue {
-    color: #006B6C
+    color: #1b3133
 }
 
 .text-light-blue {
@@ -1348,7 +1350,7 @@ table.dataTable thead .sorting_desc_disabled:after {
 .fontawesome-icon-list .fa-hover:hover a,
 table.dataTable thead .sorting_asc:before,
 table.dataTable thead .sorting_desc:after {
-    color: #1b00ff
+    color: #006B6C
 }
 
 table.dataTable>tbody>tr.child ul.dtr-details {
@@ -2992,9 +2994,9 @@ body.IE .register-page-wrap .container {
 
 .nav-tabs.customtab .nav-link:focus,
 .nav-tabs.customtab .nav-link:hover {
-    color: #1b00ff;
+    color: #006B6C;
     border: 0;
-    border-bottom: 2px solid #1b00ff
+    border-bottom: 2px solid #006B6C
 }
 
 .nav.vtabs {
@@ -3158,7 +3160,7 @@ body.IE .register-page-wrap .container {
 
 .fc th {
     padding: 10px !important;
-    background: #e1e1f5;
+    background: #b6d4d4;
     line-height: 1
 }
 
@@ -3459,7 +3461,7 @@ body.IE .register-page-wrap .container {
     padding: 16px 40px 16px 16px;
     position: relative;
     white-space: normal;
-    color: #1b00ff;
+    color: #006B6C;
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out
 }
@@ -3473,7 +3475,7 @@ body.IE .register-page-wrap .container {
     font-family: "Ionicons";
     position: absolute;
     right: 10px;
-    color: #1b00ff;
+    color: #006B6C;
     top: 16px
 }
 
@@ -4593,11 +4595,11 @@ body.IE .register-page-wrap .container {
 }
 
 .fc-view-container tr:first-child>td>.fc-day-grid-event {
-    background: #1b00ff
+    background: #006B6C
 }
 
 .fc-today.alert-info {
-    background: #e0deef
+    background: #e0eded
 }
 
 .fc-day-number,

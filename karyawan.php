@@ -13,9 +13,10 @@ if(isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$pw = $_POST['pw'];
 	$capt = $_POST['capt'];
+	$lahan = $_POST['lahan'];
 
-	if($username&&$nama&&$kelamin&&$alamat&&$hp&&$lahir&&$email&&$pw&&$capt){
-		$query =  "INSERT INTO user VALUES ('04', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', 'Karyawan', '','1')";
+	if($username&&$nama&&$kelamin&&$alamat&&$hp&&$lahir&&$email&&$pw&&$capt&&$lahan){
+		$query =  "INSERT INTO user VALUES ('3', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', '2', '', '$lahan')";
 		$result = mysqli_query($koneksi,$query);
 		if($result){
 			$sukses ="Berhasil memasukkan data";
@@ -100,17 +101,20 @@ if($op == 'delete'){
 										<th>No. HP</th>
 										<th>Tgl Lahir</th>
 										<th>email</th>
+										<th>Lahan</th>
 										<th class="table-plus datatable-nosort">Action</th>
 									</tr>
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user where level = 'karyawan'");
-								if(mysqli_num_rows($query)>0){ ?>
+								$query = mysqli_query($koneksi,"SELECT * FROM user where id_level = '2'");
+								if(mysqli_num_rows($query)>0){ 
+								?>
 								<?php
 									while($data = mysqli_fetch_array($query)){
 										$id=$data["id_user"];
 										$jeniskel=$data["jenis_kelamin"];
+										
 								?>		
 								<tr >
 										<td><?php echo $data["username"];?></td>
@@ -120,6 +124,7 @@ if($op == 'delete'){
 										<td><?php echo $data["no_hp"];?></td>
 										<td><?php echo $data["tanggal_lahir"];?></td>
 										<td><?php echo $data["email"];?></td>
+										<td><?php echo $data["id_lahan"];?></td>
 										<td>
 											<!-- Edit -->
 											<a href="#" data-color="#265ed7"
@@ -212,6 +217,27 @@ if($op == 'delete'){
 																		<label class="col-sm-12 col-md-2 col-form-label" for="capt">Motivasi</label>
 																		<div class="col-sm-12 col-md-10">
 																			<input class="form-control"  type="text" name="capt" id="capt" value="<?php echo $data["caption"];?>">
+																		</div>
+																	</div>
+																	<div class="form-group row">
+																		<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
+																		<div class="col-sm-12 col-md-10">
+																		<select class="custom-select col-12" name="lahan">
+																		<?php 
+																		$query1 = mysqli_query($koneksi,"SELECT * FROM lahan");
+																		if(mysqli_num_rows($query)>0){ 
+																		?>
+																		<?php
+																			while($data1 = mysqli_fetch_array($query1)){
+																				$namalahan1=$data1["nama_lahan"];
+																				$idlahan1=$data1["id_lahan"];
+																		?>		
+																			<option value="<?php echo $idlahan1 ?>" <?php if($idlahan1==$data["id_lahan"]) echo "selected"?>><?php echo $namalahan1 ?></option>
+																			<?php  
+																			} 
+																		} 
+																		?>
+																		</select>
 																		</div>
 																	</div>
 																	</div>
@@ -312,7 +338,7 @@ if($op == 'delete'){
 									<option value="1">Laki-laki</option>
 									<option value="2">Perempuan</option>
 								</select>
-							</div>
+								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label" for="des">Alamat</label>
@@ -355,6 +381,28 @@ if($op == 'delete'){
 									<input class="form-control" placeholder="hidup adalah makan" type="text" name="capt">
 								</div>
 							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
+								<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="lahan">
+									<option selected="">Pilih salah satu</option>
+								<?php 
+								$query = mysqli_query($koneksi,"SELECT * FROM lahan");
+								if(mysqli_num_rows($query)>0){ 
+								?>
+								<?php
+									while($data2 = mysqli_fetch_array($query)){
+										$namalahan=$data2["nama_lahan"];
+										$idlahan2=$data2["id_lahan"];
+								?>		
+									<option value="<?php echo $idlahan2 ?>"><?php echo $namalahan ?></option>
+									<?php  
+									} 
+							 	} 
+								?>
+								</select>
+								</div>
+							</div>
 							</div>
 								<div class="modal-footer">
 									<button
@@ -364,7 +412,7 @@ if($op == 'delete'){
 										alt="add-modal-kar"
 									>Close
 									</button>
-									<input type="submit" name="submit" class="btn btn-primary" value="Simpan">
+									<input type="submit" name="submit" class="btn btn-primary" value="Simpan" onclick= "">
 								</div>
 							</div>
 						</form>		

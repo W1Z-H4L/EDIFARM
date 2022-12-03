@@ -11,6 +11,25 @@ session_start();
 	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas`, `deskripsi`, `tempat`) VALUES ('$luas', '$nama','$luas','$des','$tempat')";
 	 $result = mysqli_query($koneksi,$query);
  }
+ if(isset($_POST['update'])) {
+	$nama = $_POST['nama'];
+	 $luas = $_POST['luas'];
+	 $des = $_POST['des'];
+	 $tempat = $_POST['tempat'];
+	
+	$query =  "UPDATE `user` SET `username` = '$username', `nama` = '$nama', `jenis_kelamin` = '$kelamin', `alamat` = '$alamat', `no_hp` = '$hp', `tanggal_lahir` = '$lahir', `email` = '$email', `caption` = '$capt'WHERE `user`.`id_user` = '$id';";
+	$result = mysqli_query($koneksi,$query);
+}
+if(isset($_GET['op'])){
+	$op=$_GET['op'];
+}else{
+	$op="";
+}
+if($op == 'delete'){
+	$id = $_GET['id'];
+	$query =  "DELETE FROM lahan WHERE id_lahan='$id'";
+	$result = mysqli_query($koneksi,$query);
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -47,14 +66,60 @@ session_start();
 						$query = "SELECT * FROM lahan";
 						$result = mysqli_query($koneksi,$query);
 						while($row= $row = mysqli_fetch_array($result)){
+							$id=$row["id_lahan"];
 						?>
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 							<div class="card card-box text-center">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
+								<div class=" d-flex justify-content-between pb-10">
+									<img
+										class="card-img-top"
+										src="vendors/images/img2.jpg"
+										alt=""
+									/>
+									<div class=" position-absolute">
+										<a
+											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+											href="#"
+											role="button"
+											data-toggle="dropdown"
+										>
+											<i class="dw dw-more"></i>
+										</a>
+										<div
+											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+										>
+											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal"
+												><i class="dw dw-edit2"></i> Edit</a
+											>
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													...
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Save changes</button>
+												</div>
+												</div>
+											</div>
+											</div>
+													
+
+											<a class="dropdown-item" href="#"
+												><i class="dw dw-delete-3"></i> Delete</a
+											>
+										</div>
+									</div>
+									
+								</div>
 								<div class="card-body">
 									<h5 class="card-title weight-500 text-left"><?php echo $row["nama_lahan"];?></h5>
 									<p class="card-text text-left"><?php echo $row["deskripsi"];?></p>
@@ -85,15 +150,7 @@ session_start();
 													</div>
 													<div class="modal-body">
 														<p>
-															Lorem ipsum dolor sit amet, consectetur adipisicing
-															elit, sed do eiusmod tempor incididunt ut labore et
-															dolore magna aliqua. Ut enim ad minim veniam, quis
-															nostrud exercitation ullamco laboris nisi ut aliquip
-															ex ea commodo consequat. Duis aute irure dolor in
-															reprehenderit in voluptate velit esse cillum dolore eu
-															fugiat nulla pariatur. Excepteur sint occaecat
-															cupidatat non proident, sunt in culpa qui officia
-															deserunt mollit anim id est laborum.
+															Lahan 1 menggunakan jenis padi ciherang, ditanam mulai dari tanggal 3 November 2022
 														</p>
 													</div>
 													<div class="modal-footer">
@@ -102,10 +159,10 @@ session_start();
 															class="btn btn-secondary"
 															data-dismiss="modal"
 														>
-															Close
+															Batal
 														</button>
 														<button type="button" class="btn btn-primary">
-															Save changes
+															Simpan
 														</button>
 													</div>
 												</div>
@@ -118,44 +175,9 @@ session_start();
 						<?php
 						}
 						?>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Lahan</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row clearfix">
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Lahan</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
+			
 			</div>
 		</div>		
 		<div class="add-modal-kar">
@@ -196,7 +218,7 @@ session_start();
 								<div class="form-group row">
 									<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama Lahan</label>
 									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="nama" placeholder="Lahan 1" name="nama">
+										<input class="form-control" type="nama" placeholder="Lahan" name="nama">
 									</div>
 								</div>
 								<div class="form-group row">
@@ -224,7 +246,7 @@ session_start();
 											class="btn btn-secondary"
 											data-dismiss="modal"
 											alt="add-modal-kar"
-										>Close
+										>Batal
 										</button>
 										<input type="submit" name="submit" class="btn btn-primary" value="Simpan" id="sa-success">
 									</div>

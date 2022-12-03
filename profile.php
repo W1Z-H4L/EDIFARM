@@ -1,3 +1,20 @@
+<?php
+include('koneksi.php');
+if(isset($_POST['update'])) {
+	$id = "1";
+	$user = $_POST['username'];
+	$nama = $_POST['nama'];
+	$jeniskel = $_POST['jeniskel'];
+	$alamat = $_POST['alamat'];
+	$no_hp = $_POST['no_hp'];
+	$ttl = $_POST['ttl'];
+	$email = $_POST['email'];
+	$capt = $_POST['capt'];
+	
+	$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt'WHERE `user`.`id_user` = '$id';";
+	$result = mysqli_query($koneksi,$query);
+}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -112,6 +129,22 @@
 					<div class="row">
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
 							<div class="pd-20 card-box height-100-p">
+							<?php 
+								$query = mysqli_query($koneksi,"SELECT * FROM user where id_user = '1'");
+								if(mysqli_num_rows($query)>0){
+							
+									while($data = mysqli_fetch_array($query)){
+										$id=$data["id_user"];
+										$jeniskel=$data["jenis_kelamin"];
+										 $user=$data["username"];
+										 $nama=$data["nama"];
+										 $alamat=$data["alamat"];
+										 $no_hp=$data["no_hp"];
+										 $ttl=$data["tanggal_lahir"];
+										 $email=$data["email"];
+										 $capt=$data["caption"];
+									}}
+								?>		
 								<div class="profile-photo">
 									<a
 										href="modal"
@@ -165,31 +198,37 @@
 										</div>
 									</div>
 								</div>
-								<h5 class="text-center h5 mb-0">Wishal Azharyan</h5>
+								<h5 class="text-center h5 mb-0"><?php echo $nama;?></h5>
 								<p class="text-center text-muted font-14">
-									Wishal Punk
+									<?php echo $user?>
 								</p>
 								<div class="profile-info">
 									<h5 class="mb-20 h5 text-blue">Informasi Kontak</h5>
 									<ul>
 										<li>
 											<span>Email Address:</span>
-											WishalAzharyan@gmail.com
+											<?php echo $email?>
+										</li>
+										<li>
+											<span>Jenis Kelamin:</span>
+											<?php echo $jeniskel?>
 										</li>
 										<li>
 											<span>Tanggal Lahir:</span>
-											27-November-2003
+											<?php echo $ttl?>
 										</li>
 										<li>
 											<span>No. Handphone:</span>
-											62-111-222-333
+											<?php echo $no_hp?>
 										</li>
 										<li>
 											
 											<span>Alamat:</span>
-											Jl. Gajah Mada, Jember<br />
+											<?php echo $alamat?><br />
 										</li>
-										
+										<li>
+											<span>Caption</span>
+											<?php echo $capt?><br />
 									</ul>
 								</div>
 								<div class="profile-social">
@@ -248,9 +287,7 @@
 								<div class="profile-tab height-100-p">
 									<div class="tab height-100-p">
 										<ul class="nav nav-tabs customtab" role="tablist">
-											<li class="nav-item">
-												
-											</li>
+											
 											<li class="nav-item">
 												<a
 													class="nav-link"
@@ -264,12 +301,12 @@
 									
 											<!-- Setting Tab start -->
 											<div
-												class="tab-pane fade show active"
+												class="tab-pane fade  "
 												id="setting"
 												role="tabpanel"
 											>
 												<div class="profile-setting">
-													<form>
+													<form action="profile.php" method="POST">
 														<ul class="profile-edit-list row">
 															<li class="weight-500 col-md-6">
 																<h4 class="text-blue h5 mb-20">
@@ -280,6 +317,8 @@
 																	<input
 																		class="form-control form-control-lg"
 																		type="text"
+																		value="<?php echo $nama?>"
+																		name = "nama"
 																	/>
 																</div>
 																<div class="form-group">
@@ -287,6 +326,8 @@
 																	<input
 																		class="form-control form-control-lg"
 																		type="text"
+																		value="<?php echo $user?>"
+																		name = "username"
 																	/>
 																</div>
 																<div class="form-group">
@@ -294,6 +335,8 @@
 																	<input
 																		class="form-control form-control-lg"
 																		type="email"
+																		value="<?php echo $email?>"
+																		name = "email"
 																	/>
 																</div>
 																<div class="form-group">
@@ -301,6 +344,8 @@
 																	<input
 																		class="form-control form-control-lg date-picker"
 																		type="text"
+																		value="<?php echo $ttl?>"
+																		name = "ttl"
 																	/>
 																</div>
 																<div class="form-group">
@@ -312,8 +357,10 @@
 																			<input
 																				type="radio"
 																				id="customRadio4"
-																				name="customRadio"
+																				name = "jeniskel"
 																				class="custom-control-input"
+																				value="Laki-laki"
+																				<?php if($jeniskel=="Laki-laki") echo "checked"?>
 																			/>
 																			<label
 																				class="custom-control-label weight-400"
@@ -327,13 +374,15 @@
 																			<input
 																				type="radio"
 																				id="customRadio5"
-																				name="customRadio"
+																				name = "jeniskel"
 																				class="custom-control-input"
+																				value = "Perempuan"
+																				<?php if($jeniskel=="Perempuan") echo "checked"?>
 																			/>
 																			<label
 																				class="custom-control-label weight-400"
 																				for="customRadio5"
-																				>Wanita</label
+																				>Perempuan</label
 																			>
 																		</div>
 																	</div>
@@ -343,42 +392,31 @@
 																	<input
 																		class="form-control form-control-lg"
 																		type="text"
+																		value="<?php echo $no_hp?>"
+																		name = "no_hp"
 																	/>
 																</div>
 																<div class="form-group">
 																	<label>Alamat</label>
-																	<textarea class="form-control"></textarea>
+																	<textarea class="form-control" value="" name = "alamat"><?php echo $alamat?></textarea>
 																	</div>
-
+																
+																	
 																<div class="form-group">
 																	<label>Caption</label>
-																	<textarea class="form-control"></textarea>
-																	
-																</div>
-																<div class="form-group">
-																	<div
-																		class="custom-control custom-checkbox mb-5"
-																	>
-																		<input
-																			type="checkbox"
-																			class="custom-control-input"
-																			id="customCheck1-1"
-																		/>
-																		<label
-																			class="custom-control-label weight-400"
-																			for="customCheck1-1"
-																			>Apakah data yang anda masukkan sudah benar?</label
-																		>
+																	<textarea class="form-control" value="" name = "capt"><?php echo $capt?></textarea>
 																	</div>
-																</div>
+
 																<div class="form-group mb-0">
 																	<input
 																		type="submit"
+																		
 																		class="btn btn-primary"
+																		name="update"
 																		value="Perbarui"
 																	/>
 																</div>
-						
+														</form>
 		</button>
 		<!-- welcome modal end -->
 		<!-- js -->

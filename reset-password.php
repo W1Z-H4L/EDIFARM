@@ -1,3 +1,15 @@
+<?php
+include('koneksi.php');
+if(isset($_POST['update'])) {
+	$id = "1";
+	$pass = $_POST['password'];
+	
+	$query =  "UPDATE `user` SET `password` = '$pass'WHERE `user`.`id_user` = '$id';";
+	$result = mysqli_query($koneksi,$query);
+	
+}
+
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -104,12 +116,13 @@
 								<h2 class="text-center text-primary">Reset Password</h2>
 							</div>
 							<h6 class="mb-20">Masukkan Password, Kofirmasi, dan Simpan</h6>
-							<form>
+							<form action="reset-password.php" method="POST">
 								<div class="input-group custom">
 									<input
 										type="text"
 										class="form-control form-control-lg"
 										placeholder="Password Baru"
+										name = "password"
 									/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"
@@ -122,6 +135,7 @@
 										type="text"
 										class="form-control form-control-lg"
 										placeholder="Konfirmasi Password Baru"
+										name = "password"
 									/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"
@@ -132,10 +146,10 @@
 								<div class="row align-items-center">
 									<div class="col-5">
 										<div class="input-group mb-0">
-											<!--
+											<!
 											use code for form submit
-											<input class="btn btn-primary btn-lg btn-block" type="submit" value="Submit">
-										-->
+											<input class="btn btn-primary btn-lg btn-block" type="submit" value="simpan" name = "update">
+										
 											<a
 												class="btn btn-primary btn-lg btn-block"
 												href="login.php"
@@ -143,8 +157,9 @@
 											>
 										</div>
 									</div>
-								</div>
+								</div> 
 							</form>
+							
 						</div>
 					</div>
 				</div>

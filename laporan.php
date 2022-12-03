@@ -95,7 +95,7 @@ if(isset($_POST['submit'])) {
 								</thead>
 								<tbody>
 								<?php
-									$query = mysqli_query($koneksi,"SELECT username, nama, jenis_kelamin, alamat, no_hp, tanggal_lahir, email FROM user where level = 'karyawan'");
+									$query = mysqli_query($koneksi,"SELECT username, nama, jenis_kelamin, alamat, no_hp, tanggal_lahir, email FROM user where id_level = 'B1'");
 									if(mysqli_num_rows($query)>0){ ?>	
 									<?php
 									while($data = mysqli_fetch_array($query)){
@@ -135,8 +135,8 @@ if(isset($_POST['submit'])) {
 									<tr>
 										<th class="table-plus datatable-nosort">Nama Lahan</th>
 										<th>Luas Lahan</th>
-										<th>Deskripsi</th>
 										<th>Tempat Lahan</th>
+										<th>Deskripsi</th>
 									</tr>
 								</thead>
 								<tbody>

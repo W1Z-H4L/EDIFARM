@@ -23,11 +23,28 @@
 		<?php include 'sidebar.php'; ?>
 		<div class="mobile-menu-overlay"></div>
 
+		<div class="mobile-menu-overlay"></div>
 		<div class="main-container">
-			<div class="pd-ltr-20 xs-pd-20-10">
+		<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
-					<div class="title pb-20">
-						<h2 class="h3 mb-0">Padi</h2>
+					<div class="page-header">
+						<div class="row">
+							<div class="col-md-6 col-sm-12">
+								<div class="title">
+									<h4>Padi<h4>
+								</div>
+								<nav aria-label="breadcrumb" role="navigation">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="index.php">Dashboard</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">
+											Padi
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
 					</div>
 					<div class="row clearfix">
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
@@ -116,12 +133,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="footer-wrap pd-20 mb-20 card-box">
-					DeskApp - Bootstrap 4 Admin Template By
-					<a href="https://github.com/dropways" target="_blank"
-						>Ankit Hingarajiya</a
-					>
 				</div>
 			</div>
 		</div>		
@@ -259,10 +270,10 @@
 													data-dismiss="modal"
 													alt="add-modal-kar"
 												>
-													Close
+													Batal
 												</button>
 												<button type="button" class="btn btn-primary">
-													Save changes
+													Simpan
 												</button>
 											</div>
 										</div>

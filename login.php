@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
 		return;
 	}
 
-	$sql = "SELECT * FROM user WHERE `level`='admin'";
+	$sql = "SELECT * FROM user WHERE `id_level`='A1'";
 	$result = mysqli_query($koneksi, $sql);
 	$num = mysqli_num_rows($result);
 

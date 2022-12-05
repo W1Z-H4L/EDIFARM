@@ -39,23 +39,20 @@
 										data-toggle="collapse"
 										data-target="#faq1"
 									>
-										Collapsible Group Item #1
+										Apa itu Edifarm?
 									</button>
 								</div>
 								<div id="faq1" class="collapse show" data-parent="#accordion">
 									<div class="card-body">
-										Anim pariatur cliche reprehenderit, enim eiusmod high life
-										accusamus terry richardson ad squid. 3 wolf moon officia
-										aute, non cupidatat skateboard dolor brunch. Food truck
-										quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-										sunt aliqua put a bird on it squid single-origin coffee
-										nulla assumenda shoreditch et. Nihil anim keffiyeh
-										helvetica, craft beer labore wes anderson cred nesciunt
-										sapiente ea proident. Ad vegan excepteur butcher vice lomo.
-										Leggings occaecat craft beer farm-to-table, raw denim
-										aesthetic synth nesciunt you probably haven't heard of them
-										accusamus labore sustainable VHS.
-									</div>
+									Edifarm adalah suatu perangkat yang dikembangkan untuk membantu admin 
+                                    dalam memonitoring beberapa sawah, walaupun dengan jarak jauh. Edifarm 
+                                    juga menyediakan pada perangkat mobile android untuk karyawan yang 
+                                    mengelola sawah
+
+                                    Website edifarm hanya dapat diakses oleh admin yakni pemilik sawah. Admin 
+                                    dapat menambah karyawan, mengubah jadwal, menerima konsultasi dari karyawan,
+                                    melihat kegiatan yang dilakukan karyawan disawah.
+                                    
 								</div>
 							</div>
 							<div class="card">

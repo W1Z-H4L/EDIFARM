@@ -406,7 +406,7 @@
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user where level = 'karyawan'");
+								$query = mysqli_query($koneksi,"SELECT * FROM user where id_level = '2'");
 								if(mysqli_num_rows($query)>0){ ?>
 								<?php
 									while($data = mysqli_fetch_array($query)){

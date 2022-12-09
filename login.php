@@ -1,4 +1,4 @@
-<?php 
+<?php
 require('koneksi.php');
 session_start();
 
@@ -6,38 +6,8 @@ if(isset($_POST['submit'])){
     $username = trim($_POST['username']);
     $pass = trim($_POST['password']);
 
-	// var_dump($username, $pass);
-
-    // if(!empty(trim($email)) && !empty(trim($pass))){
-    //     $query = "SELECT * FROM user  where level = 'Admin'";
-    //     $result = mysqli_query($koneksi,$query);
-    //     $num = mysqli_num_rows($result);
-
-    //     while ($row = mysqli_fetch_array($result)){
-    //         $id = $row['id_user'];
-    //         $userVal = $row['username'];
-    //         $passVal =$row['password'];
-    //         $namamu = $row['nama'];
-    //         $level = $row['level'];
-    //     }
-
-    //     if($num != 0){
-    //         if($userVal==$email && $passVal==$pass){
-    //             header('Location: index.php?nama='.urlencode($namamu));
-    //         }else{
-    //             $error = 'Email atau password salah';
-    //         }
-    //     }else{
-    //         $error = 'user tidak ditemukan!!';
-    //         header('Location: login.php');
-    //     }
-    // }else{
-    //     $error = 'Data tidak boleh kosong!!';
-    //     echo $error;
-    // }
-
 	if(!$username) {
-		$error = "Email tidak boleh kosong!";
+		$error = "Email tidak boleh kosong";
 		echo $error;
 		return;
 	}
@@ -48,7 +18,7 @@ if(isset($_POST['submit'])){
 		return;
 	}
 
-	$sql = "SELECT * FROM user WHERE `id_level`='A1'";
+	$sql = "SELECT * FROM user WHERE `id_level`='1'";
 	$result = mysqli_query($koneksi, $sql);
 	$num = mysqli_num_rows($result);
 
@@ -79,8 +49,47 @@ if(isset($_POST['submit'])){
 
 	header('Location: index.php?nama=' . urlencode($namamu));
 }
-
 ?>
+<?php
+
+// include ('koneksi.php');
+// error_reporting(0);
+// // session_start();
+
+// // if (isset($_SESSION['username'])) {
+// //     header("Location: index.php");
+// // }
+
+// if (isset($_POST['submit'])) {
+//     $username = ($_POST['username']);
+//     $password = ($_POST['password']);
+	
+
+//     if(!empty(trim($username))&& !empty(trim($password))){
+//         $sql = "SELECT * FROM user WHERE username='$username'";
+//         $result = mysqli_query($koneksi, $sql);
+//         $num = mysqli_num_rows($result);
+//         while($row = mysqli_fetch_array($result)){
+//             $userval = $row['username'];
+//             $passval = $row['password'];
+         
+//         }
+
+//         if ($num != 0) {
+//             if($userval==$username  && $passval==$password){
+//                 header('Location: index.php?nama=');
+//             }else{
+//                 echo "<script>alert('Password Anda salah. Silahkan coba lagi!')</script>";
+//             }
+//         }else{
+//             echo "<script>alert('Username Anda Salah. Silahkan coba lagi!')</script>";
+//         }
+//     }else{
+//         echo "<script>alert('Username dan Password Salah')</script>";
+//     }
+// }
+
+// ?>
 
 <!DOCTYPE html>
 <html>

@@ -141,27 +141,22 @@
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Tanggal</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Search Here" type="search">
+									<input class="form-control" type="search">
 								</div>
 							</div><div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Nama</label>
+								<label class="col-sm-12 col-md-2 col-form-label">Nama Petani</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Search Here" type="search">
+									<input class="form-control" type="search">
 								</div>
 							</div><div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Search Here" type="search">
+									<input class="form-control" type="search">
 								</div>
 							</div><div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Jenis Padi</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Search Here" type="search">
-								</div>
-							</div><div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Identifikasi Awal</label>
-								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Search Here" type="search">
+									<input class="form-control" type="search">
 								</div>
 							</div><div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Pertanyaan</label>

@@ -1,3 +1,6 @@
+
+// include('koneksi.php');
+
 jQuery(document).ready(function () {
 	jQuery("#add-event").submit(function () {
 		alert("Submitted");
@@ -11,9 +14,6 @@ jQuery(document).ready(function () {
 
 (function () {
 	"use strict";
-	// ------------------------------------------------------- //
-	// Calendar
-	// ------------------------------------------------------ //
 	jQuery(function () {
 		// page is ready
 		jQuery("#calendar").fullCalendar({
@@ -22,6 +22,8 @@ jQuery(document).ready(function () {
 			businessHours: false,
 			defaultView: "month",
 			// event dragging & resizing
+			selectable: true,
+			selecHelper: true,
 			editable: true,
 			// header
 			header: {
@@ -29,27 +31,29 @@ jQuery(document).ready(function () {
 				center: "month,agendaWeek,agendaDay",
 				right: "today prev,next",
 			},
-			events: [
-				{
-					title: "Go Space :)",
-					description:
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.",
-					start: "2022-12-27",
-					end: "2022-12-27",
-					className: "fc-bg-default",
-					icon: "rocket",
-				},
-				{
-					title: "Dentist",
-					description:
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.",
-					start: "2022-12-29T11:30:00",
-					end: "2022-12-29T012:30:00",
-					className: "fc-bg-blue",
-					icon: "medkit",
-					allDay: false,
-				},
-			],
+			 events: "../../../api/tampilJadwal.php",
+			 
+			// [
+			// 	{
+			// 		title: "Go Space :)",
+			// 		description:
+			// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.",
+			// 		start: "2022-12-27",
+			// 		end: "2022-12-27",
+			// 		className: "fc-bg-default",
+			// 		icon: "rocket",
+			// 	},
+			// 	{
+			// 		title: "Dentist",
+			// 		description:
+			// 			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras eu pellentesque nibh. In nisl nulla, convallis ac nulla eget, pellentesque pellentesque magna.",
+			// 		start: "2022-12-29T11:30:00",
+			// 		end: "2022-12-29T012:30:00",
+			// 		className: "fc-bg-blue",
+			// 		icon: "medkit",
+			// 		allDay: false,
+			// 	},
+			// ],
 			dayClick: function () {
 				jQuery("#modal-view-event-add").modal();
 			},

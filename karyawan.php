@@ -198,14 +198,14 @@ if($op == 'delete'){
 																	</div>
 																	<div class="form-group row">
 																	<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
-																	<div class="col-sm-12 col-md-10">
-																		<input
-																			class="form-control date"
-																			value="<?php echo $data["tanggal_lahir"];?>"
-																			type="date"
-																			name="lahir"
-																		/>
-																	</div>
+																		<div class="col-sm-12 col-md-10">
+																			<input
+																				class="form-control date"
+																				value="<?php echo $data["tanggal_lahir"];?>"
+																				type="date"
+																				name="lahir"
+																			/>
+																		</div>
 																	</div>
 																	<div class="form-group row">
 																		<label class="col-sm-12 col-md-2 col-form-label" for="email">Email</label>

@@ -1,8 +1,8 @@
 <?php
  $db = mysqli_connect('localhost','root','','edifarm');
- $id_akun = $_POST['username'];
+ $id_user = $_POST['username'];
  $password = md5($_POST['password']);
- $sql = "SELECT * FROM user WHERE username = '$id_akun' ";
+ $sql = "SELECT * FROM user WHERE username = '$id_user' ";
  $result = mysqli_query($db,$sql);
 
  if(mysqli_num_rows($result) == 1){
@@ -13,9 +13,11 @@
    http_response_code(200);
    echo json_encode(
     array(
+         
         "success" => true, 
         "message" => "Login berhasil",
-        "user" => $userRecord[0]
+        "user" => $userRecord[0],
+        
     )
     );
  } 

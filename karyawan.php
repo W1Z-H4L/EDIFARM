@@ -86,7 +86,7 @@ if($op == 'delete'){
 						<div class="row">
 							<div class="col-md-6 col-sm-12">
 								<div class="title">
-									<h4>Padi<h4>
+									<h4>Karyawan<h4>
 								</div>
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
@@ -94,7 +94,7 @@ if($op == 'delete'){
 											<a href="index.php">Dashboard</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
-											Padi
+											Karyawan
 										</li>
 									</ol>
 								</nav>
@@ -217,14 +217,14 @@ if($op == 'delete'){
 																	</div>
 																	<div class="form-group row">
 																	<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
-																	<div class="col-sm-12 col-md-10">
-																		<input
-																			class="form-control date"
-																			value="<?php echo $data["tanggal_lahir"];?>"
-																			type="date"
-																			name="lahir"
-																		/>
-																	</div>
+																		<div class="col-sm-12 col-md-10">
+																			<input
+																				class="form-control date"
+																				value="<?php echo $data["tanggal_lahir"];?>"
+																				type="date"
+																				name="lahir"
+																			/>
+																		</div>
 																	</div>
 																	<div class="form-group row">
 																		<label class="col-sm-12 col-md-2 col-form-label" for="email">Email</label>

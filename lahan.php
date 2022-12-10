@@ -8,7 +8,7 @@ session_start();
 	 $luas = $_POST['luas'];
 	 $des = $_POST['des'];
 	 $tempat = $_POST['tempat'];
-	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas`, `deskripsi`, `tempat`) VALUES ('$luas', '$nama','$luas','$des','$tempat')";
+	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas_lahan`, `tempat`, `deskripsi`) VALUES ('$luas', '$nama','$luas','$tempat','$des')";
 	 $result = mysqli_query($koneksi,$query);
  }
  if(isset($_POST['update'])) {

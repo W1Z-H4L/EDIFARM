@@ -1,26 +1,33 @@
 <?php 
-include('koneksi.php');
-$sukses="";
-$error="";
-
-if(isset($_POST['submit'])) {
-	$nama_jenis = $_POST['nama_jenis'];
-	$deskripsi = $_POST['deskripsi'];
+require('koneksi.php');
+session_start();
+ 
+ // Check If form submitted, insert form data into users table.
+ if(isset($_POST['submit'])) {
+	 $nama = $_POST['nama_jenis'];
+	 $des = $_POST['deskripsi'];
+	 $query =  "INSERT INTO `jenis` (`id_jenis`, `nama_jenis`, `deskripsi`) VALUES ('3','$nama','$des')";
+	 $result = mysqli_query($koneksi,$query);
+ }
+ if(isset($_POST['update'])) {
+	$id = '1';
+	$nama = $_POST['nama_jenis'];
+	 $des = $_POST['deskripsi'];
 	
-
-	if($nama_jenis&&$deskripsi){
-		$query =  "INSERT INTO jenis VALUES ('1', '$nama_jenis','$deskripsi')";
-		$result = mysqli_query($koneksi,$query);
-		if($result){
-			$sukses ="Berhasil memasukkan data";
-		}else{
-			$error ="Gagal memasukkan data";
-		}
-	}else{
-
-	}
+	$query =  "UPDATE `jenis` SET `id_jenis` = '$id', `nama_jenis` = '$nama', `deskripsi` = '$des'WHERE `user`.`id_jenis` = '$id';";
+	$result = mysqli_query($koneksi,$query);
 }
-?>
+if(isset($_GET['op'])){
+	$op=$_GET['op'];
+}else{
+	$op="";
+}
+if($op == 'delete'){
+	$id = $_GET['id'];
+	$query =  "DELETE FROM jenis WHERE id_jenis='$id'";
+	$result = mysqli_query($koneksi,$query);
+}
+ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -35,7 +42,6 @@ if(isset($_POST['submit'])) {
 		<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 	</head>
-	</head>
 	<body>
 		<?php include 'header.php'; ?>
 		
@@ -46,15 +52,14 @@ if(isset($_POST['submit'])) {
 		<?php include 'sidebar.php'; ?>
 		<div class="mobile-menu-overlay"></div>
 
-		<div class="mobile-menu-overlay"></div>
 		<div class="main-container">
-		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
-					<div class="page-header">
+				<div class="page-header">
 						<div class="row">
-							<div class="col-md-6 col-sm-12">
+							<div class="col-md-12 col-sm-12">
 								<div class="title">
-									<h4>Padi<h4>
+									<h4>Padi</h4>
 								</div>
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
@@ -69,94 +74,126 @@ if(isset($_POST['submit'])) {
 							</div>
 						</div>
 					</div>
-					<div class="row clearfix">
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/ciherang.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Padi Ciherang</h5>
-									<p class="card-text">Padi Ciherang merupakan varietas padi unggul turunan dari IR64. Bentuk gabah padi Ciherang adalah ramping panjang berwarna kuning bersih serta tekstur nasi yang pulen
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
-								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
-								</div>
-							</div>
-						</div>
+				<div class="title pb-20">
 					</div>
 					<div class="row clearfix">
+						<?php 
+						$query = "SELECT * FROM jenis";
+						$result = mysqli_query($koneksi,$query);
+						while($row= $row = mysqli_fetch_array($result)){
+							$id=$row["id_jenis"];
+						?>
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
-								<img
-									class="card-img-top"
-									src="vendors/images/img2.jpg"
-									alt="Card image cap"
-								/>
+							<div class="card card-box text-center">
+								<div class=" d-flex justify-content-between pb-10">
+									<img
+										class="card-img-top"
+										src="vendors/images/ciherang.jpg"
+										alt=""
+									/>
+									<div class=" position-absolute">
+										<a
+											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+											href="#"
+											role="button"
+											data-toggle="dropdown"
+										>
+											<i class="dw dw-more"></i>
+										</a>
+										<div
+											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+										>
+											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal"
+												><i class="dw dw-edit2"></i> Edit</a
+											>
+											<!-- Modal -->
+											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													...
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="button" class="btn btn-primary">Save changes</button>
+												</div>
+												</div>
+											</div>
+											</div>
+													
+
+											<a class="dropdown-item" href="#"
+												><i class="dw dw-delete-3"></i> Delete</a
+											>
+										</div>
+									</div>
+									
+								</div>
 								<div class="card-body">
-									<h5 class="card-title weight-500">Padi</h5>
-									<p class="card-text">
-										Some quick example text to build on the card title and make
-										up the bulk of the card's content.
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
+									<h5 class="card-title weight-500 text-left"><?php echo $row["nama_jenis"];?></h5>
+									<p class="card-text text-left">Lihat Deskripsi Klik Detail dibawah!!!</p>
+									<div>
+										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?php echo $row["id_jenis"];?>" >Detail</a>
+										<div
+											class="modal fade"
+											id="detail<?php echo $row["id_jenis"];?>"
+											tabindex="-1"
+											role="dialog"
+											aria-labelledby="myLargeModalLabel"
+											aria-hidden="true"
+										>
+											<div class="modal-dialog modal-dialog-centered">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title" id="myLargeModalLabel">
+														<?php echo $row["nama_jenis"];?>
+														</h4>
+														<button
+															type="button"
+															class="close"
+															data-dismiss="modal"
+															aria-hidden="true"
+														>
+															×
+														</button>
+													</div>
+													<div class="modal-body">
+														<p>
+														
+														<p class="card-text text-left"><?php echo $row["deskripsi"];?></p>
+														</p>
+													</div>
+													<div class="modal-footer">
+														<button
+															type="button"
+															class="btn btn-secondary"
+															data-dismiss="modal"
+														>
+															Batal
+														</button>
+														<button type="button" class="btn btn-primary">
+															Simpan
+														</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
+						<?php
+						}
+						?>
 					</div>
 				</div>
+			
 			</div>
 		</div>		
 		<div class="add-modal-kar">
@@ -164,14 +201,14 @@ if(isset($_POST['submit'])) {
 			href="#"
 			class="welcome-modal-btn"
 			data-toggle="modal"
-			data-target="#bd-example-modal-lg"
+			data-target="#tambahpadi"
 			>
 			 +
 		</button></div>
 		
 		<div
 			class="modal fade bs-example-modal-lg"
-			id="bd-example-modal-lg"
+			id="tambahpadi"
 			tabindex="-1"
 			role="dialog"
 			aria-labelledby="myLargeModalLabel"
@@ -181,7 +218,7 @@ if(isset($_POST['submit'])) {
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title" id="myLargeModalLabel">
-						Jenis Padi
+						Tambah Padi
 					</h4>
 					<button
 						type="button"
@@ -191,31 +228,37 @@ if(isset($_POST['submit'])) {
 						alt="add-modal-kar"							
 					>x
 					</button>
-					</div>
+				</div>
 						<div class="modal-body">						
-							<form>
+							<form action="padi.php" method="POST">
 								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Nama Padi</label>
+									<label class="col-sm-12 col-md-2 col-form-label" for="nama_jenis">Nama Jenis</label>
 									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="text" placeholder="masukkan nama" name="nama_jenis">
+										<input class="form-control" type="nama" placeholder="Masukkan Data" name="nama_jenis">
 									</div>
-									</div>
-								<div class="form-group">
-									<label>Event Description</label>
-									<textarea class="form-control" type="text" placeholder="masukkan deskripsi" name="deskripsi" onclick= ""></textarea>
 								</div>
-									<div class="form-group mb-0">
-										<input
-											type="submit"
-											class="btn btn-primary"
-											name="submit"
-											value="Simpan"
-											/>
+								</div>
+									<div class="form-group">
+									<label class="col-sm-12 col-md-2 col-form-label" for="deskripsi">Deskripsi</label>
+									<div class="col-sm-12 col-md-10">
+									<textarea class="form-control" value="" type="deskripsi" placeholder="Masukkan Data" name ="deskripsi"></textarea>
+								</div>
+
+									<div class="modal-footer">
+										<button
+											type="button"
+											class="btn btn-secondary"
+											data-dismiss="modal"
+											alt="add-modal-kar"
+										>Batal
+										</button>
+										<input type="submit" name="submit" class="btn btn-primary" value="Simpan" id="sa-success">
 									</div>
+								</div>
 							</form>
 							
-													
-		<!-- welcome modal end -->
+						</div>
+					</div>
 		<!-- js -->
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>

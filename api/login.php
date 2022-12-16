@@ -1,10 +1,10 @@
 <?php
  $db = mysqli_connect('localhost','root','','edifarm');
- $id_user = $_POST['username'];
+ $username = $_POST['username'];
  $password = md5($_POST['password']);
-// <<<<<<< HEAD
-//  $sql = "SELECT * FROM user WHERE username = '$id_user' ";
-//  $result = mysqli_query($db,$sql);
+
+
+
 
 //  if(mysqli_num_rows($result) == 1){
 //    $userRecord=array();
@@ -17,24 +17,24 @@
          
 //         "success" => true, 
 //         "message" => "Login berhasil",
-//         "user" => $userRecord[0],
+//         "user" => $userRecord[],
         
 //     )
 //     );
-// =======
- 
- if(!$id_akun) {
-    http_response_code(400);
-    echo json_encode([
-        "success" => false,
-        "message" => "Masukan username anda",
-        "data" => null,
-    ]);
 
-    exit;
- }
  
- $sql = "SELECT * FROM user WHERE username = '$id_akun' ";
+//  if(!$id_user) {
+//     http_response_code(400);
+//     echo json_encode([
+//         "success" => false,
+//         "message" => "Masukan username anda",
+//         "data" => null,
+//     ]);
+
+//     exit;
+//  }
+ 
+ $sql = "SELECT * FROM user WHERE username = '".$username."'";
  $result = mysqli_query($db,$sql);
 
  if(mysqli_num_rows($result) == 1){
@@ -69,5 +69,32 @@
         "data" => null
     ]);
  }
+ 
+//  $db = mysqli_connect('localhost','root','','kepuharjo');
+//  $id_user = $_POST['username'];
+//  $password = $_POST['password']; 
+//  $sql = "SELECT * FROM akun WHERE username = '".$id_user."'";
+//  $result = mysqli_query($db,$sql);
+//     // $result = array(); 
+//  if($result->num_rows == 1){
+//     $row = $result->fetch_assoc();
+//     if (password_verify($password, $row['password']) ) {
+//         echo json_encode([ 
+//         'success' => true,    
+//         'user' => $row, 
+//         JSON_PRETTY_PRINT
+//     ]);    
+//     } else {
+//                      echo json_encode([
+//             'message' => "Password Salah"]
+//         );
+//     }
+//  } 
+//  else{
+//  	echo json_encode(['message' => "Nik dan Password Salah"]);
+//  }
+
+
+
 ?>
 

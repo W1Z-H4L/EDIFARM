@@ -148,9 +148,9 @@ if(isset($_POST['update'])) {
 								<div class="profile-photo">
 									<a
 										
-										class="edit-avatar">
-										<input type="file" name="foto" id="foto">
-										<i class="fa fa-pencil" ></i>
+										>
+										<input class="edit-avatar" type="file" name="foto" id="foto">
+										<!-- <i class="fa fa-pencil"></i> -->
 										<!-- <input type="file" name="foto" id="foto"> -->
 									</a>
 									<img

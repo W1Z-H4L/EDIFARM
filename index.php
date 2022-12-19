@@ -1,11 +1,16 @@
+<?php
+	session_start();
+	if (!isset($_SESSION["login"])){
+		header("Location: login.php");
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
 		<title>Edifarm</title>
-
-		<!-- Site favicon -->
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
@@ -55,7 +60,8 @@
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 	</head>
 	<body>
-		<?php include 'header.php'; ?>
+		<?php  
+		include 'header.php'; ?>
 
 		<div class="right-sidebar">
 		<?php include 'rightbar.php'; ?>

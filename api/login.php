@@ -14,7 +14,7 @@
     exit;
  }
  
- $sql = "SELECT * FROM user WHERE username = '$id_akun' ";
+ $sql = "SELECT * FROM user WHERE username = '$id_akun' AND id_level = 1 ";
  $result = mysqli_query($db,$sql);
 
  if(mysqli_num_rows($result) == 1){

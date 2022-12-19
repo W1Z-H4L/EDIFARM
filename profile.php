@@ -1,5 +1,7 @@
 <?php
+session_start();
 include('koneksi.php');
+$idUser = $_SESSION["idUser"];
 if(isset($_POST['update'])) {
 	$id = "1";
 	$user = $_POST['username'];
@@ -13,6 +15,7 @@ if(isset($_POST['update'])) {
 	
 	$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt'WHERE `user`.`id_user` = '$id';";
 	$result = mysqli_query($koneksi,$query);
+	$_SESSION["namaUser"] = $nama;
 }
 ?>
 <!DOCTYPE html>
@@ -130,7 +133,7 @@ if(isset($_POST['update'])) {
 						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
 							<div class="pd-20 card-box height-100-p">
 							<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user where id_user = '1'");
+								$query = mysqli_query($koneksi,"SELECT * FROM user where id_user = '$idUser'");
 								if(mysqli_num_rows($query)>0){
 							
 									while($data = mysqli_fetch_array($query)){

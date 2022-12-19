@@ -13,19 +13,17 @@
 		$("input[name='demo3']").TouchSpin();
 		$("input[name='demo1']").TouchSpin({
 			min: 0,
-			max: 100,
-			step: 0.1,
-			decimals: 2,
-			boostat: 5,
+			max: 300,
+			stepinterval: 1,
 			maxboostedstep: 10,
-			postfix: '%'
+			postfix: 'Hari'
 		});
-		$("input[name='demo2']").TouchSpin({
-			min: -1000000000,
-			max: 1000000000,
+		$("input[name='demo2[]']").TouchSpin({
+			min: 0,
+			max: 300,
 			stepinterval: 50,
 			maxboostedstep: 10000000,
-			prefix: '$'
+			prefix: 'Hari ke-'
 		});
 		$("input[name='demo3_22']").TouchSpin({
 			initval: 40

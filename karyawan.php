@@ -365,15 +365,15 @@ if($op == 'delete'){
 								</div>
 							</div>
 							<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
-							<div class="col-sm-12 col-md-10">
-								<input
-									class="form-control date"
-									placeholder="Pilih tanggal lahir"
-									type="date"
-									name="lahir"
-								/>
-							</div>
+								<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
+								<div class="col-sm-12 col-md-10">
+									<input
+										class="form-control date"
+										placeholder="Pilih tanggal lahir"
+										type="date"
+										name="lahir"
+									/>
+								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label" for="tempat">Email</label>
@@ -396,8 +396,8 @@ if($op == 'delete'){
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
 								<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12" name="lahan">
-									<option selected="">Pilih salah satu</option>
+								<select class="form-control selectpicker" name="lahan" title="Pilih salah satu">
+									
 								<?php 
 								$query = mysqli_query($koneksi,"SELECT * FROM lahan");
 								if(mysqli_num_rows($query)>0){ 

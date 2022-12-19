@@ -9,7 +9,7 @@ if(isset($_POST['submit'])) {
 	return;
 	$nama_jenis = $_POST['nama_jenis'];
 	$deskripsi = $_POST['deskripsi'];
-	
+ 
 
 	if($nama_jenis&&$deskripsi){
 		$query =  "INSERT INTO jenis VALUES ('1', '$nama_jenis','$deskripsi')";
@@ -23,7 +23,7 @@ if(isset($_POST['submit'])) {
 
 	}
 }
-?>
+ ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -56,7 +56,6 @@ if(isset($_POST['submit'])) {
 			}
 		</script>
 	</head>
-	</head>
 	<body>
 		<?php include 'header.php'; ?>
 		
@@ -67,15 +66,14 @@ if(isset($_POST['submit'])) {
 		<?php include 'sidebar.php'; ?>
 		<div class="mobile-menu-overlay"></div>
 
-		<div class="mobile-menu-overlay"></div>
 		<div class="main-container">
-		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
-					<div class="page-header">
+				<div class="page-header">
 						<div class="row">
-							<div class="col-md-6 col-sm-12">
+							<div class="col-md-12 col-sm-12">
 								<div class="title">
-									<h4>Padi<h4>
+									<h4>Padi</h4>
 								</div>
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">

@@ -1,6 +1,6 @@
 <?php
  $db = mysqli_connect('localhost','root','','edifarm');
- $id_akun = $_POST['username'];
+ $username = $_POST['username'];
  $password = md5($_POST['password']);
  
  if(!$id_akun) {
@@ -11,8 +11,8 @@
         "data" => null,
     ]);
 
-    exit;
- }
+//     exit;
+//  }
  
  $sql = "SELECT * FROM user WHERE username = '$id_akun' AND id_level = 1 ";
  $result = mysqli_query($db,$sql);
@@ -49,5 +49,32 @@
         "data" => null
     ]);
  }
+ 
+//  $db = mysqli_connect('localhost','root','','kepuharjo');
+//  $id_user = $_POST['username'];
+//  $password = $_POST['password']; 
+//  $sql = "SELECT * FROM akun WHERE username = '".$id_user."'";
+//  $result = mysqli_query($db,$sql);
+//     // $result = array(); 
+//  if($result->num_rows == 1){
+//     $row = $result->fetch_assoc();
+//     if (password_verify($password, $row['password']) ) {
+//         echo json_encode([ 
+//         'success' => true,    
+//         'user' => $row, 
+//         JSON_PRETTY_PRINT
+//     ]);    
+//     } else {
+//                      echo json_encode([
+//             'message' => "Password Salah"]
+//         );
+//     }
+//  } 
+//  else{
+//  	echo json_encode(['message' => "Nik dan Password Salah"]);
+//  }
+
+
+
 ?>
 

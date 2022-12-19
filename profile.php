@@ -150,18 +150,18 @@ if(isset($_POST['update'])) {
 								?>		
 								<div class="profile-photo">
 									<a
-										href="modal"
-										data-toggle="modal"
-										data-target="#modal"
-										class="edit-avatar"
-										><i class="fa fa-pencil"></i
-									></a>
+										
+										>
+										<input class="edit-avatar" type="file" name="foto" id="foto">
+										<!-- <i class="fa fa-pencil"></i> -->
+										<!-- <input type="file" name="foto" id="foto"> -->
+									</a>
 									<img
 										src="vendors/images/photo1.jpg"
 										alt=""
 										class="avatar-photo"
 									/>
-									<div
+									<!-- <div
 										class="modal fade"
 										id="modal"
 										tabindex="-1"
@@ -199,7 +199,7 @@ if(isset($_POST['update'])) {
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<h5 class="text-center h5 mb-0"><?php echo $nama;?></h5>
 								<p class="text-center text-muted font-14">

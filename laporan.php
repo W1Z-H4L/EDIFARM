@@ -1,5 +1,4 @@
 <?php
-include ('koneksi.php');
 if(isset($_POST['submit'])) {
 	$username = $_POST['username'];
 	$nama = $_POST['nama'];
@@ -10,9 +9,12 @@ if(isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$pw = $_POST['pw'];
 	$capt = $_POST['capt'];
+	$lahan = $_POST['lahan'];
 
-	$query =  "INSERT INTO user VALUES ('02', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', 'Karyawan', '')";
-	$result = mysqli_query($koneksi,$query);
+	if($username&&$nama&&$kelamin&&$alamat&&$hp&&$lahir&&$email&&$pw&&$capt&&$lahan){
+		$query =  "INSERT INTO user VALUES ('3', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', '2', '', '$lahan')";
+		$result = mysqli_query($koneksi,$query);
+	}
 }
 ?>
 <?php
@@ -90,13 +92,14 @@ if(isset($_POST['submit'])) {
 										<th>No. HP</th>
 										<th>Tgl Lahir</th>
 										<th>email</th>
+										<th>Lahan</th>
 				
 									</tr>
 								</thead>
 								<tbody>
 								<?php
-									$query = mysqli_query($koneksi,"SELECT username, nama, jenis_kelamin, alamat, no_hp, tanggal_lahir, email FROM user where id_level = 'B1'");
-									if(mysqli_num_rows($query)>0){ ?>	
+									$query = mysqli_query($koneksi,"SELECT * FROM user where id_level = '2'");
+									if(mysqli_num_rows($query)>0){ ?>
 									<?php
 									while($data = mysqli_fetch_array($query)){
 								?>
@@ -108,7 +111,7 @@ if(isset($_POST['submit'])) {
 										<td><?php echo $data["no_hp"];?></td>
 										<td><?php echo $data["tanggal_lahir"];?></td>
 										<td><?php echo $data["email"];?></td>
-										
+										<td><?php echo $data["id_lahan"];?></td>
 									</tr>
 									<?php
 									}

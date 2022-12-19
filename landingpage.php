@@ -362,8 +362,6 @@ https://templatemo.com/tm-565-onix-digital
             <p>Copyright © 2021 Edifarm Digital Co., Ltd. All Rights Reserved.</p>
           </div>
         </div>
-      </div>
-    </div>
   </footer>
 
   <script src="landingpage/js/jquery-2.1.0.min.js"></script>

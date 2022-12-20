@@ -75,79 +75,6 @@
 				<div class="title pb-20">
 					<h2 class="h3 mb-0">Dashboard</h2>
 				</div>
-			<a 
-				href="lahan.php">
-				<div class="row pb-10">
-					<div class="col-xl-3 col-lg-3 col-md-6 mb-20">
-						<div class="card-box height-100-p widget-style3">
-							<div class="d-flex flex-wrap">
-								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">Lahan 1</div>
-									<div class="font-14 text-secondary weight-500">
-									</div>
-								</div>
-								<div class="widget-icon">
-									<div class="icon" data-color="#00eccf">
-										<i class="icon-copy dw dw-bar-chart"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-3 col-md-6 mb-20">
-						<div class="card-box height-100-p widget-style3">
-							<div class="d-flex flex-wrap">
-								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">Lahan 2</div>
-									<div class="font-14 text-secondary weight-500">
-										
-									</div>
-								</div>
-								<div class="widget-icon">
-									<div class="icon" data-color="#ff5b5b">
-										<span class="icon-copy ti-pie-chart"></span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-3 col-md-6 mb-20">
-						<div class="card-box height-100-p widget-style3">
-							<div class="d-flex flex-wrap">
-								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">Lahan 3</div>
-									<div class="font-14 text-secondary weight-500">
-										
-									</div>
-								</div>
-								<div class="widget-icon">
-									<div class="icon">
-										<i
-											class="icon-copy fa fa-line-chart"
-											aria-hidden="true"
-										></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-lg-3 col-md-6 mb-20">
-						<div class="card-box height-100-p widget-style3">
-							<div class="d-flex flex-wrap">
-								<div class="widget-data">
-									<div class="weight-700 font-24 text-dark">Lahan 4</div>
-									<div class="font-14 text-secondary weight-500"></div>
-								</div>
-								<div class="widget-icon">
-									<div class="icon" data-color="#09cc06">
-										<i class="icon-copy fa fa-area-chart" aria-hidden="true"></i>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				<div class="row pb-10">
 					<div class="col-md-8 mb-20">
 						<div class="card-box height-100-p pd-20">
@@ -168,24 +95,24 @@
 						</div>
 					</div>
 					<div class="col-md-4 mb-20">
+						<a href = "konsultasi.php">
 						<div
 							class="card-box min-height-200px pd-20 mb-20"
 							data-bgcolor="#455a64"
 						>
 							<div class="d-flex justify-content-between pb-20 text-white">
 								<div class="icon h1 text-white">
-									<i class="fa fa-calendar" aria-hidden="true"></i>
+									<i class="fa fa-bug" aria-hidden="true"></i>
 									<!-- <i class="icon-copy fa fa-stethoscope" aria-hidden="true"></i> -->
 								</div>
 								<div class="font-14 text-right">
-									<div><i class="icon-copy ion-arrow-up-c"></i> 40%</div>
-									<div class="font-12">1 Bulan Terakhir</div>
+									<div class="font-12">Konsultasi</div>
 								</div>
 							</div>
 							<div class="d-flex justify-content-between align-items-end">
 								<div class="text-white">
 									<div class="font-14"></div>
-									<div class="font-25 weight-600">Lahan </div>
+									<div class="font-25 weight-600">Konsultasi Pada Lahan</div>
 								</div>
 								<div class="max-width-150">
 									<div id="appointment-chart"></div>
@@ -410,7 +337,7 @@
 					<div class="col-md-4 mb-20">
 						<a href="lahan.php" class="card-box d-block mx-auto pd-20 text-secondary">
 							<div class="img pb-30">
-								<img src="vendors/images/sawah1.jpg" alt="" />
+								<img src="vendors/images/gambarlahan_1.png" alt="" />
 							</div>
 							<div class="content">
 								<h3 class="h4">Lahan 1</h3>
@@ -423,7 +350,7 @@
 					<div class="col-md-4 mb-20">
 						<a href="lahan.php" class="card-box d-block mx-auto pd-20 text-secondary">
 							<div class="img pb-30">
-								<img src="vendors/images/padi2.jpg" alt="" />
+								<img src="vendors/images/gambarlahan_2.png" alt="" />
 							</div>
 							<div class="content">
 								<h3 class="h4">Lahan 2</h3>
@@ -436,7 +363,7 @@
 					<div class="col-md-4 mb-20">
 						<a href="lahan.php" class="card-box d-block mx-auto pd-20 text-secondary">
 							<div class="img pb-30">
-								<img src="vendors/images/padi3.jpg" alt="" />
+								<img src="vendors/images/gambarlahan_3.png" alt="" />
 							</div>
 							<div class="content">
 								<h3 class="h4">Lahan 3</h3>

@@ -87,7 +87,7 @@ if($op == 'delete'){
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 							<div class="card card-box text-center">
 								<div class=" d-flex justify-content-between pb-10">
-									<img class="card-img-top" src="vendors/images/img2.jpg" alt=""/>
+									<img class="card-img-top" src="vendors/images/gambarlahan_2.png" alt=""/>
 									
 								</div>
 								<div class="card-body">

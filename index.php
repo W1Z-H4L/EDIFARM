@@ -191,8 +191,8 @@
 									<div id="appointment-chart"></div>
 								</div>
 							</div>
-								</div> <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-								<div class="elfsight-app-300157e0-917f-417b-833e-ae619b5abe80"></div>
+							</div><script src="https://apps.elfsight.com/p/platform.js" defer></script>
+							<div class="elfsight-app-cfd868b2-6107-4fa9-ae0d-73f01284f4d4"></div>
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 <?php 
+session_start();
 require("koneksi.php");
-$namaku = $_GET['nama'];
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +116,7 @@ $namaku = $_GET['nama'];
 							<span class="user-icon">
 								<img src="vendors/images/photo1.jpg" alt="" />
 							</span>
-							<span class="user-name"><?= $namaku;?></span>
+							<span class="user-name"><?= $_SESSION["namaUser"];?></span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"

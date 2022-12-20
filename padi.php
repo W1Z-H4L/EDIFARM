@@ -1,31 +1,27 @@
 <?php 
-require('koneksi.php');
-session_start();
+include('koneksi.php');
+$sukses="";
+$error="";
+
+if(isset($_POST['submit'])) {
+	$jmlah = count($_POST);
+	echo print_r($_POST);
+	return;
+	$nama_jenis = $_POST['nama_jenis'];
+	$deskripsi = $_POST['deskripsi'];
  
- // Check If form submitted, insert form data into users table.
- if(isset($_POST['submit'])) {
-	 $nama = $_POST['nama_jenis'];
-	 $des = $_POST['deskripsi'];
-	 $query =  "INSERT INTO `jenis` (`id_jenis`, `nama_jenis`, `deskripsi`) VALUES ('3','$nama','$des')";
-	 $result = mysqli_query($koneksi,$query);
- }
- if(isset($_POST['update'])) {
-	$id = '1';
-	$nama = $_POST['nama_jenis'];
-	 $des = $_POST['deskripsi'];
-	
-	$query =  "UPDATE `jenis` SET `id_jenis` = '$id', `nama_jenis` = '$nama', `deskripsi` = '$des'WHERE `user`.`id_jenis` = '$id';";
-	$result = mysqli_query($koneksi,$query);
-}
-if(isset($_GET['op'])){
-	$op=$_GET['op'];
-}else{
-	$op="";
-}
-if($op == 'delete'){
-	$id = $_GET['id'];
-	$query =  "DELETE FROM jenis WHERE id_jenis='$id'";
-	$result = mysqli_query($koneksi,$query);
+
+	if($nama_jenis&&$deskripsi){
+		$query =  "INSERT INTO jenis VALUES ('1', '$nama_jenis','$deskripsi')";
+		$result = mysqli_query($koneksi,$query);
+		if($result){
+			$sukses ="Berhasil memasukkan data";
+		}else{
+			$error ="Gagal memasukkan data";
+		}
+	}else{
+
+	}
 }
  ?>
 <!DOCTYPE html>
@@ -41,6 +37,24 @@ if($op == 'delete'){
 		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+		<link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css"/>
+		<script>
+			function copyForm(){
+				$("#asli")
+				.clone()
+				.appendTo($("#dinamis"))
+			};
+			function copyForm1(){
+				$("#aslipupuk")
+				.clone()
+				.appendTo($("#dinamispupuk"))
+			};
+			function copyForm2(){
+				$("#aslipestisida")
+				.clone()
+				.appendTo($("#dinamispestisida"))
+			}
+		</script>
 	</head>
 	<body>
 		<?php include 'header.php'; ?>
@@ -74,126 +88,24 @@ if($op == 'delete'){
 							</div>
 						</div>
 					</div>
-				<div class="title pb-20">
-					</div>
 					<div class="row clearfix">
-						<?php 
-						$query = "SELECT * FROM jenis";
-						$result = mysqli_query($koneksi,$query);
-						while($row= $row = mysqli_fetch_array($result)){
-							$id=$row["id_jenis"];
-						?>
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box text-center">
-								<div class=" d-flex justify-content-between pb-10">
-									<img
-										class="card-img-top"
-										src="vendors/images/ciherang.jpg"
-										alt=""
-									/>
-									<div class=" position-absolute">
-										<a
-											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-											href="#"
-											role="button"
-											data-toggle="dropdown"
-										>
-											<i class="dw dw-more"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-										>
-											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal"
-												><i class="dw dw-edit2"></i> Edit</a
-											>
-											<!-- Modal -->
-											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													...
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Save changes</button>
-												</div>
-												</div>
-											</div>
-											</div>
-													
-
-											<a class="dropdown-item" href="#"
-												><i class="dw dw-delete-3"></i> Delete</a
-											>
-										</div>
-									</div>
-									
-								</div>
+							<div class="card card-box">
+								<img
+									class="card-img-top"
+									src="vendors/images/ciherang.jpg"
+									alt="Card image cap"
+								/>
 								<div class="card-body">
-									<h5 class="card-title weight-500 text-left"><?php echo $row["nama_jenis"];?></h5>
-									<p class="card-text text-left">Lihat Deskripsi Klik Detail dibawah!!!</p>
-									<div>
-										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?php echo $row["id_jenis"];?>" >Detail</a>
-										<div
-											class="modal fade"
-											id="detail<?php echo $row["id_jenis"];?>"
-											tabindex="-1"
-											role="dialog"
-											aria-labelledby="myLargeModalLabel"
-											aria-hidden="true"
-										>
-											<div class="modal-dialog modal-dialog-centered">
-												<div class="modal-content">
-													<div class="modal-header">
-														<h4 class="modal-title" id="myLargeModalLabel">
-														<?php echo $row["nama_jenis"];?>
-														</h4>
-														<button
-															type="button"
-															class="close"
-															data-dismiss="modal"
-															aria-hidden="true"
-														>
-															×
-														</button>
-													</div>
-													<div class="modal-body">
-														<p>
-														
-														<p class="card-text text-left"><?php echo $row["deskripsi"];?></p>
-														</p>
-													</div>
-													<div class="modal-footer">
-														<button
-															type="button"
-															class="btn btn-secondary"
-															data-dismiss="modal"
-														>
-															Batal
-														</button>
-														<button type="button" class="btn btn-primary">
-															Simpan
-														</button>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+									<h5 class="card-title weight-500">Padi Ciherang</h5>
+									<p class="card-text">Padi Ciherang merupakan varietas padi unggul turunan dari IR64. Bentuk gabah padi Ciherang adalah ramping panjang berwarna kuning bersih serta tekstur nasi yang pulen
+									</p>
+									<a href="#" class="btn btn-primary">Detail</a>
 								</div>
 							</div>
 						</div>
-						<?php
-						}
-						?>
 					</div>
 				</div>
-			
 			</div>
 		</div>		
 		<div class="add-modal-kar">
@@ -201,69 +113,195 @@ if($op == 'delete'){
 			href="#"
 			class="welcome-modal-btn"
 			data-toggle="modal"
-			data-target="#tambahpadi"
+			data-target="#exampleModal"
 			>
 			 +
 		</button></div>
 		
-		<div
-			class="modal fade bs-example-modal-lg"
-			id="tambahpadi"
-			tabindex="-1"
-			role="dialog"
-			aria-labelledby="myLargeModalLabel"
-			aria-hidden="true"
-		>
-		<div class="modal-dialog modal-lg modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myLargeModalLabel">
-						Tambah Padi
-					</h4>
-					<button
-						type="button"
-						class="close"
-						data-dismiss="modal"
-						aria-hidden="true"
-						alt="add-modal-kar"							
-					>x
-					</button>
-				</div>
-						<div class="modal-body">						
-							<form action="padi.php" method="POST">
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label" for="nama_jenis">Nama Jenis</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="nama" placeholder="Masukkan Data" name="nama_jenis">
-									</div>
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+				<form action="padi.php" method="POST">
+					<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Tambah Jenis Padi</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+					<ul class="nav nav-tabs customtab" role="tablist">
+							<li class="nav-item">
+								<a
+									class="nav-link active"
+									data-toggle="tab"
+									href="#detail"
+									role="tab"
+									>Detail padi</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									data-toggle="tab"
+									href="#irigasi"
+									role="tab"
+									>Irigasi</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									data-toggle="tab"
+									href="#pupuk"
+									role="tab"
+									>Pemupukan</a
+								>
+							</li>
+							<li class="nav-item">
+								<a
+									class="nav-link"
+									data-toggle="tab"
+									href="#pestisida"
+									role="tab"
+									>Pestisida</a
+								>
+							</li>
+						</ul>
+						<div class="tab-content">
+							<!-- Setting Tab start -->
+							<div
+								class="tab-pane fade show active"
+								id="detail"
+								role="tabpanel"
+							>
+								<div class="profile-setting">
+									<ul class="profile-edit-list row">
+										<li class="weight-100 col-md-12">
+											<div class="form-group">
+												<label>Nama Padi</label>
+												<input class="form-control form-control-lg" type="text" name="namaPadi"/>
+											</div>
+											<div class="form-group">
+												<label>Lama Tanam</label>
+												<input class="form-control form-control-lg" type="text" name="durasi" />
+											</div>
+											<div class="form-group">
+												<label>Deskripsi</label>
+												<textarea class="form-control" name="des"></textarea>
+											</div>
+										</li>
+									</ul>
 								</div>
-								</div>
-									<div class="form-group">
-									<label class="col-sm-12 col-md-2 col-form-label" for="deskripsi">Deskripsi</label>
-									<div class="col-sm-12 col-md-10">
-									<textarea class="form-control" value="" type="deskripsi" placeholder="Masukkan Data" name ="deskripsi"></textarea>
-								</div>
+							</div>
+								<div
+									class="tab-pane fade height-100-p"
+									id="irigasi"
+									role="tabpanel"
+								>
+									<div class="profile-setting">
+										<ul class="profile-edit-list row">
+											<li class="weight-100 col-md-12">
+												<div class="form-group" id="asli">
+													<input id="demo2" type="text" value="0" name="demo2[]" />
+												</div>
 
-									<div class="modal-footer">
-										<button
-											type="button"
-											class="btn btn-secondary"
-											data-dismiss="modal"
-											alt="add-modal-kar"
-										>Batal
-										</button>
-										<input type="submit" name="submit" class="btn btn-primary" value="Simpan" id="sa-success">
+												<div class="form-group" id="dinamis">
+												</div>
+											</li>
+										</ul>
+										<div class="add-more-task">
+											<a
+												href="#"
+												data-toggle="tooltip"
+												data-placement="bottom"
+												onclick="copyForm()"
+												data-original-title="Add Task"
+												><i class="ion-plus-circled"></i> Add
+												More Task</a
+											>
+										</div>
 									</div>
 								</div>
-							</form>
-							
+								<div
+									class="tab-pane fade height-100-p"
+									id="pupuk"
+									role="tabpanel"
+								>
+									<div class="profile-setting">
+										<ul class="profile-edit-list row">
+											<li class="weight-100 col-md-12">
+												<div class="form-group" id="aslipupuk">
+													<input class="form-control form-control-lg" type="text" name="hstpupuk[]" />
+												</div>
+												<div class="form-group" id="dinamispupuk">
+													
+												</div>
+											</li>
+										</ul>
+										<div class="add-more-task">
+											<a
+												href="#"
+												data-toggle="tooltip"
+												data-placement="bottom"
+												onclick="copyForm1()"
+												data-original-title="Add Task"
+												><i class="ion-plus-circled"></i> Add
+												More Task</a
+											>
+										</div>
+									</div>
+								</div>
+								<div
+									class="tab-pane fade height-100-p"
+									id="pestisida"
+									role="tabpanel"
+								>
+									<div class="profile-setting">
+										<ul class="profile-edit-list row">
+											<li class="weight-100 col-md-12">
+												<div class="form-group" id="aslipestisida">
+													<input class="form-control form-control-lg" type="text" name="hstpestisida[]" />
+												</div>
+												<div class="form-group" id="dinamispestisida">
+												</div>
+											</li>
+										</ul>
+										<div class="add-more-task">
+											<a
+												href="#"
+												data-toggle="tooltip"
+												data-placement="bottom"
+												onclick="copyForm2()"
+												data-original-title="Add Task"
+												><i class="ion-plus-circled"></i> Add
+												More Task</a
+											>
+										</div>
+									</div>
+								</div>
+							<!-- Setting Tab End -->
 						</div>
 					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+				
+							
+													
+		<!-- welcome modal end -->
 		<!-- js -->
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+		<script src="vendors/scripts/advanced-components.js"></script>
 		
 	</body>
 </html>

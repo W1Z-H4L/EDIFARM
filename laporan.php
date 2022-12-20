@@ -26,7 +26,12 @@ if(isset($_POST['submit'])) {
 	$tempat = $_POST['tempat'];
 	$query =  "INSERT INTO user VALUES ('02', '$nama','$luas','$deskripsi','$tempat')";
 	$result = mysqli_query($koneksi,$query);
-}
+	
+}if ($idPilihan){
+	$judul = $namalhn;
+}else{
+	$judul = "Pilih Lahan";
+};
 ?>
 
 <!DOCTYPE html>
@@ -159,6 +164,58 @@ if(isset($_POST['submit'])) {
 									}
 								}
 								?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- Laporan Lahan Berhenti -->
+
+					<!-- Laporan konsultasi Mulai -->
+					<div class="card-box mb-30">
+						<div class="pd-20">
+							<h4 class="text-blue h4">Laporan Konsultasi</h4>
+						</div>
+						<div class="col-md-6 col-sm-12 text-right">
+								<div class="dropdown">
+									<a
+										class="btn btn-primary dropdown-toggle"
+										href="#"
+										role="button"
+										data-toggle="dropdown"
+									>
+									<?php echo $judul ?>
+									</a>
+									<ul class="dropdown-menu dropdown-menu-right">
+									<?php 
+									$query1 = mysqli_query($koneksi,"SELECT * FROM lahan");
+									if(mysqli_num_rows($query1)>0){ 
+									?>
+									<?php
+										while($data1 = mysqli_fetch_array($query1)){
+											$namalahan1=$data1["nama_lahan"];
+											$idlahan1=$data1["id_lahan"];
+									?>		
+										<li><a class="dropdown-item" href="laporan.php?idlhn=<?=$idlahan1; ?>"><?php echo $namalahan1 ?></a></li>
+									<?php  
+										} 
+									} 
+									?>
+									</ul>
+								</div>
+							</div>
+						<div class="pb-20">
+							<table class="data-table-export table stripe hover nowrap">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">Tanggal Konsultasi</th>
+										<th>Nama Lahan</th>
+										<th>Nama Karyawan</th>
+										<th>Jenis Padi</th>
+										<th>Pertanyaan</th>
+									</tr>
+								</thead>
+								<tbody>
+									
 								</tbody>
 							</table>
 						</div>

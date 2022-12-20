@@ -1,31 +1,34 @@
 <?php
 require('koneksi.php');
 session_start();
+$error="0";
 
 if(isset($_POST['submit'])){
     $username = trim($_POST['username']);
     $pass = trim($_POST['password']);
 
+	
+
 	if(!$username) {
 		$error = "Email tidak boleh kosong";
-		echo $error;
-		return;
+		//echo $error;
+		exit;
 	}
 
 	if(!$pass) {
 		$error = "Password tidak boleh kosong!";
-		echo $error;
-		return;
+		//echo $error;
+		exit;
 	}
 
-	$sql = "SELECT * FROM user WHERE `id_level`='1'";
+	$sql = "SELECT * FROM user WHERE `username`='$username' and id_level = '1'";
 	$result = mysqli_query($koneksi, $sql);
 	$num = mysqli_num_rows($result);
 
 	if(!$num) {
 		$error = "User tidak ditemukan";
-		echo $error;
-		return;
+		//echo $error;
+		exit;
 	}
 
 	while ($row = mysqli_fetch_array($result)){
@@ -37,17 +40,19 @@ if(isset($_POST['submit'])){
 
 	if($username != $userVal) {
 		$error = "Email anda salah!";
-		echo $error;
-		return;
+		//echo $error;
+		exit;
 	}
 
 	if($pass != $passVal) {
 		$error = "Password anda salah!";
-		echo $error;
-		return;
+		//echo $error;
+		exit;
 	}
-
-	header('Location: index.php?nama=' . urlencode($namamu));
+	$_SESSION["login"]=true;
+	$_SESSION["idUser"] = $id;
+	$_SESSION["namaUser"] = $namamu;
+	header('Location: index.php');
 }
 ?>
 <?php
@@ -197,7 +202,15 @@ if(isset($_POST['submit'])){
 										></span>
 									</div>
 								</div>
-                                
+                                <?php
+								if($error!=0){?>
+									<div class="alert alert-danger" role="alert">
+									<?php echo $error?>
+									</div>
+								<?php
+								}
+								?>
+								
 								<div class="row pb-30">
 									<div class="col-6">
 										<div class="custom-control custom-checkbox">

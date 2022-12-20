@@ -232,13 +232,6 @@
 									<li class="d-flex align-items-center justify-content-between">
 										<div class="name-avatar d-flex align-items-center pr-2">
 											<div class="avatar mr-2 flex-shrink-0">
-												<img
-													src="vendors/images/photo1.jpg"
-													class="border-radius-100 box-shadow"
-													width="50"
-													height="50"
-													alt=""
-												/>
 											</div>
 											<div class="txt">
 												<span
@@ -262,13 +255,22 @@
 									<li class="d-flex align-items-center justify-content-between">
 										<div class="name-avatar d-flex align-items-center pr-2">
 											<div class="avatar mr-2 flex-shrink-0">
-												<img
-													src="vendors/images/photo2.jpg"
-													class="border-radius-100 box-shadow"
-													width="50"
-													height="50"
-													alt=""
-												/>
+											<div class="txt">
+												<span
+													class="badge badge-pill badge-sm"
+													data-bgcolor="#e7ebf5"
+													data-color="#265ed7"
+													></span
+												>
+												<div class="font-14 weight-600"></div>
+												<div class="font-12 weight-500" data-color="#b2b1b6">
+													
+												</div>
+											</div>
+									</li>
+									<li class="d-flex align-items-center justify-content-between">
+										<div class="name-avatar d-flex align-items-center pr-2">
+											<div class="avatar mr-2 flex-shrink-0">
 											</div>
 											<div class="txt">
 												<span
@@ -292,43 +294,7 @@
 									<li class="d-flex align-items-center justify-content-between">
 										<div class="name-avatar d-flex align-items-center pr-2">
 											<div class="avatar mr-2 flex-shrink-0">
-												<img
-													src="vendors/images/photo3.jpg"
-													class="border-radius-100 box-shadow"
-													width="50"
-													height="50"
-													alt=""
-												/>
-											</div>
-											<div class="txt">
-												<span
-													class="badge badge-pill badge-sm"
-													data-bgcolor="#e7ebf5"
-													data-color="#265ed7"
-													></span
-												>
-												<div class="font-14 weight-600"></div>
-												<div class="font-12 weight-500" data-color="#b2b1b6">
-													
-												</div>
-											</div>
-										</div>
-										<div class="cta flex-shrink-0">
-											<a href="#" class="btn btn-sm btn-outline-primary"
-												>Jadwal</a
-											>
-										</div>
-									</li>
-									<li class="d-flex align-items-center justify-content-between">
-										<div class="name-avatar d-flex align-items-center pr-2">
-											<div class="avatar mr-2 flex-shrink-0">
-												<img
-													src="vendors/images/photo4.jpg"
-													class="border-radius-100 box-shadow"
-													width="50"
-													height="50"
-													alt=""
-												/>
+										
 											</div>
 											<div class="txt">
 												<span

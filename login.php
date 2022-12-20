@@ -224,17 +224,14 @@ if(isset($_POST['submit'])){
 											>
 										</div>
 									</div>
-									<div class="col-6">
-										<div class="forgot-password">
-											<a href="reset-password.php">Lupa Password</a>
-										</div>
-									</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="input-group mb-0">
 											<input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Masuk">
-										
+											<div class="col-md-4 col-sm-12 mb-30">
+												
+							
 											<!-- <a
 												class="btn btn-primary btn-lg btn-block"
 												href="index.php"

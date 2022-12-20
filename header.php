@@ -131,7 +131,7 @@ require("koneksi.php");
 							<a class="dropdown-item" href="tentang.php"
 								><i class="dw dw-help"></i> Tentang</a
 							>
-							<a class="dropdown-item" href="login.php"
+							<a class="dropdown-item" href="landingpage.php"
 								><i class="dw dw-logout"></i> Keluar</a
 							>
 						</div>

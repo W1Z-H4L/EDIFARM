@@ -178,9 +178,7 @@ https://templatemo.com/tm-565-onix-digital
     <div class="container">
       <div class="row">
         <div class="col-lg-6 align-self-center">
-          <div class="left-image">
             <img src="vendors/images/gambar.png" alt="Two Girls working together">
-          </div>
         </div>
         <div class="col-lg-6">
           <div class="section-heading">
@@ -362,8 +360,6 @@ https://templatemo.com/tm-565-onix-digital
             <p>Copyright © 2021 Edifarm Digital Co., Ltd. All Rights Reserved.</p>
           </div>
         </div>
-      </div>
-    </div>
   </footer>
 
   <script src="landingpage/js/jquery-2.1.0.min.js"></script>

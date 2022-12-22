@@ -47,64 +47,29 @@
 				</div>
 			</div>
 			<div class="row clearfix">
+			<?php 
+				$query = mysqli_query($koneksi,"SELECT * FROM consul INNER JOIN jadwal ON consul.id_jadwal = jadwal.id_jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN sesi_tanam ON jadwal.id_sesi = sesi_tanam.id_sesi INNER JOIN jenis ON sesi_tanam.id_jenis = jenis.id_jenis WHERE consul.status='belum'");
+				if(mysqli_num_rows($query)>0){
+			
+					while($data = mysqli_fetch_array($query)){
+						$tanggal=$data["tanggal_consul"];
+						$nama_kar=$data["nama"];
+							$nama_lahan=$data["nama_lahan"];
+							$jenis=$data["nama_jenis"];
+							$des=$data["isi"];
+							$status=$data["status"];
+						
+					}}
+				?>	
 			<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-				<div class="card card-box">
+				<div class="card card-box">	
 					<img
 						class="card-img-top"
-						src="vendors/images/img2.jpg"
+						src="vendors/images/padi2.jpg"
 						alt="Card image cap"
 					/>
 					<div class="card-body">
 						<h5 class="card-title weight-500">Lahan 1</h5>
-						<p class="card-text">
-							Berikut adalah hasil diagnosa penyakit, klik lihat untuk melihat detailnya.
-						</p>
-						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-lg">Lihat</a>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-				<div class="card card-box">
-					<img
-						class="card-img-top"
-						src="vendors/images/img2.jpg"
-						alt="Card image cap"
-					/>
-					<div class="card-body">
-						<h5 class="card-title weight-500">Lahan 2</h5>
-						<p class="card-text">
-							Berikut adalah hasil diagnosa penyakit, klik lihat untuk melihat detailnya.
-						</p>
-						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-lg">Lihat</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-				<div class="card card-box">
-					<img
-						class="card-img-top"
-						src="vendors/images/img2.jpg"
-						alt="Card image cap"
-					/>
-					<div class="card-body">
-						<h5 class="card-title weight-500">Lahan 3</h5>
-						<p class="card-text">
-							Berikut adalah hasil diagnosa penyakit, klik lihat untuk melihat detailnya.
-						</p>
-						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-lg">Lihat</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-				<div class="card card-box">
-					<img
-						class="card-img-top"
-						src="vendors/images/img2.jpg"
-						alt="Card image cap"
-					/>
-					<div class="card-body">
-						<h5 class="card-title weight-500">Lahan 4</h5>
 						<p class="card-text">
 							Berikut adalah hasil diagnosa penyakit, klik lihat untuk melihat detailnya.
 						</p>
@@ -141,48 +106,51 @@
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Tanggal</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search">
+									<input class="form-control" type="search" value = "<?php echo $tanggal ?>" name = "tanggal">
 								</div>
 							</div><div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Nama Petani</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search">
+									<input class="form-control" type="search" value = "<?php echo $nama_kar ?>" name = "nama_karyawan">
 								</div>
 							</div><div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search">
+									<input class="form-control" type="search" value = "<?php echo $nama_lahan ?>" name = "nama_lahan">
 								</div>
 							</div><div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Jenis Padi</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search">
-								</div>
+									<input class="form-control" type="search" value = "<?php echo $jenis ?>" name = "jenis">
+							    </div>
 							</div><div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Pertanyaan</label>
+								<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
+								<div class="col-sm-12 col-md-10">
+								<textarea class="form-control" value="" name = "deskripsi"><?php echo $des ?></textarea>
 								</div>
-
-								<div class="card-box mb-30">
-						<div class="pd-20">
-							<h4 class="text-blue h4">Hasil Pertanyaan</h4>
-						</div>
-						<div class="pb-20">
-							<table class="data-table-export table stripe hover nowrap">
-								<thead>
-									<tr>
-										<th class="table-plus datatable-nosort">No</th>
-										<th>Pertanyaan</th>
-									</tr>
-								</thead>
-								<tbody>
-								<tr>
-										<td class="table-plus">1</td>
-										<td>wkwkwkwkwkwkwkwk</td>
-								</tr>
-								</tbody>
-							</table>
+								</div>
+								
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Status</label>
+								<div class="col-sm-12 col-md-10">
+								<select class="custom-select col-12" name="status">
+								<?php 
+								$query1 = mysqli_query($koneksi,"SELECT * FROM consul");
+								if(mysqli_num_rows($query)>0){ 
+								?>
+								<?php
+									while($data1 = mysqli_fetch_array($query1)){
+										$status=$data1["status"];
+										
+								?>		
+									<option value="<?php echo $status ?>" <?php if($status==$data["status"]) echo "selected"?>><?php echo $status ?></option>
+									<?php  
+									} 
+								} 
+								?>
+								</select>
+								</div>
 							</div>
-						</div>
 						<form>
 					<div class="modal-footer">
 						<button

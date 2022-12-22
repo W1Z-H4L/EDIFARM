@@ -3950,11 +3950,11 @@ body.IE .register-page-wrap .container{
 }
 
 .bootstrap-tagsinput .label-info{
-	background: #1b00ff;
+	background: #006B6C;
 }
 
 .bootstrap-touchspin .btn{
-	background: #1b00ff;
+	background: #006B6C;
 	height: 100%;
 	display: flex;
 	align-items: center;
@@ -3978,14 +3978,14 @@ body.IE .register-page-wrap .container{
 }
 
 .dropzone{
-	border-color: #1b00ff;
+	border-color: #006B6C;
 }
 .dropzone .dz-preview .dz-remove{
 	color: red;
 }
 
 .fc-view-container tr:first-child > td > .fc-day-grid-event{
-	background: #1b00ff;
+	background: #006B6C;
 }
 .fc-today.alert-info{
 	background: #e0deef;
@@ -4009,7 +4009,7 @@ body.IE .register-page-wrap .container{
 	font-weight: 600;
 }
 .swal2-popup .swal2-styled.swal2-confirm{
-	background: #100099;
+	background: #006B6C;
 }
 
 /*==============================================================

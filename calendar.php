@@ -1,59 +1,90 @@
 <?php 
 require('koneksi.php');
-session_start();
-
-
 	$idPilihan = $_GET['idlhn'];
 	
+if(isset($_POST['tambahJadwal'])) {
+	$lahan = $_POST['lahanPilih'];
+	$jenis = $_POST['padiPilih'];
+	$startTgl = $_POST['tanggalMulai'];
 	
+	$query0 = "SELECT durasi_tanam FROM jenis where id_jenis = '$jenis'";
+	$result2 = mysqli_query($koneksi,$query0);
+		$row = mysqli_fetch_assoc($result2);
+		$hst = $row["durasi_tanam"];
+		$endTgl = date('Y-m-d', strtotime("+$hst days", strtotime($startTgl)));
 		
- // Check If form submitted, insert form data into users table.
- if(isset($_POST['tambah'])) {
+	$query =  "INSERT INTO `sesi_tanam` (`id_sesi`, `tgl_mulai`, `tgl_selesai`, `id_jenis`, `status`) VALUES ('', '$startTgl','$endTgl','$jenis', 'belum')";
+	$result = mysqli_query($koneksi,$query); 
 	
-	 $user = $_POST['user'];
-	 $kegiatan = $_POST['kegiatan'];
-	 $start = $_POST['start'];
-	 $end = $_POST['end'];
-	 $query =  "INSERT INTO `jadwal` (`id_jadwal`, `id_user`, `kegiatan`, `tanggal_mulai`, `tanggal_selesai`, `status`, `id_sesi`, `id_lahan`) VALUES ('', '$user','$kegiatan','$start','$end', 'belum', '1', '1')";
-	 $result = mysqli_query($koneksi,$query);
- }
- if(isset($_POST['id'])) {
-	$id = $_POST['id'];
+	$query3 = "SELECT id_sesi FROM sesi_tanam ORDER BY id_sesi DESC";
+	$result3 = mysqli_query($koneksi,$query3);
+		$row1 = mysqli_fetch_assoc($result3);
+    	$idbaru = $row1["id_sesi"];
+	
+	$query4 = mysqli_query($koneksi,"SELECT * FROM kegiatan where id_jenis ='$jenis'");
+	if(mysqli_num_rows($query4)>0){ 
+		while($data = mysqli_fetch_array($query4)){
+			$kegiatan=$data["nama_kegiatan"];
+			$hst1=$data["hst"];
+			$hst2=$hst1 - 1;
+			$tgl = date('Y-m-d', strtotime("+$hst2 days", strtotime($startTgl)));
+			$tgl2 = date('Y-m-d', strtotime('+1 days', strtotime($tgl)));
+			$query5 =  "INSERT INTO `jadwal` (`id_jadwal`, `id_user`, `kegiatan`, `tanggal_mulai`, `tanggal_selesai`, `status`, `id_sesi`, `id_lahan`) VALUES ('', '1','$kegiatan','$tgl','$tgl2', 'belum', '$idbaru', '$lahan')";
+			$result1 = mysqli_query($koneksi,$query5); 
+			
+		} 
+	};
+	$query =  "UPDATE lahan set status = 'produksi' where id_lahan='$lahan'";
+	$result = mysqli_query($koneksi,$query);
+
+}
+if(isset($_POST['tambah'])) {
+	$user = $_POST['user'];
+	$kegiatan = $_POST['kegiatan'];
+	$start = $_POST['start'];
+	$end = $_POST['end'];
+	$lahan = $_POST['lahan'];
+	$query =  "INSERT INTO `jadwal` (`id_jadwal`, `id_user`, `kegiatan`, `tanggal_mulai`, `tanggal_selesai`, `status`, `id_sesi`, `id_lahan`) VALUES ('', '$user','$kegiatan','$start','$end', 'belum', '1', '$lahan')";
+	$result = mysqli_query($koneksi,$query); 
+}
+if(isset($_POST['id'])) {
+	$id2 = $_POST['id'];
 	$kegiatan = $_POST['title'];
 	$start = $_POST['start'];
 	$end = $_POST['end'];
-	$query =  "UPDATE jadwal set kegiatan = '$kegiatan', tanggal_mulai= '$start', tanggal_selesai = '$end' WHERE `jadwal`.`id_jadwal` = '$id'";
+	$query =  "UPDATE jadwal set kegiatan = '$kegiatan', tanggal_mulai= '$start', tanggal_selesai = '$end' WHERE `jadwal`.`id_jadwal` = '$id2'";
 	$result = mysqli_query($koneksi,$query);
 }
-
-	$sql5 = "SELECT * FROM jadwal INNER JOIN lahan ON jadwal.id_lahan=lahan.id_lahan where jadwal.id_lahan = '$idPilihan'";
-	$result8 = mysqli_query($koneksi,$sql5);
-	$dataArr = array();
-	if(mysqli_num_rows($result8)>0){ 
-	while($data2 = mysqli_fetch_array($result8)){
-		$namalhn = $data2['nama_lahan'];
-		$dataArr[] = array(
-			'id' => $data2['id_jadwal'],
-			'title' => $data2['kegiatan'],
-			'start' => $data2['tanggal_mulai'],
-			'end' => $data2['tanggal_selesai'],
-		);
-	}};
-	if ($idPilihan){
-		$judul = $namalhn;
-	}else{
-		$judul = "Pilih Lahan";
-	};
+if(isset($_POST['hapus'])) {
+	$id = $_POST['idJadwal'];
+	$query =  "DELETE FROM `jadwal` WHERE id_jadwal = $id";
+	$result = mysqli_query($koneksi,$query); 
+}
+$sql5 = "SELECT * FROM jadwal right JOIN lahan ON jadwal.id_lahan=lahan.id_lahan where lahan.id_lahan = '$idPilihan'";
+$result8 = mysqli_query($koneksi,$sql5);
+$dataArr = array();
+if(mysqli_num_rows($result8)>0){ 
+while($data = mysqli_fetch_array($result8)){
+	$namalhn = $data['nama_lahan'];
+	$dataArr[] = array(
+		'id' => $data['id_jadwal'],
+		'title' => $data['kegiatan'],
+		'start' => $data['tanggal_mulai'],
+		'end' => $data['tanggal_selesai'],
+	);
+}};
+if ($idPilihan){
+	$judul = $namalhn;
+} else{
+	$judul = "Pilih Lahan";
+};
  ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
 		<title>Edifarm</title>
-
-		<!-- Site favicon -->
 		<link
 			rel="apple-touch-icon"
 			sizes="180x180"
@@ -71,19 +102,14 @@ session_start();
 			sizes="16x16"
 			href="vendors/images/logo_edifarm.png"
 		/>
-
-		<!-- Mobile Specific Metas -->
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1, maximum-scale=1"
 		/>
-
-		<!-- Google Font -->
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
 			rel="stylesheet"
 		/>
-		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
 		<link
 			rel="stylesheet"
@@ -95,6 +121,7 @@ session_start();
 			type="text/css"
 			href="src/plugins/fullcalendar/fullcalendar.css"
 		/>
+		<link rel="stylesheet" type="text/css" href="src/plugins/jquery-steps/jquery.steps.css" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 	</head>
 	<body>
@@ -149,7 +176,7 @@ session_start();
 											$namalahan1=$data1["nama_lahan"];
 											$idlahan1=$data1["id_lahan"];
 									?>		
-										<li><a class="dropdown-item" href="calendar.php?idlhn=<?=$idlahan1; ?>"><?php echo $namalahan1 ?></a></li>
+										<li><a class="dropdown-item" href="calendar.php?idlhn=<?=$idlahan1;?>"><?php echo $namalahan1 ?></a></li>
 									<?php  
 										} 
 									} 
@@ -170,16 +197,20 @@ session_start();
 						>
 							<div class="modal-dialog modal-dialog-centered">
 								<div class="modal-content">
-									<form action="calendar.php" method="POST">
+									<form action="calendar.php?idlhn=<?=$idPilihan;?>" method="POST">
 										<div class="modal-body">
 											<h4 class="text-blue h4 mb-10">Detail Jadwal</h4>
 											<div class="form-group">
+												<label>id jadwal</label>
+												<input type="text" class="idJadwal form-control" name="id" id="user" />
+											</div>
+											<div class="form-group">
 												<label>id user</label>
-												<input type="text" class="form-control" name="user" id="user" />
+												<input type="text" class="form-control" name="user" id="user" required/>
 											</div>
 											<div class="form-group">
 												<label>Kegiatan</label>
-												<input type="text" class="title form-control" name="kegiatan" id="kegiatan" />
+												<input type="text" class="title form-control" name="title" id="title" required/>
 											</div>
 											<div class="form-group">
 												<label>Mulai</label>
@@ -191,12 +222,12 @@ session_start();
 											</div>
 											<div class="form-group">
 												<label>lahan</label>
-												<input type="text" class="form-control" name="user" id="user" value="<?php echo $idPilihan ?>" />
+												<input type="text" class="form-control" readOnly name="lahan" id="user" value="<?php echo $idPilihan ?>" />
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-primary"  id="tombol_form" name="tambah">
-												Simpan
+											<button type="submit" class="btn btn-primary"  id="tombol_form" name="id">
+												Update
 											</button>
 											<button
 												type="button"
@@ -204,6 +235,9 @@ session_start();
 												data-dismiss="modal"
 											>
 												Batal
+											</button>
+											<button type="submit" class="btn btn-primary"  id="tombol_form" name="hapus">
+												Hapus
 											</button>
 										</div>
 									</form>
@@ -217,16 +251,16 @@ session_start();
 						>
 							<div class="modal-dialog modal-dialog-centered">
 								<div class="modal-content">
-									<form action="calendar.php" method="POST">
+									<form action="calendar.php?idlhn=<?=$idPilihan;?>" method="POST">
 										<div class="modal-body">
 											<h4 class="text-blue h4 mb-10">Tambah Detail Jadwal</h4>
 											<div class="form-group">
 												<label>id user</label>
-												<input type="text" class="form-control" name="user" id="user" />
+												<input type="text" class="form-control" name="user" id="user" required/>
 											</div>
 											<div class="form-group">
 												<label>Kegiatan</label>
-												<input type="text" cla ss="form-control" name="kegiatan" id="kegiatan" />
+												<input type="text" class="form-control" name="kegiatan" id="kegiatan" required/>
 											</div>
 											<div class="form-group">
 												<label>Mulai</label>
@@ -237,8 +271,8 @@ session_start();
 												<input type="text" class="tanggalend form-control" readOnly name="end" id="kegiatan" value="" />
 											</div>
 											<div class="form-group">
-												<label>lahan</label>
-												<input type="text" class="form-control" name="user" readOnly id="user" value="<?php echo $idPilihan ?>" />
+												<label></label>
+												<input type="text" class="form-control" name="lahan" hidden id="lahan" value="<?php echo $idPilihan ?>" />
 											</div>
 										</div>
 										<div class="modal-footer">
@@ -262,11 +296,141 @@ session_start();
 			</div>
 		</div>
 
+		<button 
+		href="#"
+		class="welcome-modal-btn"
+		data-toggle="modal" data-target="#exampleModal"
+			>
+			 +
+		</button>
+
+		<div class="modal fade bs-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form action="calendar.php?idlhn=<?=$idPilihan;?>" method="POST">
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
+								<div class="col-sm-12 col-md-10 ">
+								<select class="form-control selectpicker" name="lahanPilih" title="Lahan yang tersedia" required>
+									
+								<?php 
+								$query = mysqli_query($koneksi,"SELECT * FROM lahan where status = 'kosong'");
+								if(mysqli_num_rows($query)>0){ 
+								?>
+								<?php
+									while($data2 = mysqli_fetch_array($query)){
+										$namalahan=$data2["nama_lahan"];
+										$idlahan2=$data2["id_lahan"];
+								?>		
+									<option value="<?php echo $idlahan2 ?>"><?php echo $namalahan ?></option>
+									<?php  
+									} 
+							 	} 
+								?>
+								</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Janis Padi</label>
+								<div class="col-sm-12 col-md-10 ">
+								<select class="form-control selectpicker" name="padiPilih" title="Pilih jenis padi" required>
+									
+								<?php 
+								$query2 = mysqli_query($koneksi,"SELECT * FROM jenis");
+								if(mysqli_num_rows($query2)>0){ 
+								?>
+								<?php
+									while($data1 = mysqli_fetch_array($query2)){
+										$namajenis=$data1["nama_jenis"];
+										$idjenis=$data1["id_jenis"];
+								?>		
+									<option value="<?php echo $idjenis ?>"><?php echo $namajenis ?></option>
+									<?php  
+									} 
+							 	} 
+								?>
+								</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Tgl. Mulai</label>
+								<div class="col-sm-12 col-md-10">
+									<input
+										class="form-control date"
+										placeholder="Pilih tanggal lahir"
+										type="date"
+										name="tanggalMulai"
+										required
+									/>
+								</div>
+							</div>
+							</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal" alt="add-modal-kar" >Batal</button>
+									<input type="submit" name="tambahJadwal" class="btn btn-primary" value="Simpan" id="sa-success">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button
+			type="button"
+			id="success-modal-btn"
+			hidden
+			data-toggle="modal"
+			data-target="#success-modal"
+			data-backdrop="static"
+		>
+			Launch modal
+		</button>
+		<div
+			class="modal fade"
+			id="success-modal"
+			tabindex="-1"
+			role="dialog"
+			aria-labelledby="exampleModalCenterTitle"
+			aria-hidden="true"
+		>
+			<div
+				class="modal-dialog modal-dialog-centered max-width-400"
+				role="document"
+			>
+				<div class="modal-content">
+					<div class="modal-body text-center font-18">
+						<h3 class="mb-20">Data terkirim!</h3>
+						<div class="mb-30 text-center">
+							<img src="vendors/images/success.png" />
+						</div>
+						Berhasil membuat sesi tanam baru
+					</div>
+					<div class="modal-footer justify-content-center">
+						<a href="calendar.php" class="btn btn-primary">Done</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
 		<script src="src/plugins/fullcalendar/fullcalendar.min.js"></script>
+		<script src="vendors/scripts/layout-settings.js"></script>
+		<script src="src/plugins/jquery-steps/jquery.steps.js"></script>
+		<script src="vendors/scripts/steps-setting.js"></script>
+		
+		
 		<!-- <script src="vendors/scripts/calendar-setting.js"></script> -->
 		<script>
 		jQuery("#calendar").fullCalendar({
@@ -285,11 +449,18 @@ session_start();
 			selecHelper: true,
 			editable: true,
 			select: function(start, end, allDay){
-				var start =$.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+				var lahan = "<?php echo $idPilihan ?>";
+				if(lahan==""){
+					alert("Pilih Lahan terlebih dahulu!");
+				}else{
+					var start =$.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
 				var end =$.fullCalendar.formatDate(end, "Y-MM-DD HH:mm:ss");
 				$(".tanggalstr").val(start);
 				$(".tanggalend").val(end);
 				$("#modal-view-event-add").modal();
+				};
+				
+				
 			},
 			
 			eventDrop: function(event){
@@ -310,12 +481,6 @@ session_start();
 					
 				});
 			},
-			
-			
-			
-			
-			 
-			
 			// dayClick: function () {
 				
 			// },
@@ -323,6 +488,7 @@ session_start();
 				jQuery(".event-icon").html("<i class='fa fa-" + event.icon + "'></i>");
 				var start =$.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 				var end =$.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+				$(".idJadwal").val(event.id);
 				$(".tanggalstr").val(start);
 				$(".tanggalend").val(end);
 				$(".title").val(event.title);

@@ -2,7 +2,7 @@
  $db = mysqli_connect('localhost','root','','edifarm');
  $username = $_POST['username'];
  $password = md5($_POST['password']);
- $sql = "SELECT * FROM user WHERE username = '".$username."'";
+
  $result = mysqli_query($db,$sql);
 
  if(mysqli_num_rows($result) == 1){

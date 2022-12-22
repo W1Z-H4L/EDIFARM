@@ -1,6 +1,6 @@
 <?php 
+session_start();
 require("koneksi.php");
-$namaku = $_GET['nama'];
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +116,7 @@ $namaku = $_GET['nama'];
 							<span class="user-icon">
 								<img src="vendors/images/photo1.jpg" alt="" />
 							</span>
-							<span class="user-name"><?= $namaku;?></span>
+							<span class="user-name"><?= $_SESSION["namaUser"];?></span>
 						</a>
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -131,7 +131,7 @@ $namaku = $_GET['nama'];
 							<a class="dropdown-item" href="tentang.php"
 								><i class="dw dw-help"></i> Tentang</a
 							>
-							<a class="dropdown-item" href="login.php"
+							<a class="dropdown-item" href="landingpage.php"
 								><i class="dw dw-logout"></i> Keluar</a
 							>
 						</div>

@@ -1,6 +1,6 @@
 <?php 
-require('koneksi.php');
 session_start();
+require('koneksi.php');
  
  // Check If form submitted, insert form data into users table.
  if(isset($_POST['submit'])) {
@@ -8,7 +8,7 @@ session_start();
 	 $luas = $_POST['luas'];
 	 $des = $_POST['des'];
 	 $tempat = $_POST['tempat'];
-	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas_lahan`, `tempat`, `deskripsi`) VALUES ('$luas', '$nama','$luas','$tempat','$des')";
+	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas_lahan`, `tempat`, `deskripsi`) VALUES ('', '$nama','$luas','$tempat','$des')";
 	 $result = mysqli_query($koneksi,$query);
  }
  if(isset($_POST['update'])) {
@@ -58,8 +58,24 @@ if($op == 'delete'){
 		<div class="main-container">
 			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
-				<div class="title pb-20">
-						<h2 class="h3 mb-0">Lahan</h2>
+				<div class="page-header">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="title">
+									<h4>Lahan</h4>
+								</div>
+								<nav aria-label="breadcrumb" role="navigation">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="index.php">Dashboard</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">
+											Lahan
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
 					</div>
 					<div class="row clearfix">
 						<?php 
@@ -71,53 +87,7 @@ if($op == 'delete'){
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 							<div class="card card-box text-center">
 								<div class=" d-flex justify-content-between pb-10">
-									<img
-										class="card-img-top"
-										src="vendors/images/img2.jpg"
-										alt=""
-									/>
-									<div class=" position-absolute">
-										<a
-											class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-											href="#"
-											role="button"
-											data-toggle="dropdown"
-										>
-											<i class="dw dw-more"></i>
-										</a>
-										<div
-											class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-										>
-											<a class="dropdown-item" href="#" data-toggle="modal" data-target="#exampleModal"
-												><i class="dw dw-edit2"></i> Edit</a
-											>
-											<!-- Modal -->
-											<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-											<div class="modal-dialog" role="document">
-												<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-													<span aria-hidden="true">&times;</span>
-													</button>
-												</div>
-												<div class="modal-body">
-													...
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Save changes</button>
-												</div>
-												</div>
-											</div>
-											</div>
-													
-
-											<a class="dropdown-item" href="#"
-												><i class="dw dw-delete-3"></i> Delete</a
-											>
-										</div>
-									</div>
+									<img class="card-img-top" src="vendors/images/gambarlahan_2.png" alt=""/>
 									
 								</div>
 								<div class="card-body">
@@ -177,7 +147,6 @@ if($op == 'delete'){
 						?>
 					</div>
 				</div>
-			
 			</div>
 		</div>		
 		<div class="add-modal-kar">
@@ -188,73 +157,64 @@ if($op == 'delete'){
 			data-target="#tambahlahan"
 			>
 			 +
-		</button></div>
+		</button>
+		</div>
 		
-		<div
-			class="modal fade bs-example-modal-lg"
+		<div class="modal fade bs-example-modal-lg"
 			id="tambahlahan"
 			tabindex="-1"
 			role="dialog"
 			aria-labelledby="myLargeModalLabel"
-			aria-hidden="true"
-		>
-		<div class="modal-dialog modal-lg modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myLargeModalLabel">
-						Tambah Lahan
-					</h4>
-					<button
-						type="button"
-						class="close"
-						data-dismiss="modal"
-						aria-hidden="true"
-						alt="add-modal-kar"							
-					>x
-					</button>
-				</div>
-						<div class="modal-body">						
-							<form action="lahan.php" method="POST">
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama Lahan</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="nama" placeholder="Lahan" name="nama">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label" for="luas">Luas Lahan</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" placeholder="Search Here" type="luas" name="luas">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label" for="des">Deskripsi</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" placeholder="Dataran tinggi" type="des" name="des">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label" for="tempat">Tempat</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" placeholder="Jember" type="tempat" name="tempat">
-									</div>
-								</div>
-								</div>
-									<div class="modal-footer">
-										<button
-											type="button"
-											class="btn btn-secondary"
-											data-dismiss="modal"
-											alt="add-modal-kar"
-										>Batal
-										</button>
-										<input type="submit" name="submit" class="btn btn-primary" value="Simpan" id="sa-success">
-									</div>
-								</div>
-							</form>
-							
-						</div>
+			aria-hidden="true">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">Tambah Lahan</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true" alt="add-modal-kar">x</button>
 					</div>
+					<div class="modal-body">						
+						<form action="lahan.php" method="POST">
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama Lahan</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" type="nama" placeholder="Lahan" name="nama">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label" for="luas">Luas Lahan</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" placeholder="Search Here" type="luas" name="luas">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label" for="des">Deskripsi</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" placeholder="Dataran tinggi" type="des" name="des">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label" for="tempat">Tempat</label>
+								<div class="col-sm-12 col-md-10">
+									<input class="form-control" placeholder="Jember" type="tempat" name="tempat">
+								</div>
+							</div>
+							</div>
+								<div class="modal-footer">
+									<button
+										type="button"
+										class="btn btn-secondary"
+										data-dismiss="modal"
+										alt="add-modal-kar"
+									>Batal
+									</button>
+									<input type="submit" name="submit" class="btn btn-primary" value="Simpan" id="sa-success">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- js -->
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>

@@ -16,7 +16,7 @@ if(isset($_POST['submit'])) {
 	$lahan = $_POST['lahan'];
 
 	if($username&&$nama&&$kelamin&&$alamat&&$hp&&$lahir&&$email&&$pw&&$capt&&$lahan){
-		$query =  "INSERT INTO user VALUES ('3', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', '2', '', '$lahan')";
+		$query =  "INSERT INTO user VALUES ('', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', '2', '', '$lahan')";
 		$result = mysqli_query($koneksi,$query);
 		if($result){
 			$sukses ="Berhasil memasukkan data";
@@ -101,9 +101,6 @@ if($op == 'delete'){
 							</div>
 						</div>
 					</div>
-					<div class="title pb-20">
-						<h2 class="h3 mb-0">Karyawan</h2>
-					</div>
 					<!-- Simple Datatable start -->
 					<div class="card-box mb-30">
 						<div class="pd-20">
@@ -126,7 +123,7 @@ if($op == 'delete'){
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user where id_level = '2'");
+								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan where id_level = '2'");
 								if(mysqli_num_rows($query)>0){ 
 								?>
 								<?php
@@ -143,7 +140,7 @@ if($op == 'delete'){
 										<td><?php echo $data["no_hp"];?></td>
 										<td><?php echo $data["tanggal_lahir"];?></td>
 										<td><?php echo $data["email"];?></td>
-										<td><?php echo $data["id_lahan"];?></td>
+										<td><?php echo $data["nama_lahan"];?></td>
 										<td>
 											<!-- Edit -->
 											<a href="#" data-color="#265ed7"
@@ -365,15 +362,15 @@ if($op == 'delete'){
 								</div>
 							</div>
 							<div class="form-group row">
-							<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
-							<div class="col-sm-12 col-md-10">
-								<input
-									class="form-control date"
-									placeholder="Pilih tanggal lahir"
-									type="date"
-									name="lahir"
-								/>
-							</div>
+								<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
+								<div class="col-sm-12 col-md-10">
+									<input
+										class="form-control date"
+										placeholder="Pilih tanggal lahir"
+										type="date"
+										name="lahir"
+									/>
+								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label" for="tempat">Email</label>
@@ -396,8 +393,8 @@ if($op == 'delete'){
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
 								<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12" name="lahan">
-									<option selected="">Pilih salah satu</option>
+								<select class="form-control selectpicker" name="lahan" title="Pilih salah satu">
+									
 								<?php 
 								$query = mysqli_query($koneksi,"SELECT * FROM lahan");
 								if(mysqli_num_rows($query)>0){ 

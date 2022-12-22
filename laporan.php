@@ -26,7 +26,12 @@ if(isset($_POST['submit'])) {
 	$tempat = $_POST['tempat'];
 	$query =  "INSERT INTO user VALUES ('02', '$nama','$luas','$deskripsi','$tempat')";
 	$result = mysqli_query($koneksi,$query);
-}
+	
+}if ($idPilihan){
+	$judul = $namalhn;
+}else{
+	$judul = "Pilih Lahan";
+};
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +103,7 @@ if(isset($_POST['submit'])) {
 								</thead>
 								<tbody>
 								<?php
-									$query = mysqli_query($koneksi,"SELECT * FROM user where id_level = '2'");
+									$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan where id_level = '2'");
 									if(mysqli_num_rows($query)>0){ ?>
 									<?php
 									while($data = mysqli_fetch_array($query)){
@@ -111,7 +116,7 @@ if(isset($_POST['submit'])) {
 										<td><?php echo $data["no_hp"];?></td>
 										<td><?php echo $data["tanggal_lahir"];?></td>
 										<td><?php echo $data["email"];?></td>
-										<td><?php echo $data["id_lahan"];?></td>
+										<td><?php echo $data["nama_lahan"];?></td>
 									</tr>
 									<?php
 									}
@@ -159,6 +164,52 @@ if(isset($_POST['submit'])) {
 									}
 								}
 								?>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- Laporan Lahan Berhenti -->
+
+					<!-- Laporan konsultasi Mulai -->
+					<div class="card-box mb-30">
+						<div class="pd-20">
+							<h4 class="text-blue h4">Laporan Konsultasi</h4>
+						</div>
+						<div class="pb-20">
+							<table class="data-table-export table stripe hover nowrap">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">Tanggal Konsultasi</th>
+										<th>Nama Karyawan</th>
+										<th>Nama Lahan</th>
+										<th>Jenis Padi</th>
+										<th>Keluhan</th>
+									</tr>
+								</thead>
+								<tbody>
+								<?php 
+								$query = mysqli_query($koneksi,"SELECT * FROM consul INNER JOIN jadwal ON consul.id_jadwal = jadwal.id_jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN sesi_tanam ON jadwal.id_sesi = sesi_tanam.id_sesi INNER JOIN jenis ON sesi_tanam.id_jenis = jenis.id_jenis WHERE consul.status='belum'");
+								if(mysqli_num_rows($query)>0){
+								?>
+								<?php
+									while($data = mysqli_fetch_array($query)){
+										$tanggal=$data["tanggal_consul"];
+										$nama_kar=$data["nama"];
+										$nama_lahan=$data["nama_lahan"];
+										$jenis=$data["nama_jenis"];
+										$des=$data["isi"];
+										
+								?>		
+								<tr >
+										<td><?php echo $data["tanggal_consul"];?></td>
+										<td><?php echo $data["nama"];?></td>
+										<td><?php echo $data["nama_lahan"];?></td>
+										<td><?php echo $data["nama_jenis"];?></td>
+										<td><?php echo $data["isi"];?></td>
+									<?php
+									}};
+									?>
+										
 								</tbody>
 							</table>
 						</div>

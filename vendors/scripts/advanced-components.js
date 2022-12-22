@@ -18,13 +18,16 @@
 			maxboostedstep: 10,
 			postfix: 'Hari'
 		});
-		$("input[name='demo2[]']").TouchSpin({
-			min: 0,
-			max: 300,
-			stepinterval: 50,
-			maxboostedstep: 10000000,
-			prefix: 'Hari ke-'
-		});
+		// function loadd(){
+			$("input[name='demo2[]']").TouchSpin({
+				min: 0,
+				max: 300,
+				stepinterval: 50,
+				maxboostedstep: 10000000,
+				prefix: 'Hari ke-'
+			});
+		// };
+		// loadd();
 		$("input[name='demo3_22']").TouchSpin({
 			initval: 40
 		});

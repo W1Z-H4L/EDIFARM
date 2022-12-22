@@ -4,24 +4,42 @@ $sukses="";
 $error="";
 
 if(isset($_POST['submit'])) {
-	$jmlah = count($_POST);
-	echo print_r($_POST);
-	return;
-	$nama_jenis = $_POST['nama_jenis'];
-	$deskripsi = $_POST['deskripsi'];
- 
+	$jumlah = count($_POST['demo2']);
+	$jumlahpupuk = count($_POST['hstpupuk']);
+	$jumlahpesti = count($_POST['hstpestisida']);
+	// echo $jmlah;
+	// echo print_r($_POST);
+	// return;
+	$nama_padi = $_POST['namaPadi'];
+	$durasi = $_POST['durasi'];
+	$deskripsi = $_POST['des'];
 
-	if($nama_jenis&&$deskripsi){
-		$query =  "INSERT INTO jenis VALUES ('1', '$nama_jenis','$deskripsi')";
-		$result = mysqli_query($koneksi,$query);
-		if($result){
-			$sukses ="Berhasil memasukkan data";
-		}else{
-			$error ="Gagal memasukkan data";
-		}
-	}else{
+	$query =  "INSERT INTO jenis VALUES ('', '$nama_padi','$deskripsi', '$durasi')";
+	$result = mysqli_query($koneksi,$query);
 
-	}
+	$query1 = "SELECT id_jenis FROM jenis ORDER BY id_jenis DESC";
+	$result1 = mysqli_query($koneksi,$query1);
+		$row1 = mysqli_fetch_assoc($result1);
+    	$idbaru = $row1["id_jenis"];
+
+	for($i=0;$i<=$jumlah-1;$i++){
+		$hst = $_POST['demo2'][$i];
+
+		$query2 =  "INSERT INTO kegiatan VALUES ('$idbaru', 'Irigasi','$hst')";
+		$result = mysqli_query($koneksi,$query2);
+	}	
+	for($i=0;$i<=$jumlahpupuk-1;$i++){
+		$hst1 = $_POST['hstpupuk'][$i];
+
+		$query3 =  "INSERT INTO kegiatan VALUES ('$idbaru', 'Pemupukan','$hst1')";
+		$result = mysqli_query($koneksi,$query3);
+	}	
+	for($i=0;$i<=$jumlahpesti-1;$i++){
+		$hst2 = $_POST['hstpestisida'][$i];
+
+		$query4 =  "INSERT INTO kegiatan VALUES ('$idbaru', 'Pemberian Pestisida','$hst2')";
+		$result = mysqli_query($koneksi,$query4);
+	}	
 }
  ?>
 <!DOCTYPE html>
@@ -38,11 +56,15 @@ if(isset($_POST['submit'])) {
 		<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css" />
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 		<link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css"/>
+		
 		<script>
+			
 			function copyForm(){
 				$("#asli")
 				.clone()
 				.appendTo($("#dinamis"))
+				
+				
 			};
 			function copyForm1(){
 				$("#aslipupuk")
@@ -301,7 +323,6 @@ if(isset($_POST['submit'])) {
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
 		<script src="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-		<script src="vendors/scripts/advanced-components.js"></script>
-		
+		<script src="vendors/scripts/advanced-components.js"></script> 
 	</body>
 </html>

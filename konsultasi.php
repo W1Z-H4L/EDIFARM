@@ -1,3 +1,16 @@
+<?php
+include('koneksi.php');
+if(isset($_POST['update'])) {
+	$id = $_POST ['id'];
+	$status = $_POST['status'];
+	
+	
+	$query =  "UPDATE `consul` SET `status` = '$status' where `consul`.`id_consul` = '$id'";
+	$result = mysqli_query($koneksi,$query);
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -25,165 +38,149 @@
 		<div class="mobile-menu-overlay"></div>
 
 		<div class="main-container">
-		<div class="pd-ltr-20 xs-pd-20-10">
-			<div class="min-height-200px">
-			<div class="page-header">
-				<div class="row">
-					<div class="col-md-12 col-sm-12">
-						<div class="title">
-							<h4>Konsultasi</h4>
+			<div class="pd-ltr-20 xs-pd-20-10">
+				<div class="min-height-200px">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="title">
+								<h4>Konsultasi</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item">
+										<a href="index.php">Dashboard</a>
+									</li>
+									<li class="breadcrumb-item active" aria-current="page">
+										Konsultasi
+									</li>
+								</ol>
+							</nav>
 						</div>
-						<nav aria-label="breadcrumb" role="navigation">
-							<ol class="breadcrumb">
-								<li class="breadcrumb-item">
-									<a href="index.php">Dashboard</a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">
-									Konsultasi
-								</li>
-							</ol>
-						</nav>
 					</div>
 				</div>
-			</div>
-			<div class="row clearfix">
-			<?php 
-				$query = mysqli_query($koneksi,"SELECT * FROM consul INNER JOIN jadwal ON consul.id_jadwal = jadwal.id_jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN sesi_tanam ON jadwal.id_sesi = sesi_tanam.id_sesi INNER JOIN jenis ON sesi_tanam.id_jenis = jenis.id_jenis WHERE consul.status='belum'");
-				if(mysqli_num_rows($query)>0){
-			
-					while($data = mysqli_fetch_array($query)){
-						$tanggal=$data["tanggal_consul"];
-						$nama_kar=$data["nama"];
-							$nama_lahan=$data["nama_lahan"];
-							$jenis=$data["nama_jenis"];
-							$des=$data["isi"];
-							$status=$data["status"];
-						
-					}}
-				?>	
-			<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-				<div class="card card-box">	
-					<img
-						class="card-img-top"
-						src="vendors/images/padi2.jpg"
-						alt="Card image cap"
-					/>
-					<div class="card-body">
-						<h5 class="card-title weight-500">Lahan 1</h5>
-						<p class="card-text">
-							Berikut adalah hasil diagnosa penyakit, klik lihat untuk melihat detailnya.
-						</p>
-						<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bd-example-modal-lg">Lihat</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div
-		class="modal fade bs-example-modal-lg"
-		id="bd-example-modal-lg"
-		tabindex="-1"
-		role="dialog"
-		aria-labelledby="myLargeModalLabel"
-		aria-hidden="true"
-	>
-	<div class="modal-dialog modal-lg modal-dialog-centered">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h4 class="modal-title" id="myLargeModalLabel">
-					Konsultasi
-				</h4>
-				<button
-					type="button"
-					class="close"
-					data-dismiss="modal"
-					aria-hidden="true"
-					alt="add-modal-kar"							
-				>x
-				</button>
-				</div>
-					<div class="modal-body">						
-						<form>
-							<div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Tanggal</label>
-								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search" value = "<?php echo $tanggal ?>" name = "tanggal">
-								</div>
-							</div><div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Nama Petani</label>
-								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search" value = "<?php echo $nama_kar ?>" name = "nama_karyawan">
-								</div>
-							</div><div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
-								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search" value = "<?php echo $nama_lahan ?>" name = "nama_lahan">
-								</div>
-							</div><div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Jenis Padi</label>
-								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="search" value = "<?php echo $jenis ?>" name = "jenis">
-							    </div>
-							</div><div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
-								<div class="col-sm-12 col-md-10">
-								<textarea class="form-control" value="" name = "deskripsi"><?php echo $des ?></textarea>
-								</div>
-								</div>
+				<div class="row clearfix">
+					<?php 
+					$query = "SELECT * FROM user INNER JOIN consul ON consul.id_user = user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan WHERE consul.status='belum'";
+					$result = mysqli_query($koneksi,$query);
+					while($row= $row = mysqli_fetch_array($result)){
+						$id=$row["id_consul"];
+					?>
+					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+						<div class="card card-box text-center">
+							<div class=" d-flex justify-content-between pb-10">
+								<img class="card-img-top" src="vendors/images/gambarlahan_2.png" alt=""/>
 								
-							<div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label">Status</label>
-								<div class="col-sm-12 col-md-10">
-								<select class="custom-select col-12" name="status">
-								<?php 
-								$query1 = mysqli_query($koneksi,"SELECT * FROM consul");
-								if(mysqli_num_rows($query)>0){ 
-								?>
-								<?php
-									while($data1 = mysqli_fetch_array($query1)){
-										$status=$data1["status"];
-										
-								?>		
-									<option value="<?php echo $status ?>" <?php if($status==$data["status"]) echo "selected"?>><?php echo $status ?></option>
-									<?php  
-									} 
-								} 
-								?>
-								</select>
+							</div>
+							<div class="card-body">
+								<h5 class="card-title weight-500 text-left"><?php echo $row["nama_lahan"];;?></h5>
+								<p class="card-text text-left">Tekan tombol detail untuk melihat konsultasi berikut.</p>
+								<div>
+									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?php echo $id;?>" >Detail</a>
+									<div
+										class="modal fade"
+										id="detail<?php echo $id;?>"
+										tabindex="-1"
+										role="dialog"
+										aria-labelledby="myLargeModalLabel"
+										aria-hidden="true"
+									>
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h4 class="modal-title" id="myLargeModalLabel">
+													<?php echo $row["nama_lahan"];?>
+													</h4>
+													<button
+														type="button"
+														class="close"
+														data-dismiss="modal"
+														aria-hidden="true"
+													>
+														×
+													</button>
+												</div>
+												<div class="modal-body">						
+													<form action="konsultasi.php" method="POST">
+														<div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">ID</label>
+															<div class="col-sm-12 col-md-10">
+																<input class="form-control" type="search" value = "<?php echo $row["id_consul"]; ?>" name = "id">
+															</div>
+														</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Tanggal</label>
+															<div class="col-sm-12 col-md-10">
+																<input class="form-control" type="search" value = "<?php echo $row["tanggal_consul"]; ?>" name = "tanggal">
+															</div>
+														</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Nama Petani</label>
+															<div class="col-sm-12 col-md-10">
+																<input class="form-control" type="search" value = "<?php echo $row["nama"]; ?>" name = "nama_karyawan">
+															</div>
+														</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
+															<div class="col-sm-12 col-md-10">
+																<input class="form-control" type="search" value = "<?php echo $row["nama_lahan"]; ?>" name = "nama_lahan">
+															</div>
+														</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
+															<div class="col-sm-12 col-md-10">
+															<textarea class="form-control" value="" name = "deskripsi"><?php echo $row["isi"]; ?></textarea>
+															</div>
+															</div>
+															
+														<div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Status</label>
+															<div class="col-sm-12 col-md-10">
+															<select class="custom-select col-12" name="status">
+															<?php 
+															$query1 = mysqli_query($koneksi,"SELECT status FROM consul where id_consul=$id");
+															if(mysqli_num_rows($query1)>0){ 
+															
+																while($data1 = mysqli_fetch_array($query1)){
+																	$status=$data1["status"];
+																	
+															?>		
+																<option value="Belum" <?php if($status=='belum') echo "selected"?>>Belum</option>
+																<option value="Selesai" <?php if($status=='selesai') echo "selected"?>>Selesai</option>
+																<?php  
+																} 
+															} 
+															?>
+															</select>
+															</div>
+														</div>
+													<div class="modal-footer">
+												<button
+													type="button"
+													class="btn btn-secondary"
+													data-dismiss="modal"
+													alt="add-modal-kar"
+												>
+												Close
+												</button>
+												<input type="submit" name="update" class="btn btn-primary" value ="Simpan">
+											</div>
+											</form>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
-						<form>
-					<div class="modal-footer">
-						<button
-							type="button"
-							class="btn btn-secondary"
-							data-dismiss="modal"
-							alt="add-modal-kar"
-						>
-						Close
-						</button>
-						<button type="button" class="btn btn-primary">
-						Save changes
-						</button>
+							</div>
+						</div>
 					</div>
+					<?php
+					}
+					?>
 				</div>
 			</div>
 		</div>
-
-
 		<!-- js -->
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
-				height="0"
-				width="0"
-				style="display: none; visibility: hidden"
-			></iframe
-		></noscript>
-		<!-- End Google Tag Manager (noscript) -->
+
 	</body>
 </html>

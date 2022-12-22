@@ -182,30 +182,27 @@ if(isset($_POST['submit'])) {
 										<th class="table-plus datatable-nosort">Tanggal Konsultasi</th>
 										<th>Nama Karyawan</th>
 										<th>Nama Lahan</th>
-										<th>Jenis Padi</th>
 										<th>Keluhan</th>
 									</tr>
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM consul INNER JOIN jadwal ON consul.id_jadwal = jadwal.id_jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN sesi_tanam ON jadwal.id_sesi = sesi_tanam.id_sesi INNER JOIN jenis ON sesi_tanam.id_jenis = jenis.id_jenis WHERE consul.status='belum'");
+								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN consul ON consul.id_user = user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan WHERE consul.status='selesai'");
 								if(mysqli_num_rows($query)>0){
 								?>
 								<?php
-									while($data = mysqli_fetch_array($query)){
-										$tanggal=$data["tanggal_consul"];
-										$nama_kar=$data["nama"];
-										$nama_lahan=$data["nama_lahan"];
-										$jenis=$data["nama_jenis"];
-										$des=$data["isi"];
+									while($data1 = mysqli_fetch_array($query)){
+										$tanggal=$data1["tanggal_consul"];
+										$nama_kar=$data1["nama"];
+										$nama_lahan=$data1["nama_lahan"];
+										$des=$data1["isi"];
 										
 								?>		
 								<tr >
-										<td><?php echo $data["tanggal_consul"];?></td>
-										<td><?php echo $data["nama"];?></td>
-										<td><?php echo $data["nama_lahan"];?></td>
-										<td><?php echo $data["nama_jenis"];?></td>
-										<td><?php echo $data["isi"];?></td>
+										<td><?php echo $data1["tanggal_consul"];?></td>
+										<td><?php echo $data1["nama"];?></td>
+										<td><?php echo $data1["nama_lahan"];?></td>
+										<td><?php echo $data1["isi"];?></td>
 									<?php
 									}};
 									?>

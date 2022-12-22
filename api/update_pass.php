@@ -1,14 +1,13 @@
 <?php
 $db = mysqli_connect('localhost','root','','edifarm');
-if (isset($_POST['id_user']) && isset($_POST['nama']) && isset($_POST['password']) && isset($_POST['no_hp'])&& isset($_POST['alamat'])) {
+if (isset($_POST['id_user']) && isset($_POST['username']) && isset($_POST['password'])) {
     $id_user = $_POST['id_user'];
-    $nama = $_POST['nama'];
-    $password = md5($_POST['password']);
-    $no_hp = $_POST['no_hp'];
-    $alamat = $_POST['alamat'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
 
-    $sql = "UPDATE user SET nama = '$nama' , password = '$password' , no_hp = '$no_hp', alamat ='$alamat' WHERE id_user = '$id_user'";
+
+    $sql = "UPDATE user SET username = '$username' ,  password ='$password' WHERE id_user = '$id_user'";
 
     $result = mysqli_query($db,$sql);
     if ($result) {

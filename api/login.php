@@ -2,19 +2,7 @@
  $db = mysqli_connect('localhost','root','','edifarm');
  $username = $_POST['username'];
  $password = md5($_POST['password']);
- 
- if(!$id_akun) {
-    http_response_code(400);
-    echo json_encode([
-        "success" => false,
-        "message" => "Masukan username anda",
-        "data" => null,
-    ]);
 
-//     exit;
-//  }
- 
- $sql = "SELECT * FROM user WHERE username = '$id_akun' AND id_level = 1 ";
  $result = mysqli_query($db,$sql);
 
  if(mysqli_num_rows($result) == 1){

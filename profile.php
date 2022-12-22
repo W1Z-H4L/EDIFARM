@@ -3,7 +3,7 @@ session_start();
 include('koneksi.php');
 $idUser = $_SESSION["idUser"];
 if(isset($_POST['update'])) {
-	$id = "1";
+	$id = $idUser;
 	$user = $_POST['username'];
 	$nama = $_POST['nama'];
 	$jeniskel = $_POST['jeniskel'];
@@ -68,35 +68,8 @@ if(isset($_POST['update'])) {
 			href="src/plugins/cropperjs/dist/cropper.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
-
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script
-			async
-			src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"
-		></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag("js", new Date());
-
-			gtag("config", "G-GBZ3SGGX85");
-		</script>
-		<!-- Google Tag Manager -->
-		<script>
-			(function (w, d, s, l, i) {
-				w[l] = w[l] || [];
-				w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-				var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s),
-					dl = l != "dataLayer" ? "&l=" + l : "";
-				j.async = true;
-				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-				f.parentNode.insertBefore(j, f);
-			})(window, document, "script", "dataLayer", "GTM-NXZMQSS");
-		</script>
-		<!-- End Google Tag Manager -->
+	</head>
+	<body>
 
 		<?php include 'header.php'; ?>
 
@@ -149,57 +122,19 @@ if(isset($_POST['update'])) {
 									}}
 								?>		
 								<div class="profile-photo">
-									<a
-										
-										>
-										<input class="edit-avatar" type="file" name="foto" id="foto">
-										<!-- <i class="fa fa-pencil"></i> -->
-										<!-- <input type="file" name="foto" id="foto"> -->
-									</a>
 									<img
 										src="vendors/images/photo1.jpg"
 										alt=""
 										class="avatar-photo"
 									/>
-									<!-- <div
-										class="modal fade"
-										id="modal"
-										tabindex="-1"
-										role="dialog"
-										aria-labelledby="modalLabel"
-										aria-hidden="true"
-									>
-										<div
-											class="modal-dialog modal-dialog-centered"
-											role="document"
-										>
-											<div class="modal-content">
-												<div class="modal-body pd-5">
-													<div class="img-container">
-														<img
-															id="image"
-															src="vendors/images/photo2.jpg"
-															alt="Picture"
-														/>
-													</div>
-												</div>
-												<div class="modal-footer">
-													<input
-														type="submit"
-														value="Update"
-														class="btn btn-primary"
-													/>
-													<button
-														type="button"
-														class="btn btn-default"
-														data-dismiss="modal"
-													>
-														Close
-													</button>
-												</div>
-											</div>
-										</div>
-									</div> -->
+									<div class="fa fa-pencil ">
+										<input class="" type="file" name="foto" id="foto">
+										<!-- <i class="fa fa-pencil"></i> -->
+										<!-- <input type="file" name="foto" id="foto"> -->
+									</div>
+										
+									
+									
 								</div>
 								<h5 class="text-center h5 mb-0"><?php echo $nama;?></h5>
 								<p class="text-center text-muted font-14">
@@ -428,47 +363,5 @@ if(isset($_POST['update'])) {
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
 		<script src="src/plugins/cropperjs/dist/cropper.js"></script>
-		<script>
-			window.addEventListener("DOMContentLoaded", function () {
-				var image = document.getElementById("image");
-				var cropBoxData;
-				var canvasData;
-				var cropper;
-
-				$("#modal")
-					.on("shown.bs.modal", function () {
-						cropper = new Cropper(image, {
-							autoCropArea: 0.5,
-							dragMode: "move",
-							aspectRatio: 3 / 3,
-							restore: false,
-							guides: false,
-							center: false,
-							highlight: false,
-							cropBoxMovable: false,
-							cropBoxResizable: false,
-							toggleDragModeOnDblclick: false,
-							ready: function () {
-								cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
-							},
-						});
-					})
-					.on("hidden.bs.modal", function () {
-						cropBoxData = cropper.getCropBoxData();
-						canvasData = cropper.getCanvasData();
-						cropper.destroy();
-					});
-			});
-		</script>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
-				height="0"
-				width="0"
-				style="display: none; visibility: hidden"
-			></iframe
-		></noscript>
-		<!-- End Google Tag Manager (noscript) -->
 	</body>
 </html>

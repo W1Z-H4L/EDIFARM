@@ -1,12 +1,11 @@
 <?php
 header("Acces-Control-Allow-Origin: *");
 $db = mysqli_connect('localhost','root','','edifarm');
-if (isset($_POST['id_lahan'])) {
-    $id_lahan = $_POST['id_lahan'];
-   
-   
-
-    $sql = "SELECT * From lahan where id_lahan = $id_lahan";
+if(!$db)
+{
+	echo "Database connection failed";
+}
+    $sql = "SELECT * FROM user WHERE id_user = 1 ";
     $data = mysqli_query($db, $sql);
     $rows = array();
 
@@ -14,6 +13,4 @@ if (isset($_POST['id_lahan'])) {
         $rows[] = $r;
     }
      print json_encode($rows);
-   
-}
 ?>

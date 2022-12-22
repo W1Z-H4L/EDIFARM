@@ -2,38 +2,6 @@
  $db = mysqli_connect('localhost','root','','edifarm');
  $username = $_POST['username'];
  $password = md5($_POST['password']);
-
-
-
-
-//  if(mysqli_num_rows($result) == 1){
-//    $userRecord=array();
-//     while ($rowFound = mysqli_fetch_assoc($result)){
-//         $userRecord[]=$rowFound;
-//    }
-//    http_response_code(200);
-//    echo json_encode(
-//     array(
-         
-//         "success" => true, 
-//         "message" => "Login berhasil",
-//         "user" => $userRecord[],
-        
-//     )
-//     );
-
- 
-//  if(!$id_user) {
-//     http_response_code(400);
-//     echo json_encode([
-//         "success" => false,
-//         "message" => "Masukan username anda",
-//         "data" => null,
-//     ]);
-
-//     exit;
-//  }
- 
  $sql = "SELECT * FROM user WHERE username = '".$username."'";
  $result = mysqli_query($db,$sql);
 

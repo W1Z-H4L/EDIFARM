@@ -8,7 +8,7 @@ require('koneksi.php');
 	 $luas = $_POST['luas'];
 	 $des = $_POST['des'];
 	 $tempat = $_POST['tempat'];
-	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas_lahan`, `tempat`, `deskripsi`) VALUES ('$luas', '$nama','$luas','$tempat','$des')";
+	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas_lahan`, `tempat`, `deskripsi`) VALUES ('', '$nama','$luas','$tempat','$des')";
 	 $result = mysqli_query($koneksi,$query);
  }
  if(isset($_POST['update'])) {
@@ -58,8 +58,24 @@ if($op == 'delete'){
 		<div class="main-container">
 			<div class="pd-ltr-20 xs-pd-20-10">
 				<div class="min-height-200px">
-				<div class="title pb-20">
-						<h2 class="h3 mb-0">Lahan</h2>
+				<div class="page-header">
+						<div class="row">
+							<div class="col-md-12 col-sm-12">
+								<div class="title">
+									<h4>Lahan</h4>
+								</div>
+								<nav aria-label="breadcrumb" role="navigation">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="index.php">Dashboard</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">
+											Lahan
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
 					</div>
 					<div class="row clearfix">
 						<?php 
@@ -71,7 +87,7 @@ if($op == 'delete'){
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 							<div class="card card-box text-center">
 								<div class=" d-flex justify-content-between pb-10">
-									<img class="card-img-top" src="vendors/images/img2.jpg" alt=""/>
+									<img class="card-img-top" src="vendors/images/gambarlahan_2.png" alt=""/>
 									
 								</div>
 								<div class="card-body">

@@ -133,7 +133,8 @@ img {
   width: 20%;
   overflow: hidden;
 }
-imglogo {
+
+.logo{
   width: 100%;
   overflow: hidden;
 }

@@ -7,8 +7,7 @@ if (isset($_POST['id_jadwal'])); {
    
    
 
-    $sql = 
-    "UPDATE jadwal set status = 'Selesai' where id_jadwal=$id_jadwal";
+    $sql = "UPDATE jadwal set status = 'Selesai' where id_jadwal='$id_jadwal'";
 
     $result = mysqli_query($db,$sql);
     if ($result) {

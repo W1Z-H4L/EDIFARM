@@ -61,7 +61,7 @@ if(isset($_POST['update'])) {
 				</div>
 				<div class="row clearfix">
 					<?php 
-					$query = "SELECT * FROM user INNER JOIN consul ON consul.id_user = user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan WHERE consul.status='belum'";
+					$query = "SELECT * FROM user INNER JOIN consul ON consul.id_user = user.id_user INNER JOIN jenis ON user.id_jenis = jenis.id_jenis INNER JOIN lahan ON user.id_lahan = lahan.id_lahan WHERE consul.status='belum'";
 					$result = mysqli_query($koneksi,$query);
 					while($row= $row = mysqli_fetch_array($result)){
 						$id=$row["id_consul"];
@@ -102,8 +102,8 @@ if(isset($_POST['update'])) {
 												</div>
 												<div class="modal-body">						
 													<form action="konsultasi.php" method="POST">
-														<div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">ID</label>
+													</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">ID Consul</label>
 															<div class="col-sm-12 col-md-10">
 																<input class="form-control" type="search" value = "<?php echo $row["id_consul"]; ?>" name = "id">
 															</div>
@@ -121,6 +121,11 @@ if(isset($_POST['update'])) {
 															<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
 															<div class="col-sm-12 col-md-10">
 																<input class="form-control" type="search" value = "<?php echo $row["nama_lahan"]; ?>" name = "nama_lahan">
+															</div>
+														</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Jenis Padi</label>
+															<div class="col-sm-12 col-md-10">
+																<input class="form-control" type="search" value = "<?php echo $row["nama_jenis"]; ?>" name = "nama_jenis">
 															</div>
 														</div><div class="form-group row">
 															<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>

@@ -12,8 +12,20 @@ if(isset($_POST['update'])) {
 	$ttl = $_POST['ttl'];
 	$email = $_POST['email'];
 	$capt = $_POST['capt'];
+	$name = 
 	
-	$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt'WHERE `user`.`id_user` = '$id';";
+	$path = "image/$name";
+	$query1 = "SELECT Foto FROM user WHERE user.id_user = '$idUser'";
+	$exe = mysqli_query($connect, $query1);
+	if($exe){
+		$row = mysqli_fetch_array($exe);
+		$old_path = $row['Foto'];
+		if(file_exists($old_path)){
+			unlink($old_path);
+		}
+	}
+	$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt', `Foto` = '$path' WHERE `user`.`id_user` = '$id';";
+	file_put_contents($path, base64_decode($data));
 	$result = mysqli_query($koneksi,$query);
 	$_SESSION["namaUser"] = $nama;
 }
@@ -122,17 +134,17 @@ if(isset($_POST['update'])) {
 									}}
 								?>		
 								<div class="profile-photo">
-									<img
-										src="vendors/images/photo1.jpg"
-										alt=""
-										class="avatar-photo"
-									/>
+									
 									<div class="fa fa-pencil ">
 										<input class="" type="file" name="foto" id="foto">
 										<!-- <i class="fa fa-pencil"></i> -->
 										<!-- <input type="file" name="foto" id="foto"> -->
 									</div>
-										
+									<img
+										src="vendors/images/photo1.jpg"
+										alt=""
+										class="avatar-photo"
+									/>	
 									
 									
 								</div>
@@ -244,7 +256,7 @@ if(isset($_POST['update'])) {
 												role="tabpanel"
 											>
 												<div class="profile-setting">
-													<form action="profile.php" method="POST">
+													<form action="profile.php" method="POST"  enctype="multipart/form-data">
 														<ul class="profile-edit-list row">
 															<li class="weight-500 col-md-6">
 																<h4 class="text-blue h5 mb-20">
@@ -343,6 +355,11 @@ if(isset($_POST['update'])) {
 																<div class="form-group">
 																	<label>Caption</label>
 																	<textarea class="form-control" value="" name = "capt"><?php echo $capt?></textarea>
+																	</div>
+																
+																<div class="form-group">
+																	<label>Profil</label>
+																	<input class="" type="file" name="foto" id="foto">
 																	</div>
 
 																<div class="form-group mb-0">

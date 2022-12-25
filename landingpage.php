@@ -54,7 +54,7 @@ https://templatemo.com/tm-565-onix-digital
           <nav class="main-nav">
             <!-- ***** Logo Start ***** -->
             <a href="landingpage.php" class="logo">
-              <img src="vendors/images/logo_edifarmbaru.png">
+              <img src="vendors/images/logo_edifarmbaru.png" alt= "">
             </a>
             <!-- ***** Logo End ***** -->
             <!-- ***** Menu Start ***** -->
@@ -75,6 +75,12 @@ https://templatemo.com/tm-565-onix-digital
       </div>
     </div>
   </header>
+  <style>
+    .container .row .col-12 .main-nav img {
+  width: 20%;
+  overflow: hidden;
+}
+  </style>
   <!-- ***** Header Area End ***** -->
 
   <div class="main-banner" id="top">
@@ -178,18 +184,23 @@ https://templatemo.com/tm-565-onix-digital
     <div class="container">
       <div class="row">
         <div class="col-lg-6 align-self-center">
-            <img src="vendors/images/gambar.png" alt="Two Girls working together">
+            <img src="vendors/images/gambar.png" alt="">
         </div>
         <div class="col-lg-6">
           <div class="section-heading">
             <h2>Apa<em> <span>itu</span> <span>Edifarm?</span></h2>
             <p>Edifarm adalah suatu perangkat yang dikembangkan untuk membantu admin dalam memonitoring beberapa sawah, walaupun dengan jarak jauh. Edifarm juga menyediakan pada perangkat mobile android untuk karyawan yang mengelola sawah Website edifarm hanya dapat diakses oleh admin yakni pemilik sawah. Admin dapat menambah karyawan, mengubah jadwal, menerima konsultasi dari karyawan, melihat kegiatan yang dilakukan karyawan disawah.</p>
-            </div>
-            </div>
-            </div>
-            </div>
-  </div>
-
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+    <style>
+      .container .row img{
+        width : 80%;
+        overflow : hidden;
+      }
+    </style>
   <div id="team" class="our-portfolio section">
     <div class="portfolio-left-dec">
       <img src="vendors/images/portfolio-left-dec.png" alt="">
@@ -288,8 +299,7 @@ https://templatemo.com/tm-565-onix-digital
         <div class="container">
       <div class="row">
         <div class="col-lg-6 align-self-center">
-          <div class="right-image">
-            <img src="vendors/images/2.png" alt="Two Girls working together">
+            <img src="vendors/images/2.png" alt="">
           </div>
         </div>
         </div>

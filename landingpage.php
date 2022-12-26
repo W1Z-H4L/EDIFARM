@@ -183,10 +183,10 @@ https://templatemo.com/tm-565-onix-digital
   <div id="about" class="about-us section">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 align-self-center">
+        <div class="col-lg-5 align-self-center">
             <img src="vendors/images/gambar.png" alt="">
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-5">
           <div class="section-heading">
             <h2>Apa<em> <span>itu</span> <span>Edifarm?</span></h2>
             <p>Edifarm adalah suatu perangkat yang dikembangkan untuk membantu admin dalam memonitoring beberapa sawah, walaupun dengan jarak jauh. Edifarm juga menyediakan pada perangkat mobile android untuk karyawan yang mengelola sawah Website edifarm hanya dapat diakses oleh admin yakni pemilik sawah. Admin dapat menambah karyawan, mengubah jadwal, menerima konsultasi dari karyawan, melihat kegiatan yang dilakukan karyawan disawah.</p>
@@ -196,9 +196,12 @@ https://templatemo.com/tm-565-onix-digital
       </div>
     </div>
     <style>
-      .container .row img{
+      .container .row .col-lg-5 img{
         width : 80%;
         overflow : hidden;
+        position : relative;
+        top : -70px;
+        right : -60px;
       }
     </style>
   <div id="team" class="our-portfolio section">
@@ -295,16 +298,23 @@ https://templatemo.com/tm-565-onix-digital
             </div>
           </div>
         </div>
-        <div class="col-lg-5 align-self-center">
-        <div class="container">
-      <div class="row">
-        <div class="col-lg-6 align-self-center">
+        <div class="col-lg-5 align-self-right">
+            <div class="row">
+              <div class="col-lg-14">
             <img src="vendors/images/2.png" alt="">
           </div>
         </div>
         </div>
       </div>
     </div>
+    <style>
+      .container .row .col-lg-14 img{
+        width : 200%;
+        overflow : hidden;
+        position: relative;
+        left: -250px;
+      }
+    </style>
     <div class="contact-dec">
       <img src="vendors/images/contact-dec.png" alt="">
     </div>

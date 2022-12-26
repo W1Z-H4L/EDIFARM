@@ -12,11 +12,12 @@ if(isset($_POST['update'])) {
 	$ttl = $_POST['ttl'];
 	$email = $_POST['email'];
 	$capt = $_POST['capt'];
-	$name = 
+	$name = $_FILES['foto']['name'];
+	$data= $_FILES['foto']["tmp_name"];
 	
-	$path = "image/$name";
+	$path = "api/image/$name";
 	$query1 = "SELECT Foto FROM user WHERE user.id_user = '$idUser'";
-	$exe = mysqli_query($connect, $query1);
+	$exe = mysqli_query($koneksi, $query1);
 	if($exe){
 		$row = mysqli_fetch_array($exe);
 		$old_path = $row['Foto'];
@@ -25,8 +26,16 @@ if(isset($_POST['update'])) {
 		}
 	}
 	$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt', `Foto` = '$path' WHERE `user`.`id_user` = '$id';";
-	file_put_contents($path, base64_decode($data));
-	$result = mysqli_query($koneksi,$query);
+	// file_put_contents($path, base64_decode($data));
+	if (move_uploaded_file($data, $path)) {
+
+        $result = mysqli_query($koneksi,$query);
+    } else {
+		echo "elek";
+		return;
+        $msg = "Failed to upload image";
+    }
+	$_SESSION["fotoUser"] = $path;
 	$_SESSION["namaUser"] = $nama;
 }
 ?>
@@ -135,13 +144,13 @@ if(isset($_POST['update'])) {
 								?>		
 								<div class="profile-photo">
 									
-									<div class="fa fa-pencil ">
-										<input class="" type="file" name="foto" id="foto">
+									<!-- <div class="fa fa-pencil "> -->
+										<!-- <input class="" type="file" name="foto" id="foto"> -->
 										<!-- <i class="fa fa-pencil"></i> -->
 										<!-- <input type="file" name="foto" id="foto"> -->
-									</div>
+									<!-- </div> -->
 									<img
-										src="vendors/images/photo1.jpg"
+										src="<?php echo $_SESSION["fotoUser"];?>"
 										alt=""
 										class="avatar-photo"
 									/>	
@@ -259,9 +268,12 @@ if(isset($_POST['update'])) {
 													<form action="profile.php" method="POST"  enctype="multipart/form-data">
 														<ul class="profile-edit-list row">
 															<li class="weight-500 col-md-6">
-																<h4 class="text-blue h5 mb-20">
-																	Edit Profil
-																</h4>
+																
+																<div class="form-group">
+																	<label>Ganti Foto Profil</label>
+																	<input class="" type="file" name="foto" id="foto">
+																	</div>
+
 																<div class="form-group">
 																	<label>Nama Lengkap</label>
 																	<input
@@ -357,10 +369,7 @@ if(isset($_POST['update'])) {
 																	<textarea class="form-control" value="" name = "capt"><?php echo $capt?></textarea>
 																	</div>
 																
-																<div class="form-group">
-																	<label>Profil</label>
-																	<input class="" type="file" name="foto" id="foto">
-																	</div>
+																
 
 																<div class="form-group mb-0">
 																	<input

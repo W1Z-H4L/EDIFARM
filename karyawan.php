@@ -123,7 +123,7 @@ if($op == 'delete'){
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan where id_level = '2'");
+								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan where user.id_level = '2'");
 								if(mysqli_num_rows($query)>0){ 
 								?>
 								<?php

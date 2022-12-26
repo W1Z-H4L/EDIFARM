@@ -6,9 +6,16 @@ if (isset($_POST['id_user']) && isset($_POST['nama']) && isset($_POST['password'
     $password = md5($_POST['password']);
     $no_hp = $_POST['no_hp'];
     $alamat = $_POST['alamat'];
+    $image = $_FILES['image']['name'];
 
+  
+    $imagePath = 'image_profil/'.$image;
+    $tmp_name = $_FILES['image']['tmp_name'];
+ 
+    move_uploaded_file($tmp_name, $imagePath);
+ 
 
-    $sql = "UPDATE user SET nama = '$nama' , password = '$password' , no_hp = '$no_hp', alamat ='$alamat' WHERE id_user = '$id_user'";
+    $sql = "UPDATE user SET nama = '$nama' , password = '{$password}' , no_hp = '$no_hp', alamat ='$alamat' , Foto = '$image' WHERE id_user = '$id_user'";
 
     $result = mysqli_query($db,$sql);
     if ($result) {

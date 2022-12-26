@@ -2,7 +2,7 @@
  $db = mysqli_connect('localhost','root','','edifarm');
  $username = $_POST['username'];
  $password = md5($_POST['password']);
- $sql = "SELECT * From user inner join jadwal on user.id_user=jadwal.id_user inner join sesi_tanam on jadwal.id_sesi=sesi_tanam.id_sesi Where user.username = '".$username."' and user.id_level=2";
+ $sql = "SELECT * From user Where id_level = 2 and username = '".$username."' ";
  $result = mysqli_query($db,$sql);
 
 

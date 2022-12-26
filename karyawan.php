@@ -14,9 +14,10 @@ if(isset($_POST['submit'])) {
 	$pw = $_POST['pw'];
 	$capt = $_POST['capt'];
 	$lahan = $_POST['lahan'];
+	$jenis = $_POST['jenis'];
 
-	if($username&&$nama&&$kelamin&&$alamat&&$hp&&$lahir&&$email&&$pw&&$capt&&$lahan){
-		$query =  "INSERT INTO user VALUES ('', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', '2', '', '$lahan')";
+	if($username&&$nama&&$kelamin&&$alamat&&$hp&&$lahir&&$email&&$pw&&$capt&&$lahan&&$jenis){
+		$query =  "INSERT INTO user VALUES ('', '$username','$nama','$kelamin','$alamat', '$hp','$lahir','$email','$pw','$capt', '2', '', '$lahan','$jenis')";
 		$result = mysqli_query($koneksi,$query);
 		if($result){
 			$sukses ="Berhasil memasukkan data";
@@ -123,7 +124,7 @@ if($op == 'delete'){
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan where user.id_level = '2'");
+								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis where id_level = '2'");
 								if(mysqli_num_rows($query)>0){ 
 								?>
 								<?php
@@ -141,6 +142,7 @@ if($op == 'delete'){
 										<td><?php echo $data["tanggal_lahir"];?></td>
 										<td><?php echo $data["email"];?></td>
 										<td><?php echo $data["nama_lahan"];?></td>
+										
 										<td>
 											<!-- Edit -->
 											<a href="#" data-color="#265ed7"
@@ -408,6 +410,28 @@ if($op == 'delete'){
 									<?php  
 									} 
 							 	} 
+								?>
+								</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label">Jenis</label>
+								<div class="col-sm-12 col-md-10">
+								<select class="form-control selectpicker" name="jenis" title="Pilih salah satu">
+								<?php 
+								$query = mysqli_query($koneksi,"SELECT * FROM jenis");
+								if(mysqli_num_rows($query)>0){ 
+								?>
+								<?php
+									while($data2 = mysqli_fetch_array($query)){
+										$namajenis=$data2["nama_jenis"];
+										$idjenis=$data2["id_jenis"];
+								?>		
+									<option value="<?php echo $idjenis ?>"><?php echo $namajenis ?></option>
+									
+									<?php  
+									} 
+								} 
 								?>
 								</select>
 								</div>

@@ -2,7 +2,7 @@
  $db = mysqli_connect('localhost','root','','edifarm');
  $username = $_POST['username'];
  $password = md5($_POST['password']);
- $sql = "SELECT * From user Where username = '".$username."'";
+ $sql = "SELECT * From user Where id_level = 2 and username = '".$username."' ";
  $result = mysqli_query($db,$sql);
 
 

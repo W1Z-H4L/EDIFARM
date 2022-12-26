@@ -61,9 +61,9 @@ if(isset($_POST['update'])) {
 				</div>
 				<div class="row clearfix">
 					<?php 
-					$query = "SELECT * FROM user INNER JOIN consul ON consul.id_user = user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan WHERE consul.status='belum'";
+					$query = "SELECT * FROM consul INNER JOIN jadwal ON consul.id_jadwal = jadwal.id_jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis WHERE consul.status='belum'";
 					$result = mysqli_query($koneksi,$query);
-					while($row= $row = mysqli_fetch_array($result)){
+					while($row = mysqli_fetch_array($result)){
 						$id=$row["id_consul"];
 					?>
 					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
@@ -123,13 +123,21 @@ if(isset($_POST['update'])) {
 																<input class="form-control" type="search" value = "<?php echo $row["nama_lahan"]; ?>" name = "nama_lahan">
 															</div>
 														</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Jenis</label>
+															<div class="col-sm-12 col-md-10">
+																<input class="form-control" type="search" value = "<?php echo $row["nama_jenis"]; ?>" name = "nama_jenis">
+															</div>
+														</div><div class="form-group row">
 															<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
 															<div class="col-sm-12 col-md-10">
 															<textarea class="form-control" value="" name = "deskripsi"><?php echo $row["isi"]; ?></textarea>
 															</div>
+														</div><div class="form-group row">
+															<label class="col-sm-12 col-md-2 col-form-label">Foto</label>
+															<div><img name = "foto" value = "" src ="images/<?php echo $row["Foto"];?>" width : 100% height : 150%;>
+																
 															</div>
-															
-														<div class="form-group row">
+														</div><div class="form-group row">
 															<label class="col-sm-12 col-md-2 col-form-label">Status</label>
 															<div class="col-sm-12 col-md-10">
 															<select class="custom-select col-12" name="status">

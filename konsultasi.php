@@ -1,5 +1,12 @@
 <?php
 include('koneksi.php');
+
+$data = file_get_contents("https://70d4-103-156-141-254.ap.ngrok.io/EDIFARM/api/image_diag/5b6549f1-5148-4af8-be84-d31681417f5b4888406759248731445.jpg");
+$json = base64_encode($data);
+
+
+
+
 if(isset($_POST['update'])) {
 	$id = $_POST ['id'];
 	$status = $_POST['status'];
@@ -69,7 +76,7 @@ if(isset($_POST['update'])) {
 					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 						<div class="card card-box text-center">
 							<div class=" d-flex justify-content-between pb-10">
-								<img class="card-img-top" src="vendors/images/gambarlahan_2.png" alt=""/>
+								<img class="card-img-top" src="data:image/png;base64, <?php echo $json;?>" alt=""/>
 								
 							</div>
 							<div class="card-body">

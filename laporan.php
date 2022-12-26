@@ -187,7 +187,7 @@ if(isset($_POST['submit'])) {
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM consul INNER JOIN jadwal ON consul.id_jadwal = jadwal.id_jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan WHERE consul.status='selesai'");
+								$query = mysqli_query($koneksi,"SELECT * FROM consul INNER JOIN user ON consul.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan WHERE consul.status='selesai'");
 								if(mysqli_num_rows($query)>0){
 								?>
 								<?php

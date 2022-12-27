@@ -6,6 +6,7 @@
  $result = mysqli_query($db,$sql);
 
 
+
  if(mysqli_num_rows($result) > 1){
     $row = mysqli_fetch_assoc($result);
     $passwordVal = $row["password"];
@@ -22,6 +23,7 @@
         echo $response;
     } else {
         http_response_code(200);
+
         
             while ($r = mysqli_fetch_assoc($result)) {
                 $rows[] = $r;
@@ -31,6 +33,7 @@
         "message" => "sukses",
         "data" => null,
             $rows]);
+
     }
  } 
  else{

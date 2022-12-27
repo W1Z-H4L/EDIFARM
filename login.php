@@ -36,6 +36,7 @@ if(isset($_POST['submit'])){
 		$userVal = $row['username'];
 		$passVal =$row['password'];
 		$namamu = $row['nama'];
+		$foto = $row['Foto'];
 	};
 
 	if($username != $userVal) {
@@ -52,6 +53,7 @@ if(isset($_POST['submit'])){
 	$_SESSION["login"]=true;
 	$_SESSION["idUser"] = $id;
 	$_SESSION["namaUser"] = $namamu;
+	$_SESSION["fotoUser"] = $foto;
 	header('Location: index.php');
 }
 ?>

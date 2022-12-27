@@ -114,7 +114,7 @@ require("koneksi.php");
 							data-toggle="dropdown"
 						>
 							<span class="user-icon">
-								<img src="vendors/images/photo1.jpg" alt="" />
+								<img src="<?php echo $_SESSION["fotoUser"];?>" alt="" />
 							</span>
 							<span class="user-name"><?= $_SESSION["namaUser"];?></span>
 						</a>

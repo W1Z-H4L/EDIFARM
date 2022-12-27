@@ -1,5 +1,11 @@
 <?php
 include('koneksi.php');
+
+
+
+
+
+
 if(isset($_POST['update'])) {
 	$id = $_POST ['id'];
 	$status = $_POST['status'];
@@ -61,15 +67,27 @@ if(isset($_POST['update'])) {
 				</div>
 				<div class="row clearfix">
 					<?php 
-					$query = "SELECT * FROM consul INNER JOIN jadwal ON consul.id_jadwal = jadwal.id_jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis WHERE consul.status='belum'";
-					$result = mysqli_query($koneksi,$query);
-					while($row = mysqli_fetch_array($result)){
+					// $query = "SELECT * FROM consul INNER JOIN user ON consul.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis WHERE consul.status='belum'";
+					// $result = mysqli_query($koneksi,$query);
+					$result= file_get_contents("https://70d4-103-156-141-254.ap.ngrok.io/EDIFARM/api/konsul.php");
+					// $general = JSON.parse(output);
+					$json = json_decode($result, TRUE);
+					echo print_r ($json);
+					return;
+					for ($x = 0; $x <= $json.length; $x++){
+					// while($row = mysqli_fetch_array($result)){
 						$id=$row["id_consul"];
+						$foto=[$x]['Foto'];
+						echo $foto;
+						return;
+						$data = file_get_contents("https://70d4-103-156-141-254.ap.ngrok.io/EDIFARM/api/image_diag/5b6549f1-5148-4af8-be84-d31681417f5b4888406759248731445.jpg");
+						$json = base64_encode($data);
+						
 					?>
 					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 						<div class="card card-box text-center">
 							<div class=" d-flex justify-content-between pb-10">
-								<img class="card-img-top" src="vendors/images/gambarlahan_2.png" alt=""/>
+								<img class="card-img-top" src="data:image/png;base64, <?php echo $json;?>" alt=""/>
 								
 							</div>
 							<div class="card-body">
@@ -134,8 +152,7 @@ if(isset($_POST['update'])) {
 															</div>
 														</div><div class="form-group row">
 															<label class="col-sm-12 col-md-2 col-form-label">Foto</label>
-															<div><img name = "foto" value = "" src ="images/<?php echo $row["Foto"];?>" width : 100% height : 150%;>
-																
+															<div><img name = "foto" value = "" src="data:image/png;base64, <?php echo $json;?>" alt=""/>
 															</div>
 														</div><div class="form-group row">
 															<label class="col-sm-12 col-md-2 col-form-label">Status</label>

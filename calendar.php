@@ -1,7 +1,8 @@
 <?php 
 require('koneksi.php');
-	$idPilihan = $_GET['idlhn'];
-	
+$idPilihan = $_GET['idlhn'];
+
+//Tambah preset jadwal
 if(isset($_POST['tambahJadwal'])) {
 	$lahan = $_POST['lahanPilih'];
 	$jenis = $_POST['padiPilih'];
@@ -38,6 +39,7 @@ if(isset($_POST['tambahJadwal'])) {
 	$result = mysqli_query($koneksi,$query);
 
 }
+//tambah jadwal satuan
 if(isset($_POST['tambah'])) {
 	$user = $_POST['user'];
 	$kegiatan = $_POST['kegiatan'];
@@ -47,6 +49,7 @@ if(isset($_POST['tambah'])) {
 	$query =  "INSERT INTO `jadwal` (`id_jadwal`, `id_user`, `kegiatan`, `tanggal_mulai`, `tanggal_selesai`, `status`, `id_sesi`, `id_lahan`) VALUES ('', '$user','$kegiatan','$start','$end', 'belum', '1', '$lahan')";
 	$result = mysqli_query($koneksi,$query); 
 }
+//edit tanggal(drag n drop)
 if(isset($_POST['id'])) {
 	$id2 = $_POST['id'];
 	$kegiatan = $_POST['title'];
@@ -55,11 +58,13 @@ if(isset($_POST['id'])) {
 	$query =  "UPDATE jadwal set kegiatan = '$kegiatan', tanggal_mulai= '$start', tanggal_selesai = '$end' WHERE `jadwal`.`id_jadwal` = '$id2'";
 	$result = mysqli_query($koneksi,$query);
 }
+//hapus jadwal
 if(isset($_POST['hapus'])) {
-	$id = $_POST['idJadwal'];
+	$id = $_POST['id'];
 	$query =  "DELETE FROM `jadwal` WHERE id_jadwal = $id";
 	$result = mysqli_query($koneksi,$query); 
 }
+//nampilin jadwal berdasar lahan yg dipilih
 $sql5 = "SELECT * FROM jadwal right JOIN lahan ON jadwal.id_lahan=lahan.id_lahan where lahan.id_lahan = '$idPilihan'";
 $result8 = mysqli_query($koneksi,$sql5);
 $dataArr = array();

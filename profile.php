@@ -28,13 +28,10 @@ if(isset($_POST['update'])) {
 	$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt', `Foto` = '$path' WHERE `user`.`id_user` = '$id';";
 	// file_put_contents($path, base64_decode($data));
 	if (move_uploaded_file($data, $path)) {
-
-        $result = mysqli_query($koneksi,$query);
     } else {
-		echo "elek";
-		return;
         $msg = "Failed to upload image";
     }
+	$result = mysqli_query($koneksi,$query);
 	$_SESSION["fotoUser"] = $path;
 	$_SESSION["namaUser"] = $nama;
 }

@@ -47,8 +47,8 @@ if(isset($_POST['tambah'])) {
 	$query =  "INSERT INTO `jadwal` (`id_jadwal`, `id_user`, `kegiatan`, `tanggal_mulai`, `tanggal_selesai`, `status`, `id_sesi`, `id_lahan`) VALUES ('', '$user','$kegiatan','$start','$end', 'belum', '1', '$lahan')";
 	$result = mysqli_query($koneksi,$query); 
 }
-if(isset($_POST['id'])) {
-	$id2 = $_POST['id'];
+if(isset($_POST['Update'])) {
+	$id2 = $_POST['idJadwal'];
 	$kegiatan = $_POST['title'];
 	$start = $_POST['start'];
 	$end = $_POST['end'];
@@ -59,7 +59,9 @@ if(isset($_POST['hapus'])) {
 	$id = $_POST['idJadwal'];
 	$query =  "DELETE FROM `jadwal` WHERE id_jadwal = $id";
 	$result = mysqli_query($koneksi,$query); 
+
 }
+
 $sql5 = "SELECT * FROM jadwal right JOIN lahan ON jadwal.id_lahan=lahan.id_lahan where lahan.id_lahan = '$idPilihan'";
 $result8 = mysqli_query($koneksi,$sql5);
 $dataArr = array();
@@ -202,7 +204,7 @@ if ($idPilihan){
 											<h4 class="text-blue h4 mb-10">Detail Jadwal</h4>
 											<div class="form-group">
 												<label>id jadwal</label>
-												<input type="text" class="idJadwal form-control" name="id" id="user" />
+												<input type="text" class="idJadwal form-control" name="idJadwal" id="user" />
 											</div>
 											<div class="form-group">
 												<label>id user</label>
@@ -226,7 +228,7 @@ if ($idPilihan){
 											</div>
 										</div>
 										<div class="modal-footer">
-											<button type="submit" class="btn btn-primary"  id="tombol_form" name="id">
+											<button type="submit" class="btn btn-primary"  id="tombol_form" name="Update">
 												Update
 											</button>
 											<button

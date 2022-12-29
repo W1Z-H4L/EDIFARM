@@ -20,7 +20,7 @@ require("koneksi.php");
 					data-toggle="header_search"
 				></div>
 				<div class="header-search">
-					<form>
+					<!-- <form>
 						<div class="form-group mb-0">
 							<i class="dw dw-search2 search-icon"></i>
 							<input
@@ -75,7 +75,7 @@ require("koneksi.php");
 								</div>
 							</div>
 						</div>
-					</form>
+					</form> -->
 				</div>
 			</div>
 			<div class="header-right">

@@ -59,7 +59,7 @@ if(isset($_POST['Update'])) {
 }
 //hapus jadwal
 if(isset($_POST['hapus'])) {
-	$id = $_POST['id'];
+	$id = $_POST['idJadwal'];
 	$query =  "DELETE FROM `jadwal` WHERE id_jadwal = $id";
 	$result = mysqli_query($koneksi,$query); 
 

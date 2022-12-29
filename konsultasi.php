@@ -14,6 +14,15 @@ if(isset($_POST['update'])) {
 	$query =  "UPDATE `consul` SET `status` = '$status' where `consul`.`id_consul` = '$id'";
 	$result = mysqli_query($koneksi,$query);
 }
+// var_dump($rows);
+
+$ch = curl_init(); 
+curl_setopt($ch, CURLOPT_URL, "https://67ed-114-125-77-60.ap.ngrok.io/edifarm-web/EDIFARM/api/test.php");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+$output = curl_exec($ch); 
+curl_close($ch);      
+$rows = json_decode($output, true);
+
 ?>
 
 
@@ -66,24 +75,14 @@ if(isset($_POST['update'])) {
 					</div>
 				</div>
 				<div class="row clearfix">
-					<?php 
-					// $query = "SELECT * FROM consul INNER JOIN user ON consul.id_user=user.id_user INNER JOIN lahan ON user.id_lahan = lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis WHERE consul.status='belum'";
-					// $result = mysqli_query($koneksi,$query);
-					$result= file_get_contents("https://70d4-103-156-141-254.ap.ngrok.io/EDIFARM/api/konsul.php");
-					// $general = JSON.parse(output);
-					$json = json_decode($result, TRUE);
-					echo print_r ($json);
-					return;
-					for ($x = 0; $x <= $json.length; $x++){
-					// while($row = mysqli_fetch_array($result)){
-						$id=$row["id_consul"];
-						$foto=[$x]['Foto'];
-						echo $foto;
-						return;
-						$data = file_get_contents("https://70d4-103-156-141-254.ap.ngrok.io/EDIFARM/api/image_diag/5b6549f1-5148-4af8-be84-d31681417f5b4888406759248731445.jpg");
-						$json = base64_encode($data);
-						
-					?>
+					
+					<?php foreach($rows as $row) : 
+						$foto=$row["Foto"];
+						?>
+
+						<?php $data = file_get_contents("https://67ed-114-125-77-60.ap.ngrok.io/edifarm-web/EDIFARM/api/image_diag/$foto");
+						$json = base64_encode($data); ?>
+
 					<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 						<div class="card card-box text-center">
 							<div class=" d-flex justify-content-between pb-10">
@@ -91,113 +90,17 @@ if(isset($_POST['update'])) {
 								
 							</div>
 							<div class="card-body">
-								<h5 class="card-title weight-500 text-left"><?php echo $row["nama_lahan"];;?></h5>
+								<h5 class="card-title weight-500 text-left"><?= $row["isi"];?></h5>
 								<p class="card-text text-left">Tekan tombol detail untuk melihat konsultasi berikut.</p>
 								<div>
-									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?php echo $id;?>" >Detail</a>
-									<div
-										class="modal fade"
-										id="detail<?php echo $id;?>"
-										tabindex="-1"
-										role="dialog"
-										aria-labelledby="myLargeModalLabel"
-										aria-hidden="true"
-									>
-										<div class="modal-dialog modal-dialog-centered">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h4 class="modal-title" id="myLargeModalLabel">
-													<?php echo $row["nama_lahan"];?>
-													</h4>
-													<button
-														type="button"
-														class="close"
-														data-dismiss="modal"
-														aria-hidden="true"
-													>
-														×
-													</button>
-												</div>
-												<div class="modal-body">						
-													<form action="konsultasi.php" method="POST">
-														<div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">ID</label>
-															<div class="col-sm-12 col-md-10">
-																<input class="form-control" type="search" value = "<?php echo $row["id_consul"]; ?>" name = "id">
-															</div>
-														</div><div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">Tanggal</label>
-															<div class="col-sm-12 col-md-10">
-																<input class="form-control" type="search" value = "<?php echo $row["tanggal_consul"]; ?>" name = "tanggal">
-															</div>
-														</div><div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">Nama Petani</label>
-															<div class="col-sm-12 col-md-10">
-																<input class="form-control" type="search" value = "<?php echo $row["nama"]; ?>" name = "nama_karyawan">
-															</div>
-														</div><div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
-															<div class="col-sm-12 col-md-10">
-																<input class="form-control" type="search" value = "<?php echo $row["nama_lahan"]; ?>" name = "nama_lahan">
-															</div>
-														</div><div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">Jenis</label>
-															<div class="col-sm-12 col-md-10">
-																<input class="form-control" type="search" value = "<?php echo $row["nama_jenis"]; ?>" name = "nama_jenis">
-															</div>
-														</div><div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">Deskripsi</label>
-															<div class="col-sm-12 col-md-10">
-															<textarea class="form-control" value="" name = "deskripsi"><?php echo $row["isi"]; ?></textarea>
-															</div>
-														</div><div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">Foto</label>
-															<div><img name = "foto" value = "" src="data:image/png;base64, <?php echo $json;?>" alt=""/>
-															</div>
-														</div><div class="form-group row">
-															<label class="col-sm-12 col-md-2 col-form-label">Status</label>
-															<div class="col-sm-12 col-md-10">
-															<select class="custom-select col-12" name="status">
-															<?php 
-															$query1 = mysqli_query($koneksi,"SELECT status FROM consul where id_consul=$id");
-															if(mysqli_num_rows($query1)>0){ 
-															
-																while($data1 = mysqli_fetch_array($query1)){
-																	$status=$data1["status"];
-																	
-															?>		
-																<option value="Belum" <?php if($status=='belum') echo "selected"?>>Belum</option>
-																<option value="Selesai" <?php if($status=='selesai') echo "selected"?>>Selesai</option>
-																<?php  
-																} 
-															} 
-															?>
-															</select>
-															</div>
-														</div>
-													<div class="modal-footer">
-												<button
-													type="button"
-													class="btn btn-secondary"
-													data-dismiss="modal"
-													alt="add-modal-kar"
-												>
-												Close
-												</button>
-												<input type="submit" name="update" class="btn btn-primary" value ="Simpan">
-											</div>
-											</form>
-											</div>
-										</div>
-									</div>
+									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?php echo $row['id_consul'];?>" >Detail</a>
+									
 								</div>
 							</div>
-							</div>
+							
 						</div>
 					</div>
-					<?php
-					}
-					?>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</div>

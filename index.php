@@ -11,53 +11,71 @@
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
 		<title>Edifarm</title>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="vendors/images/logo_edifarm.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="vendors/images/logo_edifarm.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="vendors/images/logo_edifarm.png"
-		/>
+		<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo_edifarm.png"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo_edifarm.png"/>
+		<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo_edifarm.png"/>
 
 		<!-- Mobile Specific Metas -->
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, maximum-scale=1"
-		/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 		<!-- Google Font -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 		<!-- CSS -->
 		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="vendors/styles/icon-font.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="src/plugins/datatables/css/dataTables.bootstrap4.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="src/plugins/datatables/css/responsive.bootstrap4.min.css"
-		/>
+		<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css"/>
+		<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/dataTables.bootstrap4.min.css"/>
+		<link rel="stylesheet" type="text/css" href="src/plugins/datatables/css/responsive.bootstrap4.min.css"/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+		
+	<!-- Meta -->
+	<meta name="description" content="WebGIS BMKG - Prakiraan Cuaca.">
+	<meta name="keywords" content="Tutorial WebgGIS, Tutorial Leaflet, Cara Membuat WebgGIS BMKG" />
+	<link rel="shortcut icon" type="image/png" href="https://smartdevtala.com/assets/unggah/icon/favicon-16x16.png"/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+	   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+	   crossorigin=""/>
+	   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+		<style type="text/css">
+	  	body{
+	  		padding: 0;
+	  		margin: 0;
+	  		font-family: 'Roboto', sans-serif;
+	  	}
+	  	#map{
+	  		height: 100vh;
+	  		width: 100%
+	  	}
+	  	header{
+	  		position: absolute;
+	  		top:10px;
+	  		left:60px;
+	  		z-index: 1000;
+	  		background: #fffd;
+	  		padding: 10px 20px;
+	  		width: calc( 100% - 180px)
+	  	}
+	  	header h1{
+	  		padding: 0;
+	  		margin: 0 0  5px;
+	  		font-size: 22px
+	  	}
+	  	header p{
+	  		padding: 0;
+	  		margin: 0;
+	  		font-size: 14px;
+	  	}
+	  	header .select{
+	  		position: absolute;
+	  		right: 20px;
+	  		top: 1rem
+	  	}
+	  	header .select>select{
+	  		font-size: 1rem;
+	  		padding: .5rem;
+	  		border:1px solid #ddd !important;
+	  	}
+	  </style>
 	</head>
 	<body>
 		<?php  
@@ -71,29 +89,30 @@
 		<div class="mobile-menu-overlay"></div>
 
 		<div class="main-container">
+			
 			<div class="xs-pd-20-10 pd-ltr-20">
 				<div class="title pb-20">
 					<h2 class="h3 mb-0">Dashboard</h2>
 				</div>
-				<div class="row pb-10">
-					<div class="col-md-8 mb-20">
-						<div class="card-box height-100-p pd-20">
-							<div
-								class="d-flex flex-wrap justify-content-between align-items-center pb-0 pb-md-3"
-							>
-								<div class="h5 mb-md-0">Progres Lahan</div>
-								<div class="form-group mb-md-0">
-									<select class="form-control form-control-sm selectpicker">
-										<option value="">Per-Minggu</option>
-										<option value="">Per-Bulan</option>
-										<option value="">6 Bulan Terakhir</option>
-										<option value="">1 Tahun Terakhir</option>
-									</select>
-								</div>
-							</div>
-							<div id="chart2"></div>
+
+				<div class="card-box pb-10">
+						<div class="title">
+							<h1>WebGIS Prakiraan Cuaca dari BMKG</h1>
+							<p>Date : <span class="tanggal"></span></p>
 						</div>
-					</div>
+						<div class="select">
+							<select name="select-tanggal"></select>
+						</div>
+					
+					<div id="map"></div>
+				</div>
+				<div class="title pb-20">
+				</div>
+			
+
+				<!-- <div class="row pb-10">
+					
+					
 					<div class="col-md-4 mb-20">
 						<a href = "konsultasi.php">
 						<div
@@ -102,9 +121,9 @@
 						>
 							<div class="d-flex justify-content-between pb-20 text-white">
 								<div class="icon h1 text-white">
-									<i class="fa fa-bug" aria-hidden="true"></i>
+									<i class="fa fa-bug" aria-hidden="true"></i> -->
 									<!-- <i class="icon-copy fa fa-stethoscope" aria-hidden="true"></i> -->
-								</div>
+								<!-- </div>
 								<div class="font-14 text-right">
 									<div class="font-12">Konsultasi</div>
 								</div>
@@ -118,13 +137,12 @@
 									<div id="appointment-chart"></div>
 								</div>
 							</div>
-							</div><script src="https://apps.elfsight.com/p/platform.js" defer></script>
-							<div class="elfsight-app-cfd868b2-6107-4fa9-ae0d-73f01284f4d4"></div>
+							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="row">
+				<!-- <div class="row">
 					<div class="col-lg-4 col-md-6 mb-20">
 						<div class="card-box height-100-p pd-20 min-height-200px">
 							<div class="d-flex justify-content-between pb-10">
@@ -246,6 +264,7 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="col-lg-4 col-md-6 mb-20">
 					<a href="padi.php"
 					>
@@ -287,46 +306,46 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
 				<div class="card-box pb-10">
 					<div class="h5 pd-20 mb-0">Data Karyawan</div>
 					<table class="data-table table stripe hover">
-								<thead>
-									<tr>
-										<th class="table-plus datatable-nosort">Username</th>
-										<th>Nama</th>
-										<th>Jenis Kelamin</th>
-										<th>Alamat</th>
-										<th>No. HP</th>
-										<th>Tgl Lahir</th>
-										<th>email</th>
-									</tr>
-								</thead>
-								<tbody>
-								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user where id_level = '2'");
-								if(mysqli_num_rows($query)>0){ ?>
-								<?php
-									while($data = mysqli_fetch_array($query)){
-										$id=$data["id_user"];
-										$jeniskel=$data["jenis_kelamin"];
-								?>		
-								<tr >
-										<td><?php echo $data["username"];?></td>
-										<td><?php echo $data["nama"];?></td>
-										<td><?php echo $jeniskel;?></td>
-										<td><?php echo $data["alamat"];?></td>
-										<td><?php echo $data["no_hp"];?></td>
-										<td><?php echo $data["tanggal_lahir"];?></td>
-										<td><?php echo $data["email"];?></td>
-									</tr>	
-								<?php  
-									} 
-							 	} 
-								?>	
-								</tbody>
-							</table>
+						<thead>
+							<tr>
+								<th class="table-plus datatable-nosort">Username</th>
+								<th>Nama</th>
+								<th>Jenis Kelamin</th>
+								<th>Alamat</th>
+								<th>No. HP</th>
+								<th>Tgl Lahir</th>
+								<th>email</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php 
+						$query = mysqli_query($koneksi,"SELECT * FROM user where id_level = '2'");
+						if(mysqli_num_rows($query)>0){ ?>
+						<?php
+							while($data = mysqli_fetch_array($query)){
+								$id=$data["id_user"];
+								$jeniskel=$data["jenis_kelamin"];
+						?>		
+						<tr >
+								<td><?php echo $data["username"];?></td>
+								<td><?php echo $data["nama"];?></td>
+								<td><?php echo $jeniskel;?></td>
+								<td><?php echo $data["alamat"];?></td>
+								<td><?php echo $data["no_hp"];?></td>
+								<td><?php echo $data["tanggal_lahir"];?></td>
+								<td><?php echo $data["email"];?></td>
+							</tr>	
+						<?php  
+							} 
+						} 
+						?>	
+						</tbody>
+					</table>
 				</div>
 
 				<div class="title pb-20 pt-20">
@@ -502,5 +521,11 @@
 		<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 		<script src="vendors/scripts/dashboard3.js"></script>
 		<script src="vendors/scripts/apexcharts-setting.js"></script>
+		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   <script type="text/javascript" src="node_modules/moment/moment.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script type="text/javascript" src="app.js"></script>
 	</body>
 </html>

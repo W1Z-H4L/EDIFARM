@@ -52,6 +52,12 @@ if($op == 'delete'){
 	$query =  "DELETE FROM user WHERE id_user='$id'";
 	$result = mysqli_query($koneksi,$query);
 }
+$ch = curl_init(); 
+curl_setopt($ch, CURLOPT_URL, "https://67ed-114-125-77-60.ap.ngrok.io/edifarm-web/EDIFARM/api/karyawan_web.php");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$output = curl_exec($ch); 
+curl_close($ch);      
+$rows = json_decode($output, true);
 ?>
 
 <!DOCTYPE html>
@@ -124,11 +130,12 @@ if($op == 'delete'){
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis where id_level = '2'");
-								if(mysqli_num_rows($query)>0){ 
+								// $query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis where id_level = '2'");
+								// if(mysqli_num_rows($rows)>0){ 
 								?>
 								<?php
-									while($data = mysqli_fetch_array($query)){
+									foreach($rows as $data) : 
+									// while($data = $rows){
 										$id=$data["id_user"];
 										$jeniskel=$data["jenis_kelamin"];
 										
@@ -147,131 +154,39 @@ if($op == 'delete'){
 											<!-- Edit -->
 											<a href="#" data-color="#265ed7"
 											data-toggle="modal"
-											data-target="#editkar<?php echo $data["id_user"];?>"
+											data-target="#editkar<?php echo $id;?>"
 												><i class="icon-copy dw dw-edit2"></i
 											></a>
-											<div
-												class="modal fade bs-example-modal-lg"
-												id="editkar<?php echo $data["id_user"];?>"
-												tabindex="-1"
-												role="dialog"
-												aria-labelledby="myLargeModalLabel"
-												aria-hidden="true"
-											>
-												<div class="modal-dialog modal-lg modal-dialog-centered">
+											<div class="modal fade bs-example-modal-lg" id="editkar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
-															<h4 class="modal-title" id="myLargeModalLabel">
-																Edit Karyawan
-															</h4>
-															<button
-																type="button"
-																class="close"
-																data-dismiss="modal"
-																aria-hidden="true"
-																alt="add-modal-kar"							
-															>x
+															<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
 															</button>
 														</div>
-															<div class="modal-body">						
-																<form action="karyawan.php" method="POST">
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label" for="nama">ID</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input class="form-control" type="hidden" name="id" id="id" value="<?php echo $data["id_user"];?>">
-																		</div>
-																	</div>	
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label" for="nama">Username</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input class="form-control" type="text" name="username" id="username" value="<?php echo $data["username"];?>">
-																		</div>
+														<div class="modal-body">
+															<form action="calendar.php?idlhn=<?=$idPilihan;?>" method="POST">
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label">Tgl. Mulai</label>
+																	<div class="col-sm-12 col-md-10">
+																		<input
+																			class="form-control date"
+																			placeholder="Pilih tanggal lahir"
+																			type="date"
+																			name="tanggalMulai"
+																			required
+																		/>
 																	</div>
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input class="form-control" type="text" name="nama" id="nama" value="<?php echo $data["nama"];?>">
-																		</div>
+																</div>
+																</div>
+																	<div class="modal-footer">
+																		<button type="button" class="btn btn-secondary" data-dismiss="modal" alt="add-modal-kar" >Batal</button>
+																		<input type="submit" name="tambahJadwal" class="btn btn-primary" value="Simpan" id="sa-success">
 																	</div>
-																	<div class="form-group row">
-																	<label class="col-sm-12 col-md-2 col-form-label">Kelamin</label>
-																		<div class="col-sm-12 col-md-10">
-																		<select class="custom-select col-12" name="kelamin">
-																			<option value="Laki-laki" <?php if($jeniskel=="Laki-laki") echo "selected"?>>Laki-laki</option>
-																			<option value="Perempuan" <?php if($jeniskel=="Perempuan") echo "selected"?>>Perempuan</option>
-																		</select>
-																	</div>
-																	</div>
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label" for="alamat">Alamat</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input class="form-control" type="text" name="alamat" id="alamat" value="<?php echo $data["alamat"];?>">
-																		</div>
-																	</div>
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label" for="hp">No. HP</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input class="form-control" type="text" name="hp" id="hp" value="<?php echo $data["no_hp"];?>">
-																		</div>
-																	</div>
-																	<div class="form-group row">
-																	<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input
-																				class="form-control date"
-																				value="<?php echo $data["tanggal_lahir"];?>"
-																				type="date"
-																				name="lahir"
-																			/>
-																		</div>
-																	</div>
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label" for="email">Email</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input class="form-control" type="text" name="email" id="email" value="<?php echo $data["email"];?>">
-																		</div>
-																	</div>
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label" for="capt">Motivasi</label>
-																		<div class="col-sm-12 col-md-10">
-																			<input class="form-control"  type="text" name="capt" id="capt" value="<?php echo $data["caption"];?>">
-																		</div>
-																	</div>
-																	<div class="form-group row">
-																		<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
-																		<div class="col-sm-12 col-md-10">
-																		<select class="custom-select col-12" name="lahan">
-																		<?php 
-																		$query1 = mysqli_query($koneksi,"SELECT * FROM lahan");
-																		if(mysqli_num_rows($query)>0){ 
-																		?>
-																		<?php
-																			while($data1 = mysqli_fetch_array($query1)){
-																				$namalahan1=$data1["nama_lahan"];
-																				$idlahan1=$data1["id_lahan"];
-																		?>		
-																			<option value="<?php echo $idlahan1 ?>" <?php if($idlahan1==$data["id_lahan"]) echo "selected"?>><?php echo $namalahan1 ?></option>
-																			<?php  
-																			} 
-																		} 
-																		?>
-																		</select>
-																		</div>
-																	</div>
-																	</div>
-																		<div class="modal-footer">
-																			<button
-																				type="button"
-																				class="btn btn-secondary"
-																				data-dismiss="modal"
-																				alt="add-modal-kar"
-																			>Close
-																			</button>
-																			<input type="submit" name="update" class="btn btn-primary" value="Update">
-																		</div>
-																	</div>
-																</form>		
-															</div>
+																</div>
+															</form>
 														</div>
 													</div>
 												</div>
@@ -286,8 +201,8 @@ if($op == 'delete'){
 										</td>
 									</tr>	
 								<?php  
-									} 
-							 	} 
+									// }};
+								endforeach;
 								?>	
 								</tbody>
 							</table>

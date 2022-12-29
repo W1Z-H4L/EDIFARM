@@ -1,7 +1,8 @@
 <?php 
 require('koneksi.php');
-	$idPilihan = $_GET['idlhn'];
-	
+$idPilihan = $_GET['idlhn'];
+
+//Tambah preset jadwal
 if(isset($_POST['tambahJadwal'])) {
 	$lahan = $_POST['lahanPilih'];
 	$jenis = $_POST['padiPilih'];
@@ -38,6 +39,7 @@ if(isset($_POST['tambahJadwal'])) {
 	$result = mysqli_query($koneksi,$query);
 
 }
+//tambah jadwal satuan
 if(isset($_POST['tambah'])) {
 	$user = $_POST['user'];
 	$kegiatan = $_POST['kegiatan'];
@@ -55,8 +57,9 @@ if(isset($_POST['Update'])) {
 	$query =  "UPDATE jadwal set kegiatan = '$kegiatan', tanggal_mulai= '$start', tanggal_selesai = '$end' WHERE `jadwal`.`id_jadwal` = '$id2'";
 	$result = mysqli_query($koneksi,$query);
 }
+//hapus jadwal
 if(isset($_POST['hapus'])) {
-	$id = $_POST['idJadwal'];
+	$id = $_POST['id'];
 	$query =  "DELETE FROM `jadwal` WHERE id_jadwal = $id";
 	$result = mysqli_query($koneksi,$query); 
 

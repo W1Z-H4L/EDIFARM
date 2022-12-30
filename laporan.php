@@ -34,6 +34,8 @@ if(isset($_POST['submit'])) {
 };
 ?>
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -212,6 +214,56 @@ if(isset($_POST['submit'])) {
 						</div>
 					</div>
 					<!-- Laporan Lahan Berhenti -->
+
+						<!-- Laporan kegiatan Mulai -->
+						<div class="card-box mb-30">
+						<div class="pd-20">
+							<h4 class="text-blue h4">Laporan Kegiatan</h4>
+						</div>
+						<div class="pb-20">
+							<table class="data-table-export table stripe hover nowrap">
+								<thead>
+									<tr>
+										<th class="table-plus datatable-nosort">Nama Karyawan</th>
+										<th>Nama Lahan</th>
+										<th>Sesi</th>
+										<th>Kegiatan</th>
+										<th>Tanggal Mulai</th>
+										<th>Tanggal Selesai</th>
+										
+									</tr>
+								</thead>
+								<tbody>
+								<?php 
+								$query = mysqli_query($koneksi,"SELECT * FROM jadwal INNER JOIN user ON jadwal.id_user=user.id_user INNER JOIN lahan ON jadwal.id_lahan = lahan.id_lahan WHERE jadwal.status='selesai'");
+								if(mysqli_num_rows($query)>0){
+								?>
+								<?php
+									while($data2 = mysqli_fetch_array($query)){
+										$nama_kar=$data2["nama"];
+										$nama_lahan=$data2["nama_lahan"];
+										$nama_sesi=$data2["id_sesi"];
+										$kegiatan=$data2["kegiatan"];
+										$tanggal1=$data2["tanggal_mulai"];
+										$tanggal2=$data2["tanggal_selesai"];
+										
+								?>		
+								<tr >
+										<td><?php echo $data2["nama"];?></td>
+										<td><?php echo $data2["nama_lahan"];?></td>
+										<td><?php echo $data2["id_sesi"];?></td>
+										<td><?php echo $data2["kegiatan"];?></td>
+										<td><?php echo $data2["tanggal_mulai"];?></td>
+										<td><?php echo $data2["tanggal_selesai"];?></td>
+									<?php
+									}};
+									?>
+										
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- Laporan kegiatan Berhenti -->
 		<!-- welcome modal end -->
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>

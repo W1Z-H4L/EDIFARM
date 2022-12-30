@@ -131,11 +131,11 @@ if($op == 'delete'){
 								<tbody>
 								<?php 
 								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis where id_level = '2'");
-								if(mysqli_num_rows($rows)>0){ 
+								if(mysqli_num_rows($query)>0){ 
 								?>
 								<?php
 									
-									 while($data = $rows){
+									 while($data = mysqli_fetch_array($query)){
 										$id=$data["id_user"];
 										$jeniskel=$data["jenis_kelamin"];
 										

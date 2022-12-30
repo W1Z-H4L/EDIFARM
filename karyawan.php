@@ -53,12 +53,6 @@ if($op == 'delete'){
 	$query =  "DELETE FROM user WHERE id_user='$id'";
 	$result = mysqli_query($koneksi,$query);
 }
-// $ch = curl_init(); 
-// curl_setopt($ch, CURLOPT_URL, "https://67ed-114-125-77-60.ap.ngrok.io/edifarm-web/EDIFARM/api/karyawan_web.php");
-// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-// $output = curl_exec($ch); 
-// curl_close($ch);      
-// $rows = json_decode($output, true);
 ?>
 
 <!DOCTYPE html>
@@ -135,8 +129,8 @@ if($op == 'delete'){
 								if(mysqli_num_rows($query)>0){ 
 								?>
 								<?php
-									// foreach($rows as $data) : 
-									while($data = mysqli_fetch_array($query)){
+									
+									 while($data = mysqli_fetch_array($query)){
 										$id=$data["id_user"];
 										$jeniskel=$data["jenis_kelamin"];
 										
@@ -202,8 +196,8 @@ if($op == 'delete'){
 										</td>
 									</tr>	
 								<?php  
-									}};
-								// endforeach;
+									 }
+									};
 								?>	
 								</tbody>
 							</table>

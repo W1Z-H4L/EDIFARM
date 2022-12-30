@@ -1,7 +1,10 @@
 <?php 
 include('koneksi.php');
+require('auth.php');
+include('limitKata.php');
 $sukses="";
 $error="";
+
 
 if(isset($_POST['submit'])) {
 	$jumlah = count($_POST['demo2']);
@@ -41,6 +44,12 @@ if(isset($_POST['submit'])) {
 		$result = mysqli_query($koneksi,$query4);
 	}	
 }
+if(isset($_POST['hapus'])) {
+	$id = $_POST['id'];
+	
+	$query =  "DELETE from jenis where id_jenis = $id";
+	$result = mysqli_query($koneksi,$query);
+}
  ?>
 <!DOCTYPE html>
 <html>
@@ -58,13 +67,10 @@ if(isset($_POST['submit'])) {
 		<link rel="stylesheet" type="text/css" href="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.css"/>
 		
 		<script>
-			
 			function copyForm(){
 				$("#asli")
 				.clone()
 				.appendTo($("#dinamis"))
-				
-				
 			};
 			function copyForm1(){
 				$("#aslipupuk")
@@ -100,7 +106,7 @@ if(isset($_POST['submit'])) {
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
-											<a href="index.php">Dashboard</a>
+											<a href="dashboard.php">Dashboard</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
 											Padi
@@ -111,38 +117,64 @@ if(isset($_POST['submit'])) {
 						</div>
 					</div>
 					<div class="row clearfix">
+						<?php 
+						$query = "SELECT * FROM jenis";
+						$result = mysqli_query($koneksi,$query);
+						while($row = mysqli_fetch_array($result)){
+							$id=$row["id_jenis"];
+							$des=$row["deskripsi"];
+						?>
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
-							<div class="card card-box">
+							<div class="card card-box text-center">
 								<img
 									class="card-img-top"
 									src="vendors/images/ciherang.jpg"
 									alt="Card image cap"
 								/>
 								<div class="card-body">
-									<h5 class="card-title weight-500">Padi Ciherang</h5>
-									<p class="card-text">Padi Ciherang merupakan varietas padi unggul turunan dari IR64. Bentuk gabah padi Ciherang adalah ramping panjang berwarna kuning bersih serta tekstur nasi yang pulen
-									</p>
-									<a href="#" class="btn btn-primary">Detail</a>
+									<h5 class="card-title weight-500 text-left"><?= $row["nama_jenis"];?></h5>
+									<p class="card-text text-left"><?= limit_kata($des,5) ;?></p>
+									<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detailPadi<?=$id?>">Detail</a>
+									<div class="modal fade" id="detailPadi<?= $id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<form action="padi.php" method="POST">
+												<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Detail Padi</h5>
+													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+													</button>
+												</div>
+												<div class="modal-body">
+													<input hidden type="text" name="id" value="<?= $id?>" />
+													<p><?= $des?></p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+													<button type="hapus" name="hapus" class="btn btn-primary" onclick="return confirm('Yakin ingin hapus data?')">Hapus</button>
+												</div>
+												</form>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
+						<?php
+						}
+						?>
 					</div>
 				</div>
 			</div>
 		</div>		
 		<div class="add-modal-kar">
-			<button 
-			href="#"
-			class="welcome-modal-btn"
-			data-toggle="modal"
-			data-target="#exampleModal"
-			>
+			<button href="#" class="welcome-modal-btn" data-toggle="modal" data-target="#exampleModal">
 			 +
 		</button></div>
 		
 				<!-- Modal -->
-				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
 				<form action="padi.php" method="POST">
 					<div class="modal-content">
 					<div class="modal-header">
@@ -154,73 +186,41 @@ if(isset($_POST['submit'])) {
 					<div class="modal-body">
 					<ul class="nav nav-tabs customtab" role="tablist">
 							<li class="nav-item">
-								<a
-									class="nav-link active"
-									data-toggle="tab"
-									href="#detail"
-									role="tab"
-									>Detail padi</a
-								>
+								<a class="nav-link active" data-toggle="tab" href="#detail" role="tab">Detail padi</a>
 							</li>
 							<li class="nav-item">
-								<a
-									class="nav-link"
-									data-toggle="tab"
-									href="#irigasi"
-									role="tab"
-									>Irigasi</a
-								>
+								<a class="nav-link" data-toggle="tab" href="#irigasi" role="tab">Irigasi</a>
 							</li>
 							<li class="nav-item">
-								<a
-									class="nav-link"
-									data-toggle="tab"
-									href="#pupuk"
-									role="tab"
-									>Pemupukan</a
-								>
+								<a class="nav-link" data-toggle="tab" href="#pupuk" role="tab">Pemupukan</a>
 							</li>
 							<li class="nav-item">
-								<a
-									class="nav-link"
-									data-toggle="tab"
-									href="#pestisida"
-									role="tab"
-									>Pestisida</a
-								>
+								<a class="nav-link" data-toggle="tab" href="#pestisida" role="tab">Pestisida</a>
 							</li>
 						</ul>
 						<div class="tab-content">
 							<!-- Setting Tab start -->
-							<div
-								class="tab-pane fade show active"
-								id="detail"
-								role="tabpanel"
-							>
+							<div class="tab-pane fade show active" id="detail" role="tabpanel">
 								<div class="profile-setting">
 									<ul class="profile-edit-list row">
 										<li class="weight-100 col-md-12">
 											<div class="form-group">
 												<label>Nama Padi</label>
-												<input class="form-control form-control-lg" type="text" name="namaPadi"/>
+												<input class="form-control form-control-lg" type="text" name="namaPadi" required/>
 											</div>
 											<div class="form-group">
 												<label>Lama Tanam</label>
-												<input class="form-control form-control-lg" type="text" name="durasi" />
+												<input class="form-control form-control-lg" type="text" name="durasi" required/>
 											</div>
 											<div class="form-group">
 												<label>Deskripsi</label>
-												<textarea class="form-control" name="des"></textarea>
+												<textarea class="form-control" name="des" required></textarea>
 											</div>
 										</li>
 									</ul>
 								</div>
 							</div>
-								<div
-									class="tab-pane fade height-100-p"
-									id="irigasi"
-									role="tabpanel"
-								>
+								<div class="tab-pane fade height-100-p" id="irigasi" role="tabpanel">
 									<div class="profile-setting">
 										<ul class="profile-edit-list row">
 											<li class="weight-100 col-md-12">
@@ -245,11 +245,7 @@ if(isset($_POST['submit'])) {
 										</div>
 									</div>
 								</div>
-								<div
-									class="tab-pane fade height-100-p"
-									id="pupuk"
-									role="tabpanel"
-								>
+								<div class="tab-pane fade height-100-p" id="pupuk" role="tabpanel">
 									<div class="profile-setting">
 										<ul class="profile-edit-list row">
 											<li class="weight-100 col-md-12">
@@ -274,11 +270,7 @@ if(isset($_POST['submit'])) {
 										</div>
 									</div>
 								</div>
-								<div
-									class="tab-pane fade height-100-p"
-									id="pestisida"
-									role="tabpanel"
-								>
+								<div class="tab-pane fade height-100-p" id="pestisida" role="tabpanel">
 									<div class="profile-setting">
 										<ul class="profile-edit-list row">
 											<li class="weight-100 col-md-12">
@@ -307,7 +299,7 @@ if(isset($_POST['submit'])) {
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+						<button type="submit" id="sa-success" name="submit" class="btn btn-primary">Save changes</button>
 					</div>
 					</form>
 				</div>
@@ -323,6 +315,8 @@ if(isset($_POST['submit'])) {
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
 		<script src="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
-		<script src="vendors/scripts/advanced-components.js"></script> 
+		<script src="vendors/scripts/advanced-components.js"></script>
+		<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+		<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script> 
 	</body>
 </html>

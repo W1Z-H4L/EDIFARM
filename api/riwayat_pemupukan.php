@@ -1,12 +1,12 @@
 <?php
 header("Acces-Control-Allow-Origin: *");
-$db = mysqli_connect('localhost','root','','edifarm');
+include('connect.php');
 if (isset($_POST['id_lahan'])) {
     $id_lahan = $_POST['id_lahan'];
    
    
 
-    $sql = "SELECT * From jadwal where id_lahan = $id_lahan AND status = 'Selesai' AND kegiatan = 'pemupukan'";
+    $sql = "SELECT * From jadwal inner join sesi_tanam on jadwal.id_sesi=sesi_tanam.id_sesi where jadwal.id_lahan = 1 AND jadwal.status = 'Selesai' AND jadwal.kegiatan = 'pemupukan' AND sesi_tanam.status='belum'";
     $data = mysqli_query($db, $sql);
     $rows = array();
 

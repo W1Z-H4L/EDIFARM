@@ -20,7 +20,7 @@ if (isset($_POST['name'])) {
 
 $path = "image/$name";
 $query = "SELECT Foto FROM user WHERE user.id_user = '$idUser'";
-$exe = mysqli_query($connect, $query);
+$exe = mysqli_query($db, $query);
 if($exe){
     $row = mysqli_fetch_array($exe);
     $old_path = $row['Foto'];
@@ -32,7 +32,7 @@ $query = "UPDATE user SET `nama_siswa` = '$nama',`notelp` = '$notelp',`gambar` =
 // $query = "UPDATE `data_siswa` SET `gambar` = '$path' WHERE `data_siswa`.`NIS` = '$NIS'";
 file_put_contents($path, base64_decode($data));
 $arr = [];
-$exe = mysqli_query($connect, $query);
+$exe = mysqli_query($db, $query);
 if ($exe) {
     $arr['success'] = "true";
 } else

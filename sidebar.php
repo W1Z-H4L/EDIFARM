@@ -25,7 +25,7 @@
 				<div class="sidebar-menu">
 					<ul id="accordion-menu">
 						<li>
-							<a href="index.php" class="dropdown-toggle no-arrow">
+							<a href="dashboard.php" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-house"></span
 								><span class="mtext">Dashboard</span>
 							</a>

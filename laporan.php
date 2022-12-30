@@ -1,4 +1,6 @@
 <?php
+include ('koneksi.php');
+require('auth.php');
 if(isset($_POST['submit'])) {
 	$username = $_POST['username'];
 	$nama = $_POST['nama'];
@@ -16,9 +18,8 @@ if(isset($_POST['submit'])) {
 		$result = mysqli_query($koneksi,$query);
 	}
 }
-?>
-<?php
-include ('koneksi.php');
+
+
 if(isset($_POST['submit'])) {
 	$nama = $_POST['nama'];
 	$luas = $_POST['luas'];

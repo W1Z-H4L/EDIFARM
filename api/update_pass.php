@@ -1,5 +1,5 @@
 <?php
-$db = mysqli_connect('localhost','root','','edifarm');
+include('connect.php');
 if (isset($_POST['id_user']) && isset($_POST['username']) && isset($_POST['password'])) {
     $id_user = $_POST['id_user'];
     $username = $_POST['username'];

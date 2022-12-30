@@ -14,77 +14,46 @@ if(isset($_POST['update'])) {
 	$capt = $_POST['capt'];
 	$name = $_FILES['foto']['name'];
 	$data= $_FILES['foto']["tmp_name"];
-	
 	$path = "api/image/$name";
-	$query1 = "SELECT Foto FROM user WHERE user.id_user = '$idUser'";
-	$exe = mysqli_query($koneksi, $query1);
-	if($exe){
-		$row = mysqli_fetch_array($exe);
-		$old_path = $row['Foto'];
-		if(file_exists($old_path)){
-			unlink($old_path);
+
+	if($name){
+		$query1 = "SELECT Foto FROM user WHERE user.id_user = '$idUser'";
+		$exe = mysqli_query($koneksi, $query1);
+		if($exe){
+			$row = mysqli_fetch_array($exe);
+			$old_path = $row['Foto'];
+			if(file_exists($old_path)){
+				unlink($old_path);
+			}
 		}
-	}
-	$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt', `Foto` = '$path' WHERE `user`.`id_user` = '$id';";
-	// file_put_contents($path, base64_decode($data));
-	if (move_uploaded_file($data, $path)) {
-    } else {
-        $msg = "Failed to upload image";
-    }
-	$result = mysqli_query($koneksi,$query);
-	$_SESSION["fotoUser"] = $path;
+		$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt', `Foto` = '$path' WHERE `user`.`id_user` = '$id';";
+		// file_put_contents($path, base64_decode($data));
+		if (move_uploaded_file($data, $path)) {
+		} else {
+			$msg = "Failed to upload image";
+		}
+		$result = mysqli_query($koneksi,$query);
+		$_SESSION["fotoUser"] = $path;
+	}else{
+		$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt' WHERE `user`.`id_user` = '$id';";
+		$result = mysqli_query($koneksi,$query);
+	};
 	$_SESSION["namaUser"] = $nama;
 }
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
 		<title>Edifarm</title>
-
-		<!-- Site favicon -->
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="vendors/images/logo_edifarm.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="vendors/images/logo_edifarm.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="vendors/images/logo_edifarm.png"
-		/>
-
-		<!-- Mobile Specific Metas -->
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, maximum-scale=1"
-		/>
-
-		<!-- Google Font -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-		<!-- CSS -->
+		<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo_edifarm.png"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo_edifarm.png"/>
+		<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo_edifarm.png"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="vendors/styles/icon-font.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="src/plugins/cropperjs/dist/cropper.css"
-		/>
+		<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css"/>
+		<link rel="stylesheet" type="text/css" href="src/plugins/cropperjs/dist/cropper.css"/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 	</head>
 	<body>
@@ -146,11 +115,7 @@ if(isset($_POST['update'])) {
 										<!-- <i class="fa fa-pencil"></i> -->
 										<!-- <input type="file" name="foto" id="foto"> -->
 									<!-- </div> -->
-									<img
-										src="<?php echo $_SESSION["fotoUser"];?>"
-										alt=""
-										class="avatar-photo"
-									/>	
+									<img src="<?php echo $_SESSION["fotoUser"];?>" alt="" class="avatar-photo"/>	
 									
 									
 								</div>

@@ -2,7 +2,7 @@
 header("Access-Control-Allow-Origin: *");
 
 // Connect to the database
-$db = mysqli_connect('localhost', 'root', '', 'edifarm');
+include('connect.php');
 
 // Check if the id_lahan and tanggal_mulai and tanggal_selesai parameters are set
 if (isset($_POST['id_lahan']) && isset($_POST['tanggal_mulai']) && isset($_POST['tanggal_selesai'])) {

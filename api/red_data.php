@@ -1,5 +1,5 @@
 <?php
-$db = mysqli_connect('localhost','root','','edifarm');
+include('connect.php');
 $sql = "SELECT id_user, nama, password, username, tanggal_lahir, jenis_kelamin, alamat, caption, no_hp FROM user WHERE id_user = 'variabel";
 $result = mysqli_query($db, $sql);
 $array = array();

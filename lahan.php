@@ -1,6 +1,7 @@
 <?php 
-session_start();
 require('koneksi.php');
+require('auth.php');
+include('limitKata.php');
  
  // Check If form submitted, insert form data into users table.
  if(isset($_POST['submit'])) {
@@ -67,7 +68,7 @@ if($op == 'delete'){
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
-											<a href="index.php">Dashboard</a>
+											<a href="dashboard.php">Dashboard</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
 											Lahan
@@ -92,9 +93,9 @@ if($op == 'delete'){
 								</div>
 								<div class="card-body">
 									<h5 class="card-title weight-500 text-left"><?php echo $row["nama_lahan"];?></h5>
-									<p class="card-text text-left"><?php echo $row["deskripsi"];?></p>
+									<p class="card-text text-left"><?= limit_kata($row["deskripsi"],2) ;?></p>
 									<div>
-										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?php echo $row["id_lahan"];?>" >Detail</a>
+										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?= $row["id_lahan"];?>" >Detail</a>
 										<div
 											class="modal fade"
 											id="detail<?php echo $row["id_lahan"];?>"
@@ -109,12 +110,7 @@ if($op == 'delete'){
 														<h4 class="modal-title" id="myLargeModalLabel">
 														<?php echo $row["nama_lahan"];?>
 														</h4>
-														<button
-															type="button"
-															class="close"
-															data-dismiss="modal"
-															aria-hidden="true"
-														>
+														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 															×
 														</button>
 													</div>

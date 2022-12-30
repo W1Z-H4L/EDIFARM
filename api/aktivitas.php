@@ -1,6 +1,6 @@
 <?php
+include('connect.php');
 header("Acces-Control-Allow-Origin: *");
-$db = mysqli_connect('localhost','root','','edifarm');
 if (isset($_POST['id_jadwal']) && isset($_POST['id_user'])); {
     $id_jadwal = $_POST['id_jadwal'];
      $id_user= $_POST['id_user'];

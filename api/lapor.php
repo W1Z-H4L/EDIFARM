@@ -1,5 +1,5 @@
 <?php
-$db = mysqli_connect('localhost','root','','edifarm');
+include('connect.php');
 if (isset($_POST['isi']) && isset ($_POST['tanggal_consul']) && isset ($_POST['id_user'])) {
     $isi = $_POST['isi'];
     $tanggal_consul = $_POST['tanggal_consul'];

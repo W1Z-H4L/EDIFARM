@@ -1,13 +1,13 @@
 <?php
- $db = mysqli_connect('localhost','root','','edifarm');
+ include('connect.php');
  $username = $_POST['username'];
  $password = md5($_POST['password']);
- $sql = "SELECT * From user inner join jadwal on user.id_user=jadwal.id_user Where user.id_level = 2 and user.username = '".$username."' ";
+ $sql = "SELECT * From user Where user.id_level = 2 and user.username = '".$username."' ";
  $result = mysqli_query($db,$sql);
 
 
 
- if(mysqli_num_rows($result) > 1){
+ if(mysqli_num_rows($result) > 0){
     $row = mysqli_fetch_assoc($result);
     $passwordVal = $row["password"];
     $rows = array();
@@ -25,14 +25,13 @@
         http_response_code(200);
 
         
-            while ($r = mysqli_fetch_assoc($result)) {
-                $rows[] = $r;
-            }
+            // while ($r = mysqli_fetch_assoc($result)) {
+            //     $rows[] = $r;
+            // }
             print json_encode([
         "success" => true,
         "message" => "sukses",
-        "data" => null,
-            $rows]);
+        "user" => $row]);
 
     }
  } 

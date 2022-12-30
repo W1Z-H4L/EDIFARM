@@ -1,148 +1,25 @@
 <?php
 require('koneksi.php');
 session_start();
-$error="0";
-
-if(isset($_POST['submit'])){
-    $username = trim($_POST['username']);
-    $pass = trim($_POST['password']);
-
-	
-
-	if(!$username) {
-		$error = "Email tidak boleh kosong";
-		//echo $error;
-		exit;
-	}
-
-	if(!$pass) {
-		$error = "Password tidak boleh kosong!";
-		//echo $error;
-		exit;
-	}
-
-	$sql = "SELECT * FROM user WHERE `username`='$username' and id_level = '1'";
-	$result = mysqli_query($koneksi, $sql);
-	$num = mysqli_num_rows($result);
-
-	if(!$num) {
-		$error = "User tidak ditemukan";
-		//echo $error;
-		exit;
-	}
-
-	while ($row = mysqli_fetch_array($result)){
-		$id = $row['id_user'];
-		$userVal = $row['username'];
-		$passVal =$row['password'];
-		$namamu = $row['nama'];
-		$foto = $row['Foto'];
-	};
-
-	if($username != $userVal) {
-		$error = "Email anda salah!";
-		//echo $error;
-		exit;
-	}
-
-	if($pass != $passVal) {
-		$error = "Password anda salah!";
-		//echo $error;
-		exit;
-	}
-	$_SESSION["login"]=true;
-	$_SESSION["idUser"] = $id;
-	$_SESSION["namaUser"] = $namamu;
-	$_SESSION["fotoUser"] = $foto;
-	header('Location: index.php');
+if(isset($_GET['error'])){
+	$error=$_GET['error'];
+}else{
+	$error=0;
 }
 ?>
-<?php
-
-// include ('koneksi.php');
-// error_reporting(0);
-// // session_start();
-
-// // if (isset($_SESSION['username'])) {
-// //     header("Location: index.php");
-// // }
-
-// if (isset($_POST['submit'])) {
-//     $username = ($_POST['username']);
-//     $password = ($_POST['password']);
-	
-
-//     if(!empty(trim($username))&& !empty(trim($password))){
-//         $sql = "SELECT * FROM user WHERE username='$username'";
-//         $result = mysqli_query($koneksi, $sql);
-//         $num = mysqli_num_rows($result);
-//         while($row = mysqli_fetch_array($result)){
-//             $userval = $row['username'];
-//             $passval = $row['password'];
-         
-//         }
-
-//         if ($num != 0) {
-//             if($userval==$username  && $passval==$password){
-//                 header('Location: index.php?nama=');
-//             }else{
-//                 echo "<script>alert('Password Anda salah. Silahkan coba lagi!')</script>";
-//             }
-//         }else{
-//             echo "<script>alert('Username Anda Salah. Silahkan coba lagi!')</script>";
-//         }
-//     }else{
-//         echo "<script>alert('Username dan Password Salah')</script>";
-//     }
-// }
-
-// ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>Edifarm
-		</title>
-
-		<!-- Site favicon -->
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="vendors/images/logo_edifarm.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="vendors/images/logo_edifarm.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="vendors/images/logo_edifarm.png"
-		/>
-
-		<!-- Mobile Specific Metas -->
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1, maximum-scale=1"
-		/>
-
-		<!-- Google Font -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-			rel="stylesheet"
-		/>
-		<!-- CSS -->
+		<title>Edifarm</title>
+		<link rel="apple-touch-icon" sizes="180x180" href="vendors/images/logo_edifarm.png"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="vendors/images/logo_edifarm.png"/>
+		<link rel="icon" type="image/png" sizes="16x16" href="vendors/images/logo_edifarm.png"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/core.css" />
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="vendors/styles/icon-font.min.css"
-		/>
+		<link rel="stylesheet" type="text/css" href="vendors/styles/icon-font.min.css"/>
 		<link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 	</head>
 	<body 
@@ -177,7 +54,7 @@ if(isset($_POST['submit'])){
 							<div class="login-title">
 								<h2 class="text-center text-primary">Masuk Di EdiFARM</h2>
 							</div>
-							<form action="login.php" method="POST">
+							<form action="auth.php" method="POST">
 								<div class="input-group custom">
 									<input
 										type="username"
@@ -205,7 +82,7 @@ if(isset($_POST['submit'])){
 									</div>
 								</div>
                                 <?php
-								if($error!=0){?>
+								if($error!=null){?>
 									<div class="alert alert-danger" role="alert">
 									<?php echo $error?>
 									</div>
@@ -217,15 +94,6 @@ if(isset($_POST['submit'])){
 										<div class="input-group mb-0">
 											<input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Masuk">
 											<div class="col-md-4 col-sm-12 mb-30">
-												
-							
-											<!-- <a
-												class="btn btn-primary btn-lg btn-block"
-												href="index.php"
-												>Masuk</a
-											> -->
-										
-											
 										</div>
 									</div>
 								</div>

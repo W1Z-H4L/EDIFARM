@@ -1,11 +1,8 @@
 <?php
 header("Acces-Control-Allow-Origin: *");
-$db = mysqli_connect('localhost','root','','edifarm');
+include('connect.php');
 if (isset($_POST['id_user'])) {
     $id_user = $_POST['id_user'];
-   
-   
-
     $sql = "SELECT COUNT(kegiatan) FROM jadwal WHERE STATUS = 'belum' and id_user = '".$id_user."'";
     $data = mysqli_query($db, $sql);
     $rows = array();
@@ -14,6 +11,5 @@ if (isset($_POST['id_user'])) {
         $rows[] = $r;
     }
      print json_encode($rows);
-   
 }
 ?>

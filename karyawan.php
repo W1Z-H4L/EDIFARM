@@ -1,5 +1,6 @@
 <?php 
 include('koneksi.php');
+require('auth.php');
 $sukses="";
 $error="";
 
@@ -52,12 +53,12 @@ if($op == 'delete'){
 	$query =  "DELETE FROM user WHERE id_user='$id'";
 	$result = mysqli_query($koneksi,$query);
 }
-$ch = curl_init(); 
-curl_setopt($ch, CURLOPT_URL, "https://67ed-114-125-77-60.ap.ngrok.io/edifarm-web/EDIFARM/api/karyawan_web.php");
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$output = curl_exec($ch); 
-curl_close($ch);      
-$rows = json_decode($output, true);
+// $ch = curl_init(); 
+// curl_setopt($ch, CURLOPT_URL, "https://67ed-114-125-77-60.ap.ngrok.io/edifarm-web/EDIFARM/api/karyawan_web.php");
+// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// $output = curl_exec($ch); 
+// curl_close($ch);      
+// $rows = json_decode($output, true);
 ?>
 
 <!DOCTYPE html>
@@ -130,12 +131,12 @@ $rows = json_decode($output, true);
 								</thead>
 								<tbody>
 								<?php 
-								// $query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis where id_level = '2'");
-								// if(mysqli_num_rows($rows)>0){ 
+								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis where id_level = '2'");
+								if(mysqli_num_rows($query)>0){ 
 								?>
 								<?php
-									foreach($rows as $data) : 
-									// while($data = $rows){
+									// foreach($rows as $data) : 
+									while($data = mysqli_fetch_array($query)){
 										$id=$data["id_user"];
 										$jeniskel=$data["jenis_kelamin"];
 										
@@ -201,8 +202,8 @@ $rows = json_decode($output, true);
 										</td>
 									</tr>	
 								<?php  
-									// }};
-								endforeach;
+									}};
+								// endforeach;
 								?>	
 								</tbody>
 							</table>

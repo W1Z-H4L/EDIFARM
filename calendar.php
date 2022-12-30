@@ -1,6 +1,12 @@
 <?php 
 require('koneksi.php');
-$idPilihan = $_GET['idlhn'];
+require('auth.php');
+
+if(isset($_GET['idlhn'])){
+	$idPilihan = $_GET['idlhn'];
+}else{
+	$idPilihan = null;
+};
 
 //Tambah preset jadwal
 if(isset($_POST['tambahJadwal'])) {

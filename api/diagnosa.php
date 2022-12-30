@@ -1,6 +1,6 @@
 <?php
 header("Acces-Control-Allow-Origin: *");
-$db = mysqli_connect('localhost','root','','edifarm');
+include('connect.php');
 if(!$db)
 {
 	echo "Database connection failed";

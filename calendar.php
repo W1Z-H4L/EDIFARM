@@ -20,7 +20,7 @@ if(isset($_POST['tambahJadwal'])) {
 		$hst = $row["durasi_tanam"];
 		$endTgl = date('Y-m-d', strtotime("+$hst days", strtotime($startTgl)));
 		
-	$query =  "INSERT INTO `sesi_tanam` (`id_sesi`, `tgl_mulai`, `tgl_selesai`, `id_jenis`, `status`) VALUES ('', '$startTgl','$endTgl','$jenis', 'belum')";
+	$query =  "INSERT INTO `sesi_tanam` (`id_sesi`, `tgl_mulai`, `tgl_selesai`, `id_jenis`, `status`, `id_lahan`) VALUES ('', '$startTgl','$endTgl','$jenis', 'belum', '$lahan')";
 	$result = mysqli_query($koneksi,$query); 
 	
 	$query3 = "SELECT id_sesi FROM sesi_tanam ORDER BY id_sesi DESC";
@@ -47,21 +47,26 @@ if(isset($_POST['tambahJadwal'])) {
 }
 //tambah jadwal satuan
 if(isset($_POST['tambah'])) {
+	$query7 =  mysqli_query($koneksi,"SELECT * from sesi_tanam where id_lahan = '$idPilihan' and status='belum'");
+	$data5 = mysqli_fetch_array($query7);
+	$idlama = $data5["id_sesi"];
+
 	$user = $_POST['user'];
 	$kegiatan = $_POST['kegiatan'];
 	$start = $_POST['start'];
 	$end = $_POST['end'];
 	$lahan = $_POST['lahan'];
-	$query =  "INSERT INTO `jadwal` (`id_jadwal`, `id_user`, `kegiatan`, `tanggal_mulai`, `tanggal_selesai`, `status`, `id_sesi`, `id_lahan`) VALUES ('', '$user','$kegiatan','$start','$end', 'belum', '1', '$lahan')";
+	$query =  "INSERT INTO `jadwal` (`id_jadwal`, `id_user`, `kegiatan`, `tanggal_mulai`, `tanggal_selesai`, `status`, `id_sesi`, `id_lahan`) VALUES ('', '$user','$kegiatan','$start','$end', 'belum', '$idlama', '$lahan')";
 	$result = mysqli_query($koneksi,$query); 
 }
 if(isset($_POST['Update'])) {
 	$id2 = $_POST['idJadwal'];
+	$user = $_POST['user'];
 	$kegiatan = $_POST['title'];
 	$start = $_POST['start'];
 	$end = $_POST['end'];
-	$query =  "UPDATE jadwal set kegiatan = '$kegiatan', tanggal_mulai= '$start', tanggal_selesai = '$end' WHERE `jadwal`.`id_jadwal` = '$id2'";
-	$result = mysqli_query($koneksi,$query);
+	$query9 =  "UPDATE jadwal set kegiatan = '$kegiatan', tanggal_mulai= '$start', tanggal_selesai = '$end', id_user = '$user' WHERE `jadwal`.`id_jadwal` = '$id2'";
+	$result = mysqli_query($koneksi,$query9);
 }
 //hapus jadwal
 if(isset($_POST['hapus'])) {
@@ -70,7 +75,15 @@ if(isset($_POST['hapus'])) {
 	$result = mysqli_query($koneksi,$query); 
 
 }
-
+//drag n drop
+if(isset($_POST['id'])) {
+	$id2 = $_POST['id'];
+	$kegiatan = $_POST['title'];
+	$start = $_POST['start'];
+	$end = $_POST['end'];
+	$query =  "UPDATE jadwal set kegiatan = '$kegiatan', tanggal_mulai= '$start', tanggal_selesai = '$end' WHERE `jadwal`.`id_jadwal` = '$id2'";
+	$result = mysqli_query($koneksi,$query);
+}
 $sql5 = "SELECT * FROM jadwal right JOIN lahan ON jadwal.id_lahan=lahan.id_lahan where lahan.id_lahan = '$idPilihan'";
 $result8 = mysqli_query($koneksi,$sql5);
 $dataArr = array();
@@ -79,6 +92,7 @@ while($data = mysqli_fetch_array($result8)){
 	$namalhn = $data['nama_lahan'];
 	$dataArr[] = array(
 		'id' => $data['id_jadwal'],
+		'karyawan'=> $data['id_user'],
 		'title' => $data['kegiatan'],
 		'start' => $data['tanggal_mulai'],
 		'end' => $data['tanggal_selesai'],
@@ -159,7 +173,7 @@ if ($idPilihan){
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
-											<a href="index.php">Dashboard</a>
+											<a href="dashboard.php">Dashboard</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
 											Jadwal
@@ -179,7 +193,7 @@ if ($idPilihan){
 									</a>
 									<ul class="dropdown-menu dropdown-menu-right">
 									<?php 
-									$query1 = mysqli_query($koneksi,"SELECT * FROM lahan");
+									$query1 = mysqli_query($koneksi,"SELECT * FROM lahan where status='produksi'");
 									if(mysqli_num_rows($query1)>0){ 
 									?>
 									<?php
@@ -216,8 +230,27 @@ if ($idPilihan){
 												<input type="text" class="idJadwal form-control" name="idJadwal" id="user" />
 											</div>
 											<div class="form-group">
-												<label>id user</label>
-												<input type="text" class="form-control" name="user" id="user" required/>
+												<label>Nama Karyawan</label>
+													<select class="idkaryawan custom-select col-12" name="user" required>
+													<?php 
+													if($idPilihan){
+														$query6 = mysqli_query($koneksi,"SELECT * FROM user where id_lahan = $idPilihan");
+														if(mysqli_num_rows($query6)>0){ 
+														?>
+														<?php
+															while($data3 = mysqli_fetch_array($query6)){
+																$namauser5=$data3["nama"];
+																$idlahan5=$data3["id_user"];
+														?>		
+															<option value="<?php echo $idlahan5 ?>"><?php echo $namauser5 ?></option>
+															<?php  
+															} 
+														}else{?>
+															<option disabled >Tidak ada karyawan di lahan ini</option><?php
+														}
+													}
+													?>
+													</select>
 											</div>
 											<div class="form-group">
 												<label>Kegiatan</label>
@@ -232,8 +265,7 @@ if ($idPilihan){
 												<input type="datetime" class="tanggalend form-control datetime" name="end" id="kegiatan" value="" />
 											</div>
 											<div class="form-group">
-												<label>lahan</label>
-												<input type="text" class="form-control" readOnly name="lahan" id="user" value="<?php echo $idPilihan ?>" />
+												<input hidden type="text" class="form-control" readOnly name="lahan" id="user" value="<?php echo $idPilihan ?>" />
 											</div>
 										</div>
 										<div class="modal-footer">
@@ -266,8 +298,27 @@ if ($idPilihan){
 										<div class="modal-body">
 											<h4 class="text-blue h4 mb-10">Tambah Detail Jadwal</h4>
 											<div class="form-group">
-												<label>id user</label>
-												<input type="text" class="form-control" name="user" id="user" required/>
+												<label>Nama Karyawan</label>
+													<select class="custom-select col-12" name="user" required>
+													<?php 
+													if($idPilihan){
+														$query6 = mysqli_query($koneksi,"SELECT * FROM user where id_lahan = $idPilihan");
+														if(mysqli_num_rows($query6)>0){ 
+														?>
+														<?php
+															while($data3 = mysqli_fetch_array($query6)){
+																$namauser=$data3["nama"];
+																$idlahan=$data3["id_user"];
+														?>		
+															<option value="<?php echo $idlahan ?>"><?php echo $namauser ?></option>
+															<?php  
+															} 
+														}else{?>
+															<option disabled >Tidak ada karyawan di lahan ini</option><?php
+														}
+													}
+													?>
+													</select>
 											</div>
 											<div class="form-group">
 												<label>Kegiatan</label>
@@ -312,14 +363,14 @@ if ($idPilihan){
 		class="welcome-modal-btn"
 		data-toggle="modal" data-target="#exampleModal"
 			>
-			 +
+			(+) Tambah
 		</button>
 
 		<div class="modal fade bs-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+						<h5 class="modal-title" id="exampleModalLabel">Sesi Tanam Baru</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 						</button>
@@ -500,6 +551,7 @@ if ($idPilihan){
 				var start =$.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
 				var end =$.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
 				$(".idJadwal").val(event.id);
+				$(".idkaryawan").val(event.karyawan);
 				$(".tanggalstr").val(start);
 				$(".tanggalend").val(end);
 				$(".title").val(event.title);

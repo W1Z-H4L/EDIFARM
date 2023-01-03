@@ -15,7 +15,7 @@ if (isset($_POST['isi']) && isset ($_POST['tanggal_consul']) && isset ($_POST['i
 
     $sql = 
     
-    "INSERT INTO consul(isi, tanggal_consul, status,id_user, Foto) VALUES ('{$isi}','{$tanggal_consul}','belum','{$id_user}', '{$image}')";
+    "INSERT INTO consul(isi, tanggal_consul, status,id_user, foto_consul) VALUES ('{$isi}','{$tanggal_consul}','belum','{$id_user}', '{$image}')";
 
     $result = mysqli_query($db,$sql);
     if ($result) {

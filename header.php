@@ -69,7 +69,7 @@ require("koneksi.php");
 							<a class="dropdown-item" href="tentang.php"
 								><i class="dw dw-help"></i> Tentang</a
 							>
-							<a class="dropdown-item" href="logout.php"
+							<a class="dropdown-item" href="logout.php" onclick="return confirm('Yakin ingin keluar?')"
 								><i class="dw dw-logout"></i> Keluar</a
 							>
 						</div>

@@ -2,12 +2,12 @@
 require('koneksi.php');
 session_start();
 
-if(isset($_POST['submit'])){
+if(isset($_POST['login'])){
     $username = trim($_POST['username']);
     $pass = trim($_POST['password']);
 
 	if(!$username) {
-		$error = "Email tidak boleh kosong";
+		$error = "Username tidak boleh kosong!";
 		header('Location: login.php?error='.urlencode($error));
         return;
 	}
@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
 	$num = mysqli_num_rows($result);
 
 	if(!$num) {
-		$error = "User tidak ditemukan";
+		$error = "User tidak ditemukan!";
 		header('Location: login.php?error='.urlencode($error));
         return;
 	}
@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
 	};
 
 	if($username != $userVal) {
-		$error = "Email anda salah!";
+		$error = "Username anda salah!";
 		header('Location: login.php?error='.urlencode($error));
         return;
 	}

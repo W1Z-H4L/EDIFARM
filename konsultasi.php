@@ -60,7 +60,7 @@ if(isset($_POST['update'])) {
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item">
-										<a href="index.php">Dashboard</a>
+										<a href="dashboard.php">Dashboard</a>
 									</li>
 									<li class="breadcrumb-item active" aria-current="page">
 										Konsultasi
@@ -72,11 +72,11 @@ if(isset($_POST['update'])) {
 				</div>
 				<div class="row clearfix">
 					<?php 
-						$query = "SELECT * FROM consul inner JOIN jadwal on consul.id_jadwal=jadwal.id_jadwal INNER JOIN lahan ON jadwal.id_lahan=lahan.id_lahan where consul.status='belum'";
+						$query = "SELECT * FROM consul inner JOIN user on consul.id_user=user.id_user INNER JOIN lahan ON user.id_lahan=lahan.id_lahan where consul.status='belum'";
 						$result = mysqli_query($koneksi,$query);
 						while($row = mysqli_fetch_array($result)){
 							$lahan=$row["nama_lahan"];
-							$foto=$row["Foto"];
+							$foto=$row["foto_consul"];
 						?> 
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 						<div class="card card-box text-center">

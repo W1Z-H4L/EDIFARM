@@ -6,6 +6,7 @@ $sukses="";
 $error="";
 
 
+
 if(isset($_POST['submit'])) {
 	$jumlah = count($_POST['demo2']);
 	$jumlahpupuk = count($_POST['hstpupuk']);
@@ -147,7 +148,16 @@ if(isset($_POST['hapus'])) {
 												</div>
 												<div class="modal-body">
 													<input hidden type="text" name="id" value="<?= $id?>" />
-													<p><?= $des?></p>
+													<p class="card-text text-left"><?=$des ?></p>
+													<p class="card-text text-left">Durasi tanam : <?=$row["durasi_tanam"]; ?> hari</p>
+													<!-- <div class="form-group">
+														<label>Deskripsi</label>
+														<input class="form-control form-control-lg" type="text" name="namaPadi" required/>
+													</div>
+													<div class="form-group">
+														<label>Lama tanam</label>
+														<input class="form-control form-control-lg" type="text" name="namaPadi" required/>
+													</div> -->
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -169,7 +179,7 @@ if(isset($_POST['hapus'])) {
 		</div>		
 		<div class="add-modal-kar">
 			<button href="#" class="welcome-modal-btn" data-toggle="modal" data-target="#exampleModal">
-			 +
+			(+) Tambah
 		</button></div>
 		
 				<!-- Modal -->
@@ -225,7 +235,7 @@ if(isset($_POST['hapus'])) {
 										<ul class="profile-edit-list row">
 											<li class="weight-100 col-md-12">
 												<div class="form-group" id="asli">
-													<input id="demo2" type="text" value="0" name="demo2[]" />
+													<input id="demo2" type="text" value="0" name="demo2[]" onkeypress="return inputAngka(event)"/>
 												</div>
 
 												<div class="form-group" id="dinamis">
@@ -239,8 +249,7 @@ if(isset($_POST['hapus'])) {
 												data-placement="bottom"
 												onclick="copyForm()"
 												data-original-title="Add Task"
-												><i class="ion-plus-circled"></i> Add
-												More Task</a
+												><i class="ion-plus-circled"></i> Tambah kolom</a
 											>
 										</div>
 									</div>
@@ -250,7 +259,7 @@ if(isset($_POST['hapus'])) {
 										<ul class="profile-edit-list row">
 											<li class="weight-100 col-md-12">
 												<div class="form-group" id="aslipupuk">
-													<input class="form-control form-control-lg" type="text" name="hstpupuk[]" />
+													<input id="hstpupuk[]" class="form-control form-control-lg" value="0"type="text" name="hstpupuk[]" onkeypress="return inputAngka(event)"/>
 												</div>
 												<div class="form-group" id="dinamispupuk">
 													
@@ -264,8 +273,7 @@ if(isset($_POST['hapus'])) {
 												data-placement="bottom"
 												onclick="copyForm1()"
 												data-original-title="Add Task"
-												><i class="ion-plus-circled"></i> Add
-												More Task</a
+												><i class="ion-plus-circled"></i> Tambah kolom</a
 											>
 										</div>
 									</div>
@@ -275,7 +283,7 @@ if(isset($_POST['hapus'])) {
 										<ul class="profile-edit-list row">
 											<li class="weight-100 col-md-12">
 												<div class="form-group" id="aslipestisida">
-													<input class="form-control form-control-lg" type="text" name="hstpestisida[]" />
+													<input id="hstpestisida[]" class="form-control form-control-lg" value="0" type="text" name="hstpestisida[]" onkeypress="return inputAngka(event)"/>
 												</div>
 												<div class="form-group" id="dinamispestisida">
 												</div>
@@ -288,8 +296,7 @@ if(isset($_POST['hapus'])) {
 												data-placement="bottom"
 												onclick="copyForm2()"
 												data-original-title="Add Task"
-												><i class="ion-plus-circled"></i> Add
-												More Task</a
+												><i class="ion-plus-circled"></i> Tambah kolom</a
 											>
 										</div>
 									</div>
@@ -299,7 +306,7 @@ if(isset($_POST['hapus'])) {
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="submit" id="sa-success" name="submit" class="btn btn-primary">Save changes</button>
+						<button type="submit" name="submit" class="btn btn-primary">Save changes</button>
 					</div>
 					</form>
 				</div>
@@ -318,5 +325,13 @@ if(isset($_POST['hapus'])) {
 		<script src="vendors/scripts/advanced-components.js"></script>
 		<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
 		<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script> 
+		<script>
+			function inputAngka(evt) {
+			var charCode = (evt.which) ? evt.which : event.keyCode
+			if (charCode > 31 && (charCode < 48 || charCode > 57))
+				return false;
+				return true;
+			}
+		</script>
 	</body>
 </html>

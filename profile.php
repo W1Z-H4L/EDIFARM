@@ -26,7 +26,7 @@ if(isset($_POST['update'])) {
 				unlink($old_path);
 			}
 		}
-		$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt', `Foto` = '$path' WHERE `user`.`id_user` = '$id';";
+		$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama',  `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt', `Foto` = '$path' WHERE `user`.`id_user` = '$id';";
 		// file_put_contents($path, base64_decode($data));
 		if (move_uploaded_file($data, $path)) {
 		} else {
@@ -35,7 +35,7 @@ if(isset($_POST['update'])) {
 		$result = mysqli_query($koneksi,$query);
 		$_SESSION["fotoUser"] = $path;
 	}else{
-		$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama', `jenis_kelamin` = '$jeniskel', `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt' WHERE `user`.`id_user` = '$id';";
+		$query =  "UPDATE `user` SET `username` = '$user', `nama` = '$nama',  `alamat` = '$alamat', `no_hp` = '$no_hp', `tanggal_lahir` = '$ttl', `email` = '$email', `caption` = '$capt' WHERE `user`.`id_user` = '$id';";
 		$result = mysqli_query($koneksi,$query);
 	};
 	$_SESSION["namaUser"] = $nama;
@@ -79,7 +79,7 @@ if(isset($_POST['update'])) {
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
-											<a href="index.php">Dashboard</a>
+											<a href="dashboard.php">Dashboard</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
 											Profile
@@ -266,8 +266,8 @@ if(isset($_POST['update'])) {
 																<div class="form-group">
 																	<label>Tanggal Lahir</label>
 																	<input
-																		class="form-control form-control-lg date-picker"
-																		type="text"
+																		class="form-control form-control-lg "
+																		type="date"
 																		value="<?php echo $ttl?>"
 																		name = "ttl"
 																	/>
@@ -285,6 +285,7 @@ if(isset($_POST['update'])) {
 																				class="custom-control-input"
 																				value="Laki-laki"
 																				<?php if($jeniskel=="Laki-laki") echo "checked"?>
+																				disabled
 																			/>
 																			<label
 																				class="custom-control-label weight-400"
@@ -302,6 +303,7 @@ if(isset($_POST['update'])) {
 																				class="custom-control-input"
 																				value = "Perempuan"
 																				<?php if($jeniskel=="Perempuan") echo "checked"?>
+																				disabled
 																			/>
 																			<label
 																				class="custom-control-label weight-400"

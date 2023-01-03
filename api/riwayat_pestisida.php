@@ -6,7 +6,7 @@ if (isset($_POST['id_lahan'])) {
    
    
 
-    $sql = "SELECT * From jadwal where id_lahan = $id_lahan AND status = 'Selesai' AND kegiatan = 'pestisida'";
+    $sql = "SELECT * From jadwal inner join sesi_tanam on jadwal.id_sesi=sesi_tanam.id_sesi where jadwal.id_lahan = $id_lahan AND jadwal.status = 'Selesai' AND jadwal.kegiatan = 'pestisida' and sesi_tanam.status='belum'";
     $data = mysqli_query($db, $sql);
     $rows = array();
 

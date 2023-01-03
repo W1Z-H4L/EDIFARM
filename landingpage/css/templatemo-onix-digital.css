@@ -243,7 +243,7 @@ body {
 
 .main-red-button a {
   display: inline-block;
-  background-color: #ff695f;
+  background-color: #006B6C;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -275,7 +275,7 @@ body {
   background-color: #fff;
   font-size: 15px;
   font-weight: 400;
-  color: #ff695f;
+  color: #006B6C;
   text-transform: capitalize;
   padding: 12px 25px;
   border-radius: 23px;
@@ -830,7 +830,7 @@ preloader
     height: 16px;
     top: 12px;
     left: 15px;
-    background: #ff695f;
+    background: #006B6C;
     border-radius: 50%;
     -webkit-transform: translateX(0);
     transform: translateX(0);
@@ -853,7 +853,7 @@ preloader
     width: 16px;
     height: 16px;
     margin-left: 16px;
-    background: #ff695f;
+    background: #006B6C;
     border-radius: 50%;
 }
 
@@ -1112,7 +1112,7 @@ About
 
 .about-us .fact-item .count-title {
   font-size: 15px;
-  color: #ff695f;
+  color: #006B6C;
 }
 
 .about-us .fact-item p {
@@ -1353,7 +1353,7 @@ Pricing
 }
 
 .pricing-tables .item em {
-  color: #ff695f;
+  color: #006B6C;
   font-size: 15px;
   display: block;
   margin-top: 25px;
@@ -1363,7 +1363,7 @@ Pricing
 
 .pricing-tables .item span {
   font-size: 44px;
-  color: #ff695f;
+  color: #006B6C;
   font-weight: 700;
   display: block;
   margin-top: -5px;
@@ -1483,7 +1483,7 @@ Subscribe
 }
 
 .subscribe .inner-content form button:hover {
-  background-color: #ff695f;
+  background-color: #006B6C;
 }
 
 
@@ -1764,7 +1764,7 @@ form#contact input::placeholder {
 
 form#contact button {
   display: inline-block;
-  background-color: #ff695f;
+  background-color: #006B6C;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -1838,7 +1838,7 @@ footer .about ul li a {
 }
 
 footer .about ul li a:hover {
-  background-color: #ff695f;
+  background-color: #006B6C;
 }
 
 footer .footer-item ul li {
@@ -1857,7 +1857,7 @@ footer .footer-item ul li a {
 }
 
 footer .footer-item ul li a:hover {
-  color: #ff695f;
+  color: #006B6C;
 }
 
 footer .footer-item p {
@@ -1907,7 +1907,7 @@ footer .copyright p {
 }
 
 footer .copyright p a {
-  color: #ff695f;
+  color: #006B6C;
 }
 
 /* 
@@ -2012,7 +2012,7 @@ responsive
   }
   .subscribe .inner-content form button {
     width: 100%;
-    background-color: #ff695f;
+    background-color: #006B6C;
     margin-top: 30px;
   }
   .our-videos ul.nacc li {

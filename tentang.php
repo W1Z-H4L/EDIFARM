@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -250,61 +253,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="welcome-modal">
-					<button class="welcome-modal-close">
-						<i class="bi bi-x-lg"></i>
-					</button>
-					<iframe
-						class="w-100 border-0"
-						src="https://embed.lottiefiles.com/animation/31548"
-					></iframe>
-					<div class="text-center">
-						<h3 class="h5 weight-500 text-center mb-2">
-							Ikuti Media Sosial Kami
-							<span role="img" aria-label="gratitude">❤️</span>
-						</h3>
-					<p class="font-14 text-center mb-1 d-none d-md-block">
-						
-					</p>
-					<div class="d-none d-md-flex justify-content-center h1 mb-0 text-danger"><a>
-											<a
-												href="https://www.facebook.com/profile.php?id=100088522217152"
-												class="btn"
-												data-bgcolor="#3b5998"
-												data-color="#ffffff"
-												><i class="fa fa-facebook"></i
-											></a>
-											<a
-												href="https://twitter.com/Edifarm21"
-												class="btn"
-												data-bgcolor="#1da1f2"
-												data-color="#ffffff"
-												><i class="fa fa-twitter"></i
-											></a>
-											<a
-												href="https://www.instagram.com/edifarmm_/"
-												class="btn"
-												data-bgcolor="#f46f30"
-												><i class="fa fa-instagram"></i
-											></a>
-										
-										
-				</div>
-		<!-- welcome modal end -->
-		<!-- js -->
+				
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript
-			><iframe
-				src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS"
-				height="0"
-				width="0"
-				style="display: none; visibility: hidden"
-			></iframe
-		></noscript>
-		<!-- End Google Tag Manager (noscript) -->
 	</body>
 </html>

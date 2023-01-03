@@ -9,7 +9,7 @@
 <body>
 <div class="left-side-bar">
 <div class="brand-logo">
-				<a href="index.php">
+				<a href="dashboard.php">
 					<img src="vendors/images/logo_edifarmbaru.png" alt="" class="dark-logo" />
 					<img
 						src="vendors/images/logo_darkmode.png"

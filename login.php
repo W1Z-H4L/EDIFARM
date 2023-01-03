@@ -92,7 +92,8 @@ if(isset($_GET['error'])){
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="input-group mb-0">
-											<input class="btn btn-primary btn-lg btn-block" type="submit" name="submit" value="Masuk">
+											
+											<button class="btn btn-primary btn-lg btn-block" type="login" name="login" value="Masuk">Masuk</button>
 											<div class="col-md-4 col-sm-12 mb-30">
 										</div>
 									</div>

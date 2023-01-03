@@ -9,28 +9,25 @@ include('limitKata.php');
 	 $luas = $_POST['luas'];
 	 $des = $_POST['des'];
 	 $tempat = $_POST['tempat'];
-	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas_lahan`, `tempat`, `deskripsi`) VALUES ('', '$nama','$luas','$tempat','$des')";
+	 $query =  "INSERT INTO `lahan` (`id_lahan`, `nama_lahan`, `luas_lahan`, `tempat`, `deskripsi`, `status`) VALUES ('', '$nama','$luas','$tempat','$des','kosong')";
 	 $result = mysqli_query($koneksi,$query);
  }
  if(isset($_POST['update'])) {
+	$id=$_POST['id'];
 	$nama = $_POST['nama'];
 	 $luas = $_POST['luas'];
 	 $des = $_POST['des'];
 	 $tempat = $_POST['tempat'];
 	
-	$query =  "UPDATE `user` SET `username` = '$username', `nama` = '$nama', `jenis_kelamin` = '$kelamin', `alamat` = '$alamat', `no_hp` = '$hp', `tanggal_lahir` = '$lahir', `email` = '$email', `caption` = '$capt'WHERE `user`.`id_user` = '$id';";
+	$query =  "UPDATE `lahan` SET `nama_lahan`='$nama',`luas_lahan`='$luas',`tempat`='$tempat',`deskripsi`='$des' WHERE id_lahan='$id'";
 	$result = mysqli_query($koneksi,$query);
 }
-if(isset($_GET['op'])){
-	$op=$_GET['op'];
-}else{
-	$op="";
-}
-if($op == 'delete'){
-	$id = $_GET['id'];
+if(isset($_POST['delete'])){
+	$id=$_POST['id'];
 	$query =  "DELETE FROM lahan WHERE id_lahan='$id'";
 	$result = mysqli_query($koneksi,$query);
 }
+
  ?>
 <!DOCTYPE html>
 <html>
@@ -84,6 +81,7 @@ if($op == 'delete'){
 						$result = mysqli_query($koneksi,$query);
 						while($row= $row = mysqli_fetch_array($result)){
 							$id=$row["id_lahan"];
+							$status=$row["status"];
 						?>
 						<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
 							<div class="card card-box text-center">
@@ -94,43 +92,69 @@ if($op == 'delete'){
 								<div class="card-body">
 									<h5 class="card-title weight-500 text-left"><?php echo $row["nama_lahan"];?></h5>
 									<p class="card-text text-left"><?= limit_kata($row["deskripsi"],2) ;?></p>
+									<p class="card-text text-left"><?= $status?></p>
 									<div>
 										<a href="#" class="btn btn-primary" data-toggle="modal" data-target="#detail<?= $row["id_lahan"];?>" >Detail</a>
 										<div
-											class="modal fade"
+											class="modal fade bs-example-modal-lg"
 											id="detail<?php echo $row["id_lahan"];?>"
 											tabindex="-1"
 											role="dialog"
 											aria-labelledby="myLargeModalLabel"
 											aria-hidden="true"
 										>
-											<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-dialog modal-lg modal-dialog-centered">
 												<div class="modal-content">
 													<div class="modal-header">
 														<h4 class="modal-title" id="myLargeModalLabel">
-														<?php echo $row["nama_lahan"];?>
+														<?= $row["nama_lahan"];?>
 														</h4>
 														<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 															×
 														</button>
 													</div>
 													<div class="modal-body">
-														<p>
-															Lahan 1 menggunakan jenis padi ciherang, ditanam mulai dari tanggal 3 November 2022
-														</p>
-													</div>
-													<div class="modal-footer">
-														<button
-															type="button"
-															class="btn btn-secondary"
-															data-dismiss="modal"
-														>
-															Batal
-														</button>
-														<button type="button" class="btn btn-primary">
-															Simpan
-														</button>
-													</div>
+														<form action="lahan.php" method="POST">
+															<input hidden class="form-control" value="<?= $id?>" type="text" name="id">
+															<div class="form-group row">
+																<label class="col-sm-12 col-md-2 col-form-label" for="des">Nama Lahan</label>
+																<div class="col-sm-12 col-md-10">
+																	<input class="form-control" value="<?= $row["nama_lahan"];?>" type="text" name="nama">
+																</div>
+															</div>									
+															
+															<div class="form-group row">
+																<label class="col-sm-12 col-md-2 col-form-label" for="des">Tempat</label>
+																<div class="col-sm-12 col-md-10">
+																	<input class="form-control" value="<?= $row["tempat"];?>" type="text" name="tempat">
+																</div>
+															</div>	
+															<div class="form-group row">
+																<label class="col-sm-12 col-md-2 col-form-label" for="des">Deskripsi</label>
+																<div class="col-sm-12 col-md-10">
+																	<input class="form-control" value="<?= $row["deskripsi"];?>" type="text" name="des">
+																</div>
+															</div>	
+															<div class="form-group row">
+																<label class="col-sm-12 col-md-2 col-form-label" for="des">Status</label>
+																<div class="col-sm-12 col-md-10">
+																	<input disabled class="form-control" value="<?= $status?>" type="text" name="tempat">
+																</div>
+															</div>	
+															<div class="form-group row">
+																<label class="col-sm-12 col-md-2 col-form-label" for="des">Luas Lahan</label>
+																<div class="col-sm-12 col-md-10">
+																	<input class="form-control" value="<?= $row["luas_lahan"];?>" type="text" name="luas" onkeypress="return inputAngka(event)">
+																</div>
+															</div>	
+															
+														</div>
+														<div class="modal-footer">
+															<input type="submit" name="delete" class="btn btn-primary" value="Delete" onclick="return confirm('Yakin ingin hapus data?')">	
+															<button type="button" class="btn btn-secondary" data-dismiss="modal" alt="add-modal-kar">Close</button>
+															<input type="submit" name="update" class="btn btn-primary" value="Update" onclick= "">
+														</div>
+													</form>	
 												</div>
 											</div>
 										</div>
@@ -146,14 +170,7 @@ if($op == 'delete'){
 			</div>
 		</div>		
 		<div class="add-modal-kar">
-			<button 
-			href="#"
-			class="welcome-modal-btn"
-			data-toggle="modal"
-			data-target="#tambahlahan"
-			>
-			 +
-		</button>
+			<button href="#" class="welcome-modal-btn" data-toggle="modal" data-target="#tambahlahan">(+) Tambah</button>
 		</div>
 		
 		<div class="modal fade bs-example-modal-lg"
@@ -173,25 +190,25 @@ if($op == 'delete'){
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama Lahan</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" type="nama" placeholder="Lahan" name="nama">
-								</div>
-							</div>
-							<div class="form-group row">
-								<label class="col-sm-12 col-md-2 col-form-label" for="luas">Luas Lahan</label>
-								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Search Here" type="luas" name="luas">
+									<input class="form-control" type="nama" placeholder="Lahan" name="nama" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label" for="des">Deskripsi</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Dataran tinggi" type="des" name="des">
+									<input class="form-control" placeholder="Dataran tinggi" type="des" name="des" required>
 								</div>
 							</div>
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label" for="tempat">Tempat</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="Jember" type="tempat" name="tempat">
+									<input class="form-control" placeholder="Jember" type="tempat" name="tempat" required>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-sm-12 col-md-2 col-form-label" for="luas">Luas Lahan</label>
+								<div class="col-sm-12 col-md-10" >
+									<input class="form-control" id="luas" type="text" value="0" name="luas" onkeypress="return inputAngka(event)"/>
 								</div>
 							</div>
 							</div>
@@ -216,6 +233,15 @@ if($op == 'delete'){
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
 		<script src="vendors/scripts/layout-settings.js"></script>
-		
+		<script src="src/plugins/bootstrap-touchspin/jquery.bootstrap-touchspin.js"></script>
+		<script src="vendors/scripts/advanced-components.js"></script>
+		<script>
+			function inputAngka(evt) {
+			var charCode = (evt.which) ? evt.which : event.keyCode
+			if (charCode > 31 && (charCode < 48 || charCode > 57))
+				return false;
+				return true;
+			}
+		</script>
 	</body>
 </html>

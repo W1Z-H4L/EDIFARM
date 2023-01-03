@@ -18,15 +18,36 @@
 			maxboostedstep: 10,
 			postfix: 'Hari'
 		});
-		// function loadd(){
+		$("input[name='luas']").TouchSpin({
+			min: 0,
+			max: 300,
+			stepinterval: 1,
+			maxboostedstep: 10,
+			postfix: 'Hektare'
+		});
+		//  function loadd(){
 			$("input[name='demo2[]']").TouchSpin({
 				min: 0,
 				max: 300,
-				stepinterval: 50,
+				stepinterval: 1,
 				maxboostedstep: 10000000,
 				prefix: 'Hari ke-'
 			});
-		// };
+			$("input[name='hstpupuk[]']").TouchSpin({
+				min: 0,
+				max: 300,
+				stepinterval: 1,
+				maxboostedstep: 10000000,
+				prefix: 'Hari ke-'
+			});
+			$("input[name='hstpestisida[]']").TouchSpin({
+				min: 0,
+				max: 300,
+				stepinterval: 1,
+				maxboostedstep: 10000000,
+				prefix: 'Hari ke-'
+			});
+		//  };
 		// loadd();
 		$("input[name='demo3_22']").TouchSpin({
 			initval: 40

@@ -1,5 +1,30 @@
 <?php
 	require('auth.php');
+	require('koneksi.php');
+	$tanggalnow = date('Y-m-d');
+
+	$query5 =  mysqli_query($koneksi,"SELECT * from sesi_tanam where status='belum'");
+	if(mysqli_num_rows($query5)>0){ 
+	while($data2 = mysqli_fetch_array($query5)){
+		$tanggalsesi=$data2["tgl_selesai"];
+		if($tanggalsesi>=$tanggalnow){
+?>
+	<script>
+	swal(
+		{
+			title: 'Good job!',
+			text: 'You clicked the button!',
+			type: 'success',
+			showCancelButton: true,
+			confirmButtonClass: 'btn btn-success',
+			cancelButtonClass: 'btn btn-danger'
+		}
+	)</script>
+
+<?php
+		}
+	}}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -66,8 +91,12 @@
 	  </style>
 	</head>
 	<body>
-		<?php  
-		include 'header.php'; ?>
+	
+		<?php  include 'header.php'; ?>
+		
+		
+
+		
 
 		<div class="right-sidebar">
 		<?php include 'rightbar.php'; ?>
@@ -85,7 +114,7 @@
 
 				<div class="card-box pb-10">
 						<div class="title">
-							<h1>WebGIS Prakiraan Cuaca dari BMKG</h1>
+							<h1> Prakiraan Cuaca</h1>
 							<p>Date : <span class="tanggal"></span></p>
 						</div>
 						<div class="select">
@@ -336,7 +365,7 @@
 					</table>
 				</div>
 
-				<div class="title pb-20 pt-20">
+				<!-- <div class="title pb-20 pt-20">
 					<h2 class="h3 mb-0">Lahan</h2>
 				</div>
 
@@ -380,124 +409,18 @@
 							</div>
 						</a>
 					</div>
-				</div
-					>
+				</div> -->
 				</div>
 			</div>
 		</div>
-		<div
-			class="modal fade bs-example-modal-lg"
-			id="bd-example-modal-lg"
-			tabindex="-1"
-			role="dialog"
-			aria-labelledby="myLargeModalLabel"
-			aria-hidden="true"
-		>
-		<div class="modal-dialog modal-lg modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h4 class="modal-title" id="myLargeModalLabel">
-						Edit Data Karyawan
-					</h4>
-					<button
-						type="button"
-						class="close"
-						data-dismiss="modal"
-						aria-hidden="true"
-						alt="add-modal-kar"							
-					>x
-					</button>
-					</div>
-						<div class="modal-body">						
-							<form>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Nama Karyawan</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="text" placeholder="Nama Lengkap">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Username</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="text" placeholder="Username">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Alamat</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control" type="text" placeholder="Ponorogo">
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Tanggal Lahir</label>
-									<div class="col-sm-12 col-md-10">
-										<input class="form-control date-picker" placeholder="Pilih Tanggal" type="text">
-									</div>
-								</div>
-								<div class="form-group row align-items-center">
-									<label class="col-sm-4 col-form-label">Jenis Kelamin</label>
-									<div class="col-sm-8">
-									<div
-									class="custom-control custom-radio custom-control-inline pb-0">
-										<input
-											type="radio"
-											id="male"
-											name="gender"
-											class="custom-control-input"
-											/>
-											<label class="custom-control-label" for="male"
-												>Wanita</label
-											>
-									</div>
-									
-								</div>
-									<div 
-									class="custom-control custom-radio custom-control-inline pb-0">
-										<input
-											type="radio"
-											id="female"
-											name="gender"
-											class="custom-control-input"
-											/>
-											<label class="custom-control-label" for="female"
-												>Laki-laki</label>
-									</div>
-									</div>
-								</div>
-								<div class="form-group row">
-									<label class="col-sm-12 col-md-2 col-form-label">Lahan</label>
-									<div class="col-sm-12 col-md-10">
-										<select class="custom-select col-12">
-											<option selected="">Pilih...</option>
-											<option value="1">Lahan 1</option>
-											<option value="2">Lahan 2</option>
-											<option value="3">Lahan 3</option>
-											<option value="3">Lahan 4</option>
-										</select>
-									</div>
-								</div>
-								</form>
-								
-									<div class="modal-footer">
-										<button
-											type="button"
-											class="btn btn-secondary"
-											data-dismiss="modal"
-											alt="add-modal-kar"
-											>
-											Batal
-											</button>
-											<button type="button" class="btn btn-primary">
-											Simpan
-											</button>
-										</div>
-									</div>
-								</div>
-							</div>
+		
 		
 		
 		<!-- welcome modal end -->
 		<!-- js -->
+		<!-- add sweet alert js & css in footer -->
+		<script src="src/plugins/sweetalert2/sweetalert2.all.js"></script>
+		<script src="src/plugins/sweetalert2/sweet-alert.init.js"></script>
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
 		<script src="vendors/scripts/process.js"></script>
@@ -510,10 +433,29 @@
 		<script src="vendors/scripts/dashboard3.js"></script>
 		<script src="vendors/scripts/apexcharts-setting.js"></script>
 		<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-   crossorigin=""></script>
-   <script type="text/javascript" src="node_modules/moment/moment.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-   <script type="text/javascript" src="app.js"></script>
+		integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+		crossorigin=""></script>
+		<script type="text/javascript" src="node_modules/moment/moment.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script type="text/javascript" src="app.js"></script>
 	</body>
 </html>
+<?php
+	$tanggalnow = date('Y-m-d');
+
+	$query5 =  mysqli_query($koneksi,"SELECT * from sesi_tanam inner join lahan on sesi_tanam.id_lahan = lahan.id_lahan where sesi_tanam.status='belum'");
+	
+	while($data2 = mysqli_fetch_array($query5)){
+		$tanggalsesi=$data2["tgl_selesai"];
+		$idsesi=$data2["id_sesi"];
+		$idlahan=$data2["id_lahan"];
+
+		if($tanggalsesi<=$tanggalnow){?>
+			<script>alert('<?php echo $data2["nama_lahan"] ;?> telah selesai produksi dan akan diubah menjadi lahan kosong')</script>
+			<?php
+			mysqli_query($koneksi,"UPDATE `lahan` SET `status`='kosong' WHERE id_lahan = $idlahan");
+			mysqli_query($koneksi,"UPDATE `sesi_tanam` SET `status`='selesai' WHERE id_sesi = $idsesi");
+			}
+		}
+
+		?>

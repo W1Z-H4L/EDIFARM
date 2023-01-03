@@ -1,6 +1,7 @@
 <?php 
 
 $koneksi = mysqli_connect("localhost","root","","edifarm");
+// $koneksi = mysqli_connect('localhost','wstifdi1_edifarm','Polije1234','wstifdi1_edifarm');
 
 if (mysqli_connect_errno()){
 	echo "Koneksi database gagal : " . mysqli_connect_error();

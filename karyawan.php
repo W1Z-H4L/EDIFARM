@@ -93,7 +93,7 @@ if($op == 'delete'){
 								<nav aria-label="breadcrumb" role="navigation">
 									<ol class="breadcrumb">
 										<li class="breadcrumb-item">
-											<a href="index.php">Dashboard</a>
+											<a href="dashboard.php">Dashboard</a>
 										</li>
 										<li class="breadcrumb-item active" aria-current="page">
 											Karyawan
@@ -125,7 +125,7 @@ if($op == 'delete'){
 								</thead>
 								<tbody>
 								<?php 
-								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan INNER JOIN jenis ON user.id_jenis = jenis.id_jenis where id_level = '2'");
+								$query = mysqli_query($koneksi,"SELECT * FROM user INNER JOIN lahan on user.id_lahan=lahan.id_lahan where id_level = '2'");
 								if(mysqli_num_rows($query)>0){ 
 								?>
 								<?php
@@ -152,47 +152,99 @@ if($op == 'delete'){
 											data-target="#editkar<?php echo $id;?>"
 												><i class="icon-copy dw dw-edit2"></i
 											></a>
-											<div class="modal fade bs-example-modal-lg" id="editkar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal fade bs-example-modal-lg" id="editkar<?php echo $id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 												<div class="modal-dialog" role="document">
 													<div class="modal-content">
 														<div class="modal-header">
-															<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+															<h5 class="modal-title" id="exampleModalLabel">Edit Karyawan</h5>
 															<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 															<span aria-hidden="true">&times;</span>
 															</button>
 														</div>
 														<div class="modal-body">
-															<form action="calendar.php?idlhn=<?=$idPilihan;?>" method="POST">
+															<form action="karyawan.php" method="POST">
 																<div class="form-group row">
-																	<label class="col-sm-12 col-md-2 col-form-label">Tgl. Mulai</label>
+																	
+																		<input class="form-control" type="hidden" name="id" id="id" value="<?php echo $data["id_user"];?>">
+																	
+																</div>	
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label" for="nama">Username</label>
 																	<div class="col-sm-12 col-md-10">
-																		<input
-																			class="form-control date"
-																			placeholder="Pilih tanggal lahir"
-																			type="date"
-																			name="tanggalMulai"
-																			required
-																		/>
+																		<input class="form-control" type="text" name="username" id="username" value="<?php echo $data["username"];?>">
+																	</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label" for="nama">Nama</label>
+																	<div class="col-sm-12 col-md-10">
+																		<input class="form-control" type="text" name="nama" id="nama" value="<?php echo $data["nama"];?>">
+																	</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label">Kelamin</label>
+																	<div class="col-sm-12 col-md-10">
+																		<select class="custom-select col-12" name="kelamin" disabled>
+																			<option value="Laki-laki" <?php if($jeniskel=="Laki-laki") echo "selected"?>>Laki-laki</option>
+																			<option value="Perempuan" <?php if($jeniskel=="Perempuan") echo "selected"?>>Perempuan</option>
+																		</select>
+																	</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label" for="alamat">Alamat</label>
+																	<div class="col-sm-12 col-md-10">
+																		<input class="form-control" type="text" name="alamat" id="alamat" value="<?php echo $data["alamat"];?>">
+																	</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label" for="hp">No. HP</label>
+																	<div class="col-sm-12 col-md-10">
+																		<input class="form-control" type="text" name="hp" id="hp" value="<?php echo $data["no_hp"];?>" onkeypress="return inputAngka(event)">
+																	</div>
+																</div>
+																<div class="form-group row">
+																<label class="col-sm-12 col-md-2 col-form-label">Tgl. Lahir</label>
+																<div class="col-sm-12 col-md-10">
+																	<input
+																		class="form-control date"
+																		value="<?php echo $data["tanggal_lahir"];?>"
+																		type="date"
+																		name="lahir"
+																	/>
+																</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label" for="email">Email</label>
+																	<div class="col-sm-12 col-md-10">
+																		<input class="form-control" type="text" name="email" id="email" value="<?php echo $data["email"];?>">
+																	</div>
+																</div>
+																<div class="form-group row">
+																	<label class="col-sm-12 col-md-2 col-form-label" for="capt">Motivasi</label>
+																	<div class="col-sm-12 col-md-10">
+																		<input class="form-control"  type="text" name="capt" id="capt" value="<?php echo $data["caption"];?>">
 																	</div>
 																</div>
 																</div>
 																	<div class="modal-footer">
-																		<button type="button" class="btn btn-secondary" data-dismiss="modal" alt="add-modal-kar" >Batal</button>
-																		<input type="submit" name="tambahJadwal" class="btn btn-primary" value="Simpan" id="sa-success">
+																		<button
+																			type="button"
+																			class="btn btn-secondary"
+																			data-dismiss="modal"
+																			alt="add-modal-kar"
+																		>Close
+																		</button>
+																		<input type="submit" name="update" class="btn btn-primary" value="Update">
 																	</div>
 																</div>
-															</form>
+															</form>	
 														</div>
 													</div>
 												</div>
 											</div>
-
 											<!-- Hapus -->
 											<a href="karyawan.php?op=delete&id=<?php echo $id?>" onclick="return confirm('Yakin ingin hapus data?')" data-color="#e95959" 
 												><i class="icon-copy dw dw-delete-3"></i
 											></a>
-
-											
 										</td>
 									</tr>	
 								<?php  
@@ -206,22 +258,9 @@ if($op == 'delete'){
 					<!-- Simple Datatable End -->
 			
 		<!-- tambah -->
-		<button 
-		href="#"
-			class="welcome-modal-btn"
-			data-toggle="modal"
-			data-target="#tambahkar">
-			 +
-		</button>
+		<button href="#" class="welcome-modal-btn" data-toggle="modal" data-target="#tambahkar">(+) Tambah</button>
 		<!-- tambah modal -->
-		<div
-			class="modal fade bs-example-modal-lg"
-			id="tambahkar"
-			tabindex="-1"
-			role="dialog"
-			aria-labelledby="myLargeModalLabel"
-			aria-hidden="true"
-		>
+		<div class="modal fade bs-example-modal-lg" id="tambahkar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -270,7 +309,7 @@ if($op == 'delete'){
 							<div class="form-group row">
 								<label class="col-sm-12 col-md-2 col-form-label" for="tempat">No. HP</label>
 								<div class="col-sm-12 col-md-10">
-									<input class="form-control" placeholder="085232451543" type="text" name="hp">
+									<input class="form-control" placeholder="085232451543" type="text" name="hp" onkeypress="return inputAngka(event)">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -346,14 +385,9 @@ if($op == 'delete'){
 								</select>
 								</div>
 							</div>
-							</div>
+							
 								<div class="modal-footer">
-									<button
-										type="button"
-										class="btn btn-secondary"
-										data-dismiss="modal"
-										alt="add-modal-kar"
-									>Close
+									<button type="button" class="btn btn-secondary" data-dismiss="modal" alt="add-modal-kar">Close
 									</button>
 									<input type="submit" name="submit" class="btn btn-primary" value="Simpan" onclick= "">
 								</div>
@@ -363,9 +397,6 @@ if($op == 'delete'){
 				</div>
 			</div>
 		</div>
-		<!-- edit modal -->
-		
-		
 
 		<script src="vendors/scripts/core.js"></script>
 		<script src="vendors/scripts/script.min.js"></script>
@@ -376,9 +407,14 @@ if($op == 'delete'){
 		<script src="src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-		<!-- buttons for Export datatable -->
-		
-		<!-- Datatable Setting js -->
 		<script src="vendors/scripts/datatable-setting.js"></script>
+		<script>
+			function inputAngka(evt) {
+			var charCode = (evt.which) ? evt.which : event.keyCode
+			if (charCode > 31 && (charCode < 48 || charCode > 57))
+				return false;
+				return true;
+			}
+		</script>
 	</body>
 </html>
